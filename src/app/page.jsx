@@ -1,115 +1,216 @@
+'use client';
+
 import Image from "next/image";
+import { Github, Instagram, Mail, Copy, FileDown, Figma } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
+import SectionPointer from '../components/SectionPointer';
 import { DM_Mono } from "next/font/google";
-const dmmono = DM_Mono({ weight: "400", subsets: ["latin"] });
+const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
 
 export default function Home() {
+  const fadeInStagger = {
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12
+      }
+    },
+    hidden: {
+      opacity: 0
+    }
+  };
+
+  const fadeIn = {
+    visible: {
+      opacity: 1
+    },
+    hidden: {
+      opacity: 0
+    }
+  };
+
+  const slideLeft = {
+    visible: {
+      opacity: 1,
+      translateX: 0,
+      transition: {
+        ease: "easeOut"
+      }
+    },
+    hidden: {
+      opacity: 0,
+      translateX: -50
+    }
+  };
+
+  const slideRight = {
+    visible: {
+      opacity: 1,
+      translateX: 0,
+      transition: {
+        ease: "easeOut"
+      }
+    },
+    hidden: {
+      opacity: 0,
+      translateX: 50
+    }
+  };
+
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24">
-      <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
-        <p className="fixed top-0 left-0 flex justify-center w-full pt-8 pb-6 border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex items-end justify-center w-full h-48 bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="flex gap-2 p-8 pointer-events-none place-items-center lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="flex items-center justify-center lg:pl-16">
+      <div className="px-5 pt-10 pb-20 justify-center items-center flex max-w-[610px]">
+        <motion.div
+          className="flex flex-col items-center justify-start w-full gap-10"
+          variants={fadeInStagger}
+          initial='hidden'
+          animate='visible'
+          exit='hidden'
+        >
+          <div
+            className="flex flex-col items-center self-stretch justify-start gap-4"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+            <motion.div
+              className={`${dmmono.className} text-sm h-7 text-cdarkgray`}
+              variants={fadeIn}
+            >
+              12 / 30 / 2005
+            </motion.div>
+            <motion.img
+              className="w-[72px] h-[72px] rounded-full"
+              src="/images/headericon.jpg"
+              variants={fadeIn}
             />
-          </a>
-        </div>
-      </div>
+            <motion.div
+              className="flex flex-col items-center self-stretch justify-start gap-5"
+              variants={fadeIn}
+            >
+              <motion.div
+                className="flex flex-col items-center self-stretch justify-center gap-2"
+                variants={fadeIn}
+              >
+                <motion.div
+                  className="text-xl font-light text-white "
+                  variants={fadeIn}
+                >
+                  Jax Tam
+                </motion.div>
+                <motion.div
+                  className="text-lg font-light text-cgray "
+                  variants={fadeIn}
+                >
+                  Year 1 student at HKU
+                </motion.div>
+              </motion.div>
+              <motion.div
+                className="flex items-center justify-start gap-4"
+                variants={fadeIn}
+              >
+                <motion.div
+                  className="w-2 h-2 rounded-full bg-cgreen animate-ping"
+                  variants={fadeIn}
+                ></motion.div>
+                <motion.div
+                  className="absolute w-2 h-2 rounded-full bg-cgreen"
+                  variants={fadeIn}
+                ></motion.div>
+                <motion.div
+                  className="text-base font-light text-cgray"
+                  variants={fadeIn}
+                >
+                  Available for new opportunities
+                </motion.div>
+              </motion.div>
+            </motion.div>
+            <motion.div
+              variants={fadeIn}
+              className="flex items-center self-stretch justify-center h-12 gap-5"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05, translateY: -2 }}
+              >
+                <Github className='cursor-pointer text-cdarkgray' onClick={() => window.open('https://github.com/EnhancedJax')} />
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, translateY: -2 }}
+              >
+                <Instagram className='cursor-pointer text-cdarkgray' onClick={() => window.open('https://www.instagram.com/enhancedjax/')} />
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, translateY: -2 }}
+              >
+                <FileDown className='cursor-pointer text-cdarkgray' onClick={() => window.open('/notes/Resume.pdf')} />
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, translateY: -2 }}
+              >
+                <Figma className='cursor-pointer text-cdarkgray' onClick={() => window.open('https://www.figma.com/file/jweQFqBujsTKhL6Zw44MON/Design?type=design&node-id=4%3A2&mode=design&t=O2Vfu63nmrOhawVX-1')} />
+              </motion.div>
+            </motion.div>
+            <div
+              className="flex flex-col items-center justify-center w-full gap-2 md:flex-row md:gap-4"
+            >
+              <motion.div
+                className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-white rounded-lg justify-center items-center gap-2.5 flex"
+                variants={slideLeft}
+                whileHover={{ scale: 1.05, translateY: -4 }}
+                whileTap={{ scale: 0.95, translateY: -2 }}
+                onClick={() => window.open('mailto:jax.lytam@gmail.com')}
+              >
+                <motion.div
+                  className="text-base font-light text-cbg"
+                  variants={fadeIn}
+                >
+                  Contact me
+                </motion.div>
+                <Mail className='w-5 h-5 text-cdarkgray' />
+              </motion.div>
+              <motion.div
+                className="font-light text-cgray "
+                variants={fadeIn}
+              >
+                or
+              </motion.div>
+              <motion.div
+                className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-cfg rounded-lg border border-cborder justify-center items-center gap-2.5 flex"
+                variants={slideRight}
+                whileHover={{ scale: 1.05, translateY: -5 }}
+                whileTap={{ scale: 0.95, translateY: -2 }}
+                onClick={() => navigator.clipboard.writeText('jax.lytam@gmail.com')}
+              >
+                <motion.div
+                  className="text-base font-light text-white"
+                  variants={fadeIn}
+                >
+                  Copy email
+                </motion.div>
+                <Copy className='w-5 h-5 text-cdarkgray' />
+              </motion.div>
+            </div>
+            <div
+              className="self-stretch h-10 p-2.5 flex-col justify-center items-center gap-2.5 flex"
+            >
+              <motion.div
+                className={`${dmmono.className} text-sm text-center text-cdarkgray`}
+                variants={fadeIn}
+              >
+                NT, HK ⋅ 22.2849° N, 114.1376° W
+              </motion.div>
+            </div>
+          </div>
+          <motion.div variants={fadeIn}>
+            <SectionPointer>About</SectionPointer>
+            <div
+              className="self-stretch text-base font-light text-gray-200">I'm Jax, a year 1 student studying at The University of Hong Kong.<br /><br />My passion is to deliver clean designs and user-oriented experiences that exceed expectations.<br /><br />I believe my attention to detail and dedication to excellence will allow me to thrive in the future.
+            </div>
+          </motion.div>
+        </motion.div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="grid mb-32 text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </div >
+    </main >
+    // <main className="flex flex-col items-center justify-between min-h-screen p-24">
+    //   <h1 className={`${dmmono.className}`}>Hello world</h1>
+    // </main>
   );
 }
