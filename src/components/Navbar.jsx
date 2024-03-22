@@ -10,7 +10,7 @@ const NavBar = () => {
     return (
         <nav id="navbar" className="fixed bottom-0 z-50 flex items-center justify-center w-screen h-16 gap-6 border-t border-cborder bg-cbg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col">
             <Button href="/" icon="Home"></ Button>
-            <Button href="/hkunotes" icon="PenLine"></ Button>
+            <Button href="/notes" icon="PenLine"></ Button>
             <Button href="/stack" icon="Layers"></ Button>
             <Button href="/work" icon="Command"></ Button>
             <Button href="/about" icon="UserRound"></ Button>

@@ -5,6 +5,7 @@ import { Github, Instagram, Mail, Copy, FileDown, Figma } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import SectionPointer from '../components/SectionPointer';
+import RegularLayout from '../components/RegularLayout';
 import { DM_Mono } from "next/font/google";
 const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
 
@@ -59,8 +60,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex items-center justify-center lg:pl-16">
-      <div className="px-5 pt-10 pb-20 justify-center items-center flex max-w-[610px]">
+      <RegularLayout>
         <motion.div
           className="flex flex-col items-center justify-start w-full gap-10"
           variants={fadeInStagger}
@@ -207,10 +207,6 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-      </div >
-    </main >
-    // <main className="flex flex-col items-center justify-between min-h-screen p-24">
-    //   <h1 className={`${dmmono.className}`}>Hello world</h1>
-    // </main>
+      </RegularLayout>
   );
 }
