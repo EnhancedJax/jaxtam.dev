@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import NotesList from "../../components/NotesList";
-import SidebarLayout from "../../components/SidebarLayout";
-import SidebarPanel from "../../components/SidebarPanel";
+import OptViewPanel from "../../components/OptViewPanel";
+import OptViewLayout from "../../components/OptViewLayout";
 import { fadeIn, fadeInStagger } from "../../components/variants";
 import { motion } from "framer-motion";
 
@@ -24,14 +24,14 @@ export default function Notes() {
 
     return (
         <>
-            <SidebarLayout>
+            <OptViewPanel>
                 <motion.div className="flex flex-col w-full gap-10"
                     variants={fadeInStagger}
                     initial="hidden"
                     animate="visible"
                     exit="hidden">
                     <div className="flex flex-col justify-center gap-2 pl-3">
-                        <motion.div variants={fadeIn} className="text-xl font-light text-white lg:text-base">My University Notes</motion.div>
+                        <motion.h1 variants={fadeIn} className="text-xl font-light text-white lg:text-base">My University Notes</motion.h1>
                         <motion.div variants={fadeIn} className="text-lg font-light text-cgray lg:text-base">Typed with LaTeX.</motion.div>
                     </div>
                     <div className="self-stretch h-[466px] flex-col justify-start items-start gap-3 flex">
@@ -48,10 +48,10 @@ export default function Notes() {
                         </motion.div>
                     </div>
                 </motion.div>
-            </SidebarLayout>
-            <SidebarPanel>
+            </OptViewPanel>
+            <OptViewLayout>
                 <motion.iframe variants={fadeIn} src={iframeUrl} width="100%" height="100%" />
-            </SidebarPanel>
+            </OptViewLayout>
         </>
     )
 }

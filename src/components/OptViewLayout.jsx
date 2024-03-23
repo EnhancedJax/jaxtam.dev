@@ -1,6 +1,6 @@
 const SidebarLayout = ({ children }) => {
     return (
-        <div className='h-screen py-16 lg:py-0 grow bg-cread'>
+        <div className='hidden bg-cread lg:h-screen grow lg:block'>
             {children}
         </div>
     )

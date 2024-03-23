@@ -22,12 +22,12 @@ export default function Stack() {
           exit="hidden"
         >
           <div className="flex flex-col items-start justify-center gap-2 pl-3">
-            <motion.div
+            <motion.h1
               variants={fadeIn}
               className="text-xl font-light text-white"
             >
               Stack
-            </motion.div>
+            </motion.h1>
             <motion.div
               variants={fadeIn}
               className="text-lg font-light text-cgray"

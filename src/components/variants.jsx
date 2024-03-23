@@ -62,7 +62,7 @@ export const slideLeft = {
   },
 };
 
-export const slideLeftSpring = {
+export const navBarHover = {
   visible: {
     opacity: 1,
     translateX: 0,
@@ -75,5 +75,20 @@ export const slideLeftSpring = {
     opacity: 0,
     translateX: -40,
     translateY: -12,
+  },
+};
+
+export const slideLeftSpring = {
+  visible: {
+    opacity: 1,
+    translateX: 0,
+    transition: {
+      type: "spring",
+      duration: 0.5,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    translateX: -40,
   },
 };

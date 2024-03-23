@@ -4,12 +4,12 @@ import { useState } from 'react';
 import LucideIcon from './LucideIcon';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import { slideLeftSpring } from './variants';
+import { navBarHover } from './variants';
 import Link from 'next/link';
 
 const NavBar = () => {
     return (
-        <nav id="navbar" className="fixed bottom-0 z-50 flex items-center justify-center w-screen h-16 gap-6 border-t border-cborder bg-cbg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col">
+        <nav id="navbar" className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-6 border-t border-cborder bg-cbg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col">
             <Button href="/" icon="Home"></ Button>
             <Button href="/notes" icon="PenLine"></ Button>
             <Button href="/stack" icon="Layers"></ Button>
@@ -40,7 +40,7 @@ const Button = ({ href, icon }) => {
             <AnimatePresence>
             {isHovered && (
                 <motion.div 
-                variants={slideLeftSpring}
+                variants={navBarHover}
                 initial='hidden'
                 animate='visible'
                 exit='hidden'

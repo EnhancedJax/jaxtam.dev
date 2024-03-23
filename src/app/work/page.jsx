@@ -1,17 +1,11 @@
-"use client";
+import Content from "../../components/[work]content";
+import { getPosts } from "../../services";
 
-import SidebarLayout from "../../components/SidebarLayout";
-import SidebarPanel from "../../components/SidebarPanel";
-
-export default function Work() {
+export default async function Work() {
+  const posts = (await getPosts()) || [];
   return (
     <>
-      <SidebarLayout>
-        <h1>Work</h1>
-      </SidebarLayout>
-      <SidebarPanel>
-        <h1>Panel</h1>
-      </SidebarPanel>
+      <Content posts={posts}/>
     </>
   );
 }
