@@ -5,30 +5,11 @@ import SectionPointer from "../../components/SectionPointer";
 import { motion } from "framer-motion";
 import LucideIcon from "../../components/LucideIcon";
 import RegularLayout from "../../components/RegularLayout";
+import { fadeIn, fadeInStagger } from "../../components/variants";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 export default function Stack() {
-  const fadeInStagger = {
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-    hidden: {
-      opacity: 0,
-    },
-  };
-
-  const fadeIn = {
-    visible: {
-      opacity: 1,
-    },
-    hidden: {
-      opacity: 0,
-    },
-  };
 
   return (
     <>

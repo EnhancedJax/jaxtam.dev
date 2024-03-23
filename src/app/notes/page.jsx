@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import NotesList from "../../components/NotesList";
 import SidebarLayout from "../../components/SidebarLayout";
 import SidebarPanel from "../../components/SidebarPanel";
+import { fadeIn, fadeInStagger } from "../../components/variants";
 import { motion } from "framer-motion";
 
 export default function Notes() {
@@ -19,27 +20,6 @@ export default function Notes() {
 
     const handleItemClick = (url) => {
         setIframeUrl(url);
-    };
-
-    const fadeInStagger = {
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.12
-            }
-        },
-        hidden: {
-            opacity: 0
-        }
-    };
-
-    const fadeIn = {
-        visible: {
-            opacity: 1
-        },
-        hidden: {
-            opacity: 0
-        }
     };
 
     return (

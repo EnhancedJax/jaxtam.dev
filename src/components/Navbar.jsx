@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import LucideIcon from './LucideIcon';
-import { Tooltip } from './Tooltip';
 import { usePathname } from 'next/navigation';
+import { AnimatePresence, motion } from 'framer-motion';
+import { slideLeftSpring } from './variants';
 import Link from 'next/link';
 
 const NavBar = () => {
@@ -34,16 +35,21 @@ const Button = ({ href, icon }) => {
     };
 
     return (
-        <Tooltip content="Hola!">
-            <Link href={href} className="relative p-3" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                <LucideIcon name={icon} size="1.5rem" color={isActive ? activeColor : inactiveColor} />
-                {isHovered && (
-                    <div className='absolute hidden p-1 text-xs text-white transform -translate-y-1/2 border rounded-lg text-light border-cborder bg-cfg left-16 top-1/2 lg:block'>
-                        <span>{href}</span>
-                    </div>
-                )}
-            </Link>
-        </Tooltip>
+        <Link href={href} className="relative p-3" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <LucideIcon name={icon} size="1.5rem" color={isActive ? activeColor : inactiveColor} />
+            <AnimatePresence>
+            {isHovered && (
+                <motion.div 
+                variants={slideLeftSpring}
+                initial='hidden'
+                animate='visible'
+                exit='hidden'
+                className='absolute hidden p-1 text-xs text-white transform border rounded-lg text-light border-cborder bg-cfg left-16 top-1/2 lg:block'>
+                    <span>{href}</span>
+                </motion.div>
+            )}
+            </AnimatePresence>
+        </Link>
     );
 }
 

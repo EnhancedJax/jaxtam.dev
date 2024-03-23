@@ -1,63 +1,14 @@
 'use client';
 
-import Image from "next/image";
 import { Github, Instagram, Mail, Copy, FileDown, Figma } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import SectionPointer from '../components/SectionPointer';
 import RegularLayout from '../components/RegularLayout';
 import { DM_Mono } from "next/font/google";
+import {slideRight, slideLeft, fadeInStagger, fadeIn} from '../components/variants';
 const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
 
 export default function Home() {
-  const fadeInStagger = {
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12
-      }
-    },
-    hidden: {
-      opacity: 0
-    }
-  };
-
-  const fadeIn = {
-    visible: {
-      opacity: 1
-    },
-    hidden: {
-      opacity: 0
-    }
-  };
-
-  const slideLeft = {
-    visible: {
-      opacity: 1,
-      translateX: 0,
-      transition: {
-        ease: "easeOut"
-      }
-    },
-    hidden: {
-      opacity: 0,
-      translateX: -50
-    }
-  };
-
-  const slideRight = {
-    visible: {
-      opacity: 1,
-      translateX: 0,
-      transition: {
-        ease: "easeOut"
-      }
-    },
-    hidden: {
-      opacity: 0,
-      translateX: 50
-    }
-  };
 
   return (
       <RegularLayout>
