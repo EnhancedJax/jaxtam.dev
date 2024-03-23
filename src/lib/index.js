@@ -1,7 +1,36 @@
 import { request, gql } from 'graphql-request';
 
+export const getNotes = async () => {
+  const query = gql`
+  query GetNotes {
+    notesConnection {
+      edges {
+        node {
+          isWorkInProgress
+          semester
+          title
+          code
+          colorCode
+          icon
+          pdf {
+            fileName
+            updatedAt
+            size
+            url
+          }
+        }
+      }
+    }
+  }
+  
+    `;
+  const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
+
+  return result.notesConnection.edges;
+}
+
 export const getPosts = async () => {
-    const query = gql`
+  const query = gql`
   query MyQuery {
     postsConnection(orderBy: publishedAt_DESC) {
       edges {
@@ -28,14 +57,14 @@ export const getPosts = async () => {
   }
   
     `
-    const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
+  const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
 
 
-    return result.postsConnection.edges;
+  return result.postsConnection.edges;
 }
 
 export const getPostDetails = async (slug) => {
-    const query = gql`
+  const query = gql`
       query GetPostDetails($slug : String!) {
         post(where: {slug: $slug}) {
           title
@@ -59,14 +88,14 @@ export const getPostDetails = async (slug) => {
       }
     `;
 
-    const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query, { slug });
+  const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query, { slug });
 
-    return result.post;
+  return result.post;
 };
 
 
 export const getFeaturedPosts = async () => {
-    const query = gql`
+  const query = gql`
       query GetCategoryPost() {
         posts(where: {featuredPost: true}) {
           author {
@@ -82,25 +111,25 @@ export const getFeaturedPosts = async () => {
       }   
     `;
 
-    const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
+  const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
 
-    return result.posts;
+  return result.posts;
 };
 
 export const submitComment = async (obj) => {
-    const result = await fetch('/api/comments', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(obj),
-    });
+  const result = await fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(obj),
+  });
 
-    return result.json();
+  return result.json();
 };
 
 export const getComments = async (slug) => {
-    const query = gql`
+  const query = gql`
       query GetComments($slug:String!) {
         comments(where: {post: {slug:$slug}}){
           name
@@ -110,7 +139,7 @@ export const getComments = async (slug) => {
       }
     `;
 
-    const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query, { slug });
+  const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query, { slug });
 
-    return result.comments;
+  return result.comments;
 };
