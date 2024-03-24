@@ -87,8 +87,6 @@ export default function Content({ notes }) {
                     GoToPreviousPage,
                     NumberOfPages,
                     Print,
-                    ShowSearchPopover,
-                    Zoom,
                     ZoomIn,
                     ZoomOut,
                   } = ToolbarSlot;
@@ -103,7 +101,7 @@ export default function Content({ notes }) {
                       <div>
                         <GoToPreviousPage />
                       </div>
-                      <div className="text-light">
+                      <div className="text-black text-light">
                         <CurrentPageLabel /><span className="text-[8px]">/<NumberOfPages /></span>
                       </div>
                       <div>

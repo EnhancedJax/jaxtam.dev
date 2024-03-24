@@ -1,16 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import SectionPointer from "@comp/SectionPointer";
 import { motion } from "framer-motion";
-import LucideIcon from "@comp/LucideIcon";
+import { SkillItem, SoftwareItem } from "@comp/StackItems";
 import RegularLayout from "@comp/RegularLayout";
 import { fadeIn, fadeInStagger } from "@comp/variants";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 export default function Stack() {
-
   return (
     <>
       <RegularLayout>
@@ -61,16 +58,55 @@ export default function Stack() {
             </div>
           </motion.div>
           <motion.div variants={fadeIn}>
-            <SectionPointer>Technologies</SectionPointer>
+            <SectionPointer>Frontend tech</SectionPointer>
+            <div className="flex justify-center w-full gap-3 p-3 px-6 py-4 rounded-lg bg-cfg">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                className="w-10 h-10"
+              />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                className="w-10 h-10"
+              />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+                className="w-10 h-10"
+              />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                className="w-10 h-10"
+              />
+            </div>
+          </motion.div>
+          <motion.div variants={fadeIn}>
+            <SectionPointer>Backend tech</SectionPointer>
+            <div className="flex justify-center w-full gap-3 p-3 px-6 py-4 rounded-lg bg-cfg">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
+                className="w-10 h-10"
+              />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                className="w-10 h-10"
+              />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+                className="w-10 h-10"
+              />
+              <img className="w-10 h-10" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain-wordmark.svg" />
+            
 
-            <div className="flex flex-col w-full gap-3 p-3 px-6 py-4 rounded-lg bg-cfg">
-              <LangItem name="Tailwind CSS" prog="9" level="2" />
-              <LangItem name="Next.js" prog="7" level="2" />
-              <LangItem name="React.js" prog="7" level="2" />
-              <LangItem name="Python" prog="6" level="1" />
-              <LangItem name="C++" prog="6" level="1" />
-              <LangItem name="React Native" prog="5" level="0" />
-              <LangItem name="Unix bash" prog="5" level="0" />
+              <svg viewBox="0 0 128 128" className="w-10 h-10">
+                <path fill="none" d="M4.24 4.24h119.53v119.53H4.24z"></path>
+                <path
+                  fill="#fff"
+                  d="M109.01 28.64L71.28 6.24c-2.25-1.33-4.77-2-7.28-2s-5.03.67-7.28 2.01l-37.74 22.4c-4.5 2.67-7.28 7.61-7.28 12.96v44.8c0 5.35 2.77 10.29 7.28 12.96l37.73 22.4c2.25 1.34 4.76 2 7.28 2 2.51 0 5.03-.67 7.28-2l37.74-22.4c4.5-2.67 7.28-7.62 7.28-12.96V41.6c0-5.34-2.77-10.29-7.28-12.96zM79.79 98.59l.06 3.22c0 .39-.25.83-.55.99l-1.91 1.1c-.3.15-.56-.03-.56-.42l-.03-3.17c-1.63.68-3.29.84-4.34.42-.2-.08-.29-.37-.21-.71l.69-2.91c.06-.23.18-.46.34-.6.06-.06.12-.1.18-.13.11-.06.22-.07.31-.03 1.14.38 2.59.2 3.99-.5 1.78-.9 2.97-2.72 2.95-4.52-.02-1.64-.9-2.31-3.05-2.33-2.74.01-5.3-.53-5.34-4.57-.03-3.32 1.69-6.78 4.43-8.96l-.03-3.25c0-.4.24-.84.55-1l1.85-1.18c.3-.15.56.04.56.43l.03 3.25c1.36-.54 2.54-.69 3.61-.44.23.06.34.38.24.75l-.72 2.88c-.06.22-.18.44-.33.58a.77.77 0 01-.19.14c-.1.05-.19.06-.28.05-.49-.11-1.65-.36-3.48.56-1.92.97-2.59 2.64-2.58 3.88.02 1.48.77 1.93 3.39 1.97 3.49.06 4.99 1.58 5.03 5.09.05 3.44-1.79 7.15-4.61 9.41zm26.34-60.5l-35.7 22.05c-4.45 2.6-7.73 5.52-7.74 10.89v43.99c0 3.21 1.3 5.29 3.29 5.9-.65.11-1.32.19-1.98.19-2.09 0-4.15-.57-5.96-1.64l-37.73-22.4c-3.69-2.19-5.98-6.28-5.98-10.67V41.6c0-4.39 2.29-8.48 5.98-10.67l37.74-22.4c1.81-1.07 3.87-1.64 5.96-1.64s4.15.57 5.96 1.64l37.74 22.4c3.11 1.85 5.21 5.04 5.8 8.63-1.27-2.67-4.09-3.39-7.38-1.47z"
+                ></path>
+                <path
+                  fill="#4FA847"
+                  d="M99.12 90.73l-9.4 5.62c-.25.15-.43.31-.43.61v2.46c0 .3.2.43.45.28l9.54-5.8c.25-.15.29-.42.29-.72v-2.17c0-.3-.2-.42-.45-.28z"
+                ></path>
+              </svg>
             </div>
           </motion.div>
           <motion.div variants={fadeIn}>
@@ -89,75 +125,3 @@ export default function Stack() {
     </>
   );
 }
-
-const LangItem = ({ name, prog, level }) => {
-  const progType = ["Proficient", "Fluent", "Advanced"];
-  const progColor = ["#FFC657", "#35CEFF", "#34D399"];
-  return (
-    <div className="flex items-center justify-between w-full">
-      <p className="text-base font-light text-cpg">{name}</p>
-      <div className="inline-flex items-center gap-3 sm:gap-4">
-        <div className="justify-end hidden w-32 h-2 rounded-lg sm:inline-flex bg-cborder">
-          <div
-            className="h-full rounded-lg"
-            style={{
-              width: `${prog * 10}%`,
-              backgroundColor: progColor[level],
-            }}
-          />
-        </div>
-        <div className="w-6 h-6 sm:hidden">
-          <CircularProgressbar
-            value={prog}
-            maxValue={10}
-            strokeWidth={14}
-            styles={buildStyles({
-              pathColor: progColor[level],
-              trailColor: progColor[level] + "40",
-            })}
-          />
-        </div>
-
-        <p
-          className="w-20 px-2 py-1 text-xs font-medium text-center rounded-3xl"
-          style={{
-            backgroundColor: progColor[level] + "80",
-            color: progColor[level],
-          }}
-        >
-          {progType[level]}
-        </p>
-      </div>
-    </div>
-  );
-};
-
-const SkillItem = ({ icon, name, description }) => {
-  return (
-    <div className="basis-[264px] grow h-[111px] p-4 bg-cfg rounded-lg justify-center items-center inline-flex gap-3">
-      <div className="flex items-center justify-center w-[32px] px-2">
-        <LucideIcon name={icon} size={32} color="#FFF" />
-      </div>
-      <div className="inline-flex flex-col items-start justify-center grow shrink basis-0">
-        <div className="text-base font-normal text-white">{name}</div>
-        <div className="text-sm font-light text-cgray">{description}</div>
-      </div>
-    </div>
-  );
-};
-
-const SoftwareItem = ({ name, type, icon }) => {
-  return (
-    <div className="basis-[140px] grow h-[230px] p-3 bg-cfg rounded-lg flex-col gap-2.5 flex">
-      <div className="justify-center items-center gap-2.5 flex w-full h-full">
-        <img className="w-[72px]" src={`./images/${icon}.webp`} />
-      </div>
-      <div className="flex flex-col items-start justify-center gap-2">
-        <div className="p-1.5 rounded-md border border-cborder justify-center items-start inline-flex">
-          <div className="text-xs font-light text-cgray">{type}</div>
-        </div>
-        <div className="text-base font-light text-white">{name}</div>
-      </div>
-    </div>
-  );
-};
