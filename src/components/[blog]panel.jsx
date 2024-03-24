@@ -22,7 +22,7 @@ const Panel = ({ thisPost, posts }) => {
             variants={fadeIn}
             className="pl-3 text-base font-light text-white"
           >
-            Thoughts
+            Blog
           </motion.h1>
           <div className="flex flex-col gap-2">
             <motion.div

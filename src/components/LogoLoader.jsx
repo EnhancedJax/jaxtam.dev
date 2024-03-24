@@ -1,7 +1,6 @@
+'use client';
 
-"use client";
-
-export default function Loading() {
+const LogoLoader = () => {
   return (
     <div className="flex items-center h-screen">
       <style jsx>{`
@@ -15,10 +14,12 @@ export default function Loading() {
         }
 
         img {
-          animation: coreanim 1.5s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+          animation: coreanim 1s linear infinite;
         }
       `}</style>
       <img src="/images/iconlogo.png" className="w-16 h-16" />
     </div>
   );
-}
+};
+
+export default LogoLoader;
