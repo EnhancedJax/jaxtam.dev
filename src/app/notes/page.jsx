@@ -1,5 +1,5 @@
-import Content from "../../components/[notes]content";
-import { getNotes } from "../../lib";
+import Content from "@comp/[notes]content";
+import { getNotes } from "@src/lib";
 
 export default async function Notes() {
     const notes = (await getNotes()) || [];

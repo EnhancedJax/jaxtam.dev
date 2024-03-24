@@ -1,5 +1,6 @@
 "use client";
 
+import Date from "./DateString";
 import SidebarPanel from "./SidebarPanel";
 import { fadeIn, fadeInStagger, slideLeftSpring } from "./variants";
 import { motion } from "framer-motion";
@@ -35,14 +36,14 @@ const Panel = ({ thisPost, posts }) => {
               variants={slideLeftSpring}
               className={`w-full p-3 rounded-lg justify-start items-start gap-4 inline-flex bg-cfg`}
             >
-              <div className="inline-flex flex-col items-start justify-start grow shrink basis-0">
-                <div className="text-base font-light text-gray-200">
-                  {thisPost.title}
-                </div>
-                <div className="self-stretch text-base font-light text-left text-cdarkgray">
-                  {thisPost.excerpt}
-                </div>
+            <div className="inline-flex flex-col items-start justify-start text-base font-light text-left grow">
+              <div className="text-gray-200 ">
+                {thisPost.title}
               </div>
+              <div className="mt-1 text-cdarkgray">
+                <Date dateString={thisPost.createdAt} dateFormat="dd/MM/yyyy" /> ⋅ {thisPost.categories[0].type}
+              </div>
+            </div>
             </motion.div>
           </div>
           <div className="flex flex-col gap-2">
@@ -60,14 +61,14 @@ const Panel = ({ thisPost, posts }) => {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => router.push(`/work/${post.node.slug}`)}
                 // ${selectedItem === item.course_code ? 'bg-cfg' : 'hover:bg-cfg'}
-                className={`w-full p-3 rounded-lg justify-start items-start gap-4 inline-flex hover:bg-cfg`}
+                className={`w-full p-3 rounded-lg gap-4 inline-flex hover:bg-cfg`}
               >
-                <div className="inline-flex flex-col items-start justify-start grow shrink basis-0">
-                  <div className="text-base font-light text-gray-200">
+                <div className="inline-flex flex-col items-start justify-start text-base font-light text-left grow">
+                  <div className="text-gray-200 ">
                     {post.node.title}
                   </div>
-                  <div className="self-stretch text-base font-light text-left text-cdarkgray">
-                    {post.node.excerpt}
+                  <div className="mt-1 text-cdarkgray">
+                    <Date dateString={post.node.createdAt} dateFormat="dd/MM/yyyy" /> ⋅ {post.node.categories[0].type}
                   </div>
                 </div>
               </motion.button>

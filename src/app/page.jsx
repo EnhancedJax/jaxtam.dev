@@ -2,10 +2,10 @@
 
 import { Github, Instagram, Mail, Copy, FileDown, Figma } from 'lucide-react';
 import { motion } from "framer-motion";
-import SectionPointer from '../components/SectionPointer';
-import RegularLayout from '../components/RegularLayout';
+import SectionPointer from '@comp/SectionPointer';
+import RegularLayout from '@comp/RegularLayout';
 import { DM_Mono } from "next/font/google";
-import {slideRight, slideLeft, fadeInStagger, fadeIn} from '../components/variants';
+import {slideRight, slideLeft, fadeInStagger, fadeIn} from '@comp/variants';
 const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
 
 export default function Home() {

@@ -20,14 +20,13 @@ export default function Home() {
             className="text-base font-light text-white "
             variants={fadeIn}
           >
-            404 Not Found
+            Work in progress...
           </motion.div>
           <motion.div
             className="text-base font-light text-center text-cgray "
             variants={fadeIn}
           >
-            The page you're looking for doesn't exist. Thanks for checking out
-            this page though.
+            Stay tuned
           </motion.div>
           <Link href="/">
             <motion.div

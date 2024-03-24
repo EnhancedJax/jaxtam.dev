@@ -71,7 +71,6 @@ export const getOtherPosts = async (slug) => {
             name
             id
           }
-          excerpt
           createdAt
           title
           slug
@@ -98,7 +97,6 @@ export const getPostDetails = async (slug) => {
       query GetPostDetails($slug : String!) {
         post(where: {slug: $slug}) {
           title
-          excerpt
           heroImage {
             url
           }
@@ -141,32 +139,4 @@ export const getFeaturedPostSlug = async () => {
   const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
 
   return result.postsConnection.edges[0].node.slug;
-};
-
-export const submitComment = async (obj) => {
-  const result = await fetch('/api/comments', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(obj),
-  });
-
-  return result.json();
-};
-
-export const getComments = async (slug) => {
-  const query = gql`
-      query GetComments($slug:String!) {
-        comments(where: {post: {slug:$slug}}){
-          name
-          createdAt
-          comment
-        }
-      }
-    `;
-
-  const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query, { slug });
-
-  return result.comments;
 };

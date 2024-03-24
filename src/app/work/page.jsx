@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getFeaturedPostSlug } from "../../lib";
+import { getFeaturedPostSlug } from "@src/lib";
 
 export default async function Work() {
   const featuredPostSlug = (await getFeaturedPostSlug()) || [];

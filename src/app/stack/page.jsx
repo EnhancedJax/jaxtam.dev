@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import SectionPointer from "../../components/SectionPointer";
+import SectionPointer from "@comp/SectionPointer";
 import { motion } from "framer-motion";
-import LucideIcon from "../../components/LucideIcon";
-import RegularLayout from "../../components/RegularLayout";
-import { fadeIn, fadeInStagger } from "../../components/variants";
+import LucideIcon from "@comp/LucideIcon";
+import RegularLayout from "@comp/RegularLayout";
+import { fadeIn, fadeInStagger } from "@comp/variants";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
