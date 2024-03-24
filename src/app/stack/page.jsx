@@ -64,12 +64,13 @@ export default function Stack() {
             <SectionPointer>Technologies</SectionPointer>
 
             <div className="flex flex-col w-full gap-3 p-3 px-6 py-4 rounded-lg bg-cfg">
-              <LangItem name="HTML5" prog="9" level="2" />
-              <LangItem name="Tailwind CSS" prog="8" level="2" />
-              <LangItem name="Python" prog="7" level="2" />
-              <LangItem name="C++" prog="7" level="2" />
-              <LangItem name="React.js" prog="7" level="1" />
+              <LangItem name="Tailwind CSS" prog="9" level="2" />
+              <LangItem name="Next.js" prog="7" level="2" />
+              <LangItem name="React.js" prog="7" level="2" />
+              <LangItem name="Python" prog="6" level="1" />
+              <LangItem name="C++" prog="6" level="1" />
               <LangItem name="React Native" prog="5" level="0" />
+              <LangItem name="Unix bash" prog="5" level="0" />
             </div>
           </motion.div>
           <motion.div variants={fadeIn}>

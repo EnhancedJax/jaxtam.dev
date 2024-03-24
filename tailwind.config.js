@@ -32,7 +32,9 @@ module.exports = {
       'sm': '13px',
       'base': ['15px', '22.5px'],
       'lg': '20px',
-      'xl': '24px'
+      'xl': '24px',
+      '2xl': '48px',
+      '3xl': '96px',
     }
   },
   plugins: [],

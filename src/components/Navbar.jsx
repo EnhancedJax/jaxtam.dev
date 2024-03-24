@@ -23,7 +23,7 @@ const Button = ({ href, icon }) => {
     const activeColor = '#EDEDED'
     const inactiveColor = '#707070'
     const location = usePathname();
-    const isActive = location === href;
+    const isActive = location === href || location.startsWith(href + '/');
     const [isHovered, setIsHovered] = useState(false);
 
     const handleMouseEnter = () => {

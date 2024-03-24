@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from "framer-motion";
 import LucideIcon from './LucideIcon';
+import DateString from './DateString';
 
 const NotesList = ({notes, onItemClick, input}) => {
     const [selectedItem, setSelectedItem] = useState(null);
@@ -32,7 +33,8 @@ const NotesList = ({notes, onItemClick, input}) => {
     } , [notes])
 
     return (
-        <AnimatePresence mode='popLayout' className="flex flex-col gap-4">
+        <AnimatePresence mode='popLayout'>
+            <div className="flex flex-col w-full gap-4">
             {filteredData.map((item) => (
                 <motion.button
                     key={item.node.code}
@@ -41,19 +43,22 @@ const NotesList = ({notes, onItemClick, input}) => {
                     exit={{ x: 200, opacity: 0 }}
                     alt={item.node.code}
 
-                    whileHover={{ scale: 1.02, translateX: 10 }}
+                    whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleItemClick(item.node.code, item.node.pdf.url)}
-                    className={`w-full p-3 rounded-lg justify-start items-start gap-4 inline-flex  ${selectedItem === item.node.code ? 'bg-cfg' : 'hover:bg-cfg'}`}>
-                    <div className={`w-10 h-10 ${item.node.isWorkInProgress ? 'bg-red-500 opacity-70' : 'bg-cborder'} rounded-xl flex items-center justify-center ${selectedItem === item.node.code ? 'border-2 border-cgray' : ''}`}>
+                    className={`group grow p-3 rounded-lg flex  ${selectedItem === item.node.code ? 'bg-cfg' : 'hover:bg-cfg'}`}>
+                    <div className={`w-10 h-10 mr-4 ${item.node.isWorkInProgress ? 'opacity-70 bg-red-500' : 'bg-cborder'}  rounded-xl flex items-center justify-center ${selectedItem === item.node.code ? 'border-2 border-cgray' : ''}`}>
                         <LucideIcon name={item.node.icon} size="1rem" color="#FFF" />
                     </div>
-                    <div className="inline-flex flex-col items-start justify-start grow shrink basis-0">
-                        <div className="text-base font-light text-gray-200">{item.node.code} {item.node.isWorkInProgress ? '(WIP)' : ''}</div>
-                        <div className="self-stretch text-base font-light text-left text-cdarkgray">{item.node.title}<br />{item.node.semester}</div>
+                    <div className="text-base font-light text-left grow">
+                        <div className="text-cpg">{item.node.code} {item.node.isWorkInProgress ? '(WIP)' : ''}</div>
+                        <div className="w-48 h-auto text-cdarkgray text-ellipsis"><p>{item.node.title}</p></div>
+                        <div className="group-hover:hidden text-cdarkgray">{item.node.semester}</div>
+                        <div className="hidden group-hover:block text-cdarkgray">Last updated: <DateString dateString={item.node.pdf.updatedAt} dateFormat="MMM dd"/></div>
                     </div>
                 </motion.button>
             ))}
+            </div>
         </AnimatePresence>
     )
 }

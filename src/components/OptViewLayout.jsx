@@ -1,4 +1,4 @@
-const SidebarLayout = ({ children }) => {
+const OptViewLayout = ({ children }) => {
     return (
         <div className='hidden bg-cread lg:h-screen grow lg:block'>
             {children}
@@ -6,4 +6,4 @@ const SidebarLayout = ({ children }) => {
     )
     }
 
-export default SidebarLayout;
+export default OptViewLayout;

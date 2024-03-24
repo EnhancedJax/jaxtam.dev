@@ -3,7 +3,7 @@ import { request, gql } from 'graphql-request';
 export const getNotes = async () => {
   const query = gql`
   query GetNotes {
-    notesConnection {
+    notesConnection(orderBy: isWorkInProgress_ASC) {
       edges {
         node {
           isWorkInProgress
@@ -22,6 +22,7 @@ export const getNotes = async () => {
       }
     }
   }
+  
   
     `;
   const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
@@ -44,9 +45,6 @@ export const getPosts = async () => {
           title
           slug
           updatedAt
-          heroImage {
-            url
-          }
           categories {
             slug
             type
@@ -62,6 +60,38 @@ export const getPosts = async () => {
 
   return result.postsConnection.edges;
 }
+
+export const getOtherPosts = async (slug) => {
+  const query = gql`
+  query GetOtherPosts($slug : String!) {
+    postsConnection(orderBy: publishedAt_DESC, where: {slug_not: $slug}) {
+      edges {
+        node {
+          author {
+            name
+            id
+          }
+          excerpt
+          createdAt
+          title
+          slug
+          updatedAt
+          heroImage {
+            url
+          }
+          categories {
+            slug
+            type
+          }
+        }
+      }
+    }
+  }
+  `;
+  const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query, { slug });
+
+  return result.postsConnection.edges;
+};
 
 export const getPostDetails = async (slug) => {
   const query = gql`
@@ -94,26 +124,23 @@ export const getPostDetails = async (slug) => {
 };
 
 
-export const getFeaturedPosts = async () => {
+export const getFeaturedPostSlug = async () => {
   const query = gql`
-      query GetCategoryPost() {
-        posts(where: {featuredPost: true}) {
-          author {
-            name
-          }
-          heroImage {
-            url
-          }
-          title
+  query GetFeaturedPostSlug {
+    postsConnection(where: {isFeatured: true}) {
+      edges {
+        node {
           slug
-          createdAt
         }
-      }   
+      }
+    }
+  }
+  
     `;
 
   const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
 
-  return result.posts;
+  return result.postsConnection.edges[0].node.slug;
 };
 
 export const submitComment = async (obj) => {

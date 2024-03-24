@@ -1,81 +1,98 @@
 "use client";
 
-import { useEffect } from "react";
-import SidebarPanel from "./SidebarPanel";
 import SidebarLayout from "./SidebarLayout";
-import { fadeIn, fadeInStagger, slideLeftSpring, slideUp } from "./variants";
-import { AnimatePresence, motion } from "framer-motion";
+import { fadeIn, fadeInStagger, slideLeftSpring } from "./variants";
+import { motion } from "framer-motion";
+import React from 'react';
+import Date from "./DateString";
 
-const Content = ({posts}) => {
+const Content = ({ thisPost, nextPost }) => {
+  const getContentFragment = (index, text, obj, type) => {
+    let modifiedText = text;
+
+    if (obj) {
+      if (obj.bold) {
+        modifiedText = <b key={index}>{text}</b>;
+      }
+
+      if (obj.italic) {
+        modifiedText = <em key={index}>{text}</em>;
+      }
+
+      if (obj.underline) {
+        modifiedText = <u key={index}>{text}</u>;
+      }
+    }
+
+    switch (type) {
+      case "heading-three":
+        return (
+          <h3 key={index} className="mb-4 text-xl font-semibold">
+            {modifiedText.map((item, i) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </h3>
+        );
+      case "paragraph":
+        return (
+          <p key={index} className="mb-8">
+            {modifiedText.map((item, i) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </p>
+        );
+      case "heading-four":
+        return (
+          <h4 key={index} className="mb-4 font-semibold text-md">
+            {modifiedText.map((item, i) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </h4>
+        );
+      case "image":
+        return (
+          <img
+            key={index}
+            alt={obj.title}
+            height={obj.height}
+            width={obj.width}
+            src={obj.src}
+          />
+        );
+      default:
+        return modifiedText;
+    }
+  };
 
   return (
-    <>
-      <SidebarPanel title="Work">
-        <motion.div
-          className="flex flex-col w-full gap-5"
-          variants={fadeInStagger}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
-          <motion.h1
-            variants={fadeIn}
-            className="pl-3 text-base font-light text-white"
-          >
-            My work
-          </motion.h1>
-            <div className="flex flex-col gap-2">
-              <motion.div
-                variants={fadeIn}
-                className="pl-3 text-base font-light text-cgray"
-              >
-                You're reading
-              </motion.div>
-          </div>
-            <div className="flex flex-col gap-2">
-              <motion.div
-                variants={fadeIn}
-                className="pl-3 text-base font-light text-cgray"
-              >
-                Up next
-              </motion.div>
-                {posts.map((post, index) => (
-                    <motion.button
-                        key={index}
-                        variants={slideLeftSpring}
-
-                        whileHover={{ scale: 1.02, translateX: 10 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => {}}
-                        // ${selectedItem === item.course_code ? 'bg-cfg' : 'hover:bg-cfg'}
-                        className={`w-full p-3 rounded-lg justify-start items-start gap-4 inline-flex hover:bg-cfg`}>
-                        <div className="inline-flex flex-col items-start justify-start grow shrink basis-0">
-                            <div className="text-base font-light text-gray-200">{post.node.title}</div>
-                            <div className="self-stretch text-base font-light text-left text-cdarkgray">{post.node.excerpt}</div>
-                        </div>
-                    </motion.button>
-                ))}
-          </div>
-      </motion.div>
-
-      </SidebarPanel>
-      <SidebarLayout>
-        
+    <SidebarLayout>
       <motion.div
-          className="flex flex-col items-center justify-start w-full gap-10"
-          variants={fadeInStagger}
-          initial='hidden'
-          animate='visible'
-          exit='hidden'
-        >
-          <motion.div variants={fadeIn}>
-            <div
-              className="self-stretch text-base font-light text-cpg">I'm Jax, a year 1 student studying at The University of Hong Kong.<br /><br />My passion is to deliver clean designs and user-oriented experiences that exceed expectations.<br /><br />I believe my attention to detail and dedication to excellence will allow me to thrive in the future.
-            </div>
-          </motion.div>
-        </motion.div>
-      </SidebarLayout>
-    </>
+        className="flex flex-col items-center justify-start w-full gap-10"
+        variants={fadeInStagger}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      >
+
+        <div className='mx-auto mt-8 px-4 max-w-[540px] w-full'>
+          <img src={thisPost.heroImage.url} className="rounded-xl" />
+          <h1 className="text-2xl font-bold">{thisPost.title}</h1>
+          <p>{thisPost.excerpt}</p>
+          {thisPost.categories.map((category, index) => (
+              <div key={index}>
+                  <p>{category.type}</p>
+              </div>
+          ))}
+          {thisPost.content.raw.children.map((typeObj, index) => {
+              const children = typeObj.children.map((item, itemindex) =>
+                  getContentFragment(itemindex, item.text, item)
+              );
+
+              return getContentFragment(index, children, typeObj, typeObj.type);
+          })}
+        </div>
+      </motion.div>
+    </SidebarLayout>
   );
 };
 

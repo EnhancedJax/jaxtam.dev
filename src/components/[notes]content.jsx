@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import NotesList from "./NotesList";
+import NotesList from "./[notes]list";
 import OptViewPanel from "./OptViewPanel";
 import OptViewLayout from "./OptViewLayout";
 import { fadeIn, fadeInStagger } from "./variants.jsx";
@@ -15,7 +15,7 @@ import "@react-pdf-viewer/toolbar/lib/styles/index.css";
 
 export default function Content({ notes }) {
   const [inputText, setInputText] = useState("");
-  const [iframeUrl, setIframeUrl] = useState("");
+  const [iframeUrl, setIframeUrl] = useState("https://mag.wcoomd.org/uploads/2018/05/blank.pdf");
 
   const toolbarPluginInstance = toolbarPlugin();
   const { Toolbar } = toolbarPluginInstance;
@@ -55,7 +55,7 @@ export default function Content({ notes }) {
                 Typed with LaTeX.
               </motion.div>
             </div>
-            <div className="self-stretch h-[466px] flex-col justify-start items-start gap-3 flex">
+            <div className="flex flex-col gap-3 grow">
               <motion.input
                 variants={fadeIn}
                 id="outlined-basic"

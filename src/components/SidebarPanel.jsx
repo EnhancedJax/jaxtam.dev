@@ -19,7 +19,7 @@ const SidebarPanel = ({ title, children }) => {
         />
       </div>
         <div
-            className="hidden sticky lg:block px-3 pt-10 pb-20 w-[340px] min-w-[340px] border-r border-r-cborder h-screen overflow-auto"
+            className="hidden fixed top-0 left-[64px] lg:block px-3 pt-10 pb-20 w-[340px] border-r border-r-cborder h-screen overflow-auto"
         >
           {children}
       </div>

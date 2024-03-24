@@ -1,11 +1,10 @@
-import Content from "../../components/[work]content";
-import { getPosts } from "../../lib";
+import { redirect } from "next/navigation";
+import { getFeaturedPostSlug } from "../../lib";
 
 export default async function Work() {
-  const posts = (await getPosts()) || [];
-  return (
-    <>
-      <Content posts={posts}/>
-    </>
-  );
+  const featuredPostSlug = (await getFeaturedPostSlug()) || [];
+
+  redirect(`/work/${featuredPostSlug}`);
+
+  return <></>;
 }
