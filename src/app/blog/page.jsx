@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 import { getFeaturedPostSlug } from "@src/lib";
 
-export default async function Work() {
+export default async function Blog() {
   const featuredPostSlug = (await getFeaturedPostSlug()) || [];
 
-  redirect(`/work/${featuredPostSlug}`);
+  redirect(`/blog/${featuredPostSlug}`);
 
   return <></>;
 }

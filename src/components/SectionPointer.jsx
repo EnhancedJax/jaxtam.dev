@@ -1,8 +1,8 @@
-const SectionPointer = ({ children }) => {
+const SectionPointer = ({ children, showWhenSmall = true }) => {
     return (
 
-        <h2 className='absolute hidden lg:block'>
-            <p className="absolute text-base font-light text-right text-cgray right-10">{children}</p>
+        <h2 className={`lg:absolute lg:block ${showWhenSmall ? '' : 'hidden'}`}>
+            <p className="mb-4 text-base font-light lg:mb-0 lg:text-right lg:absolute text-cgray lg:right-10">{children}</p>
         </h2>
     )
 }

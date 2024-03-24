@@ -14,7 +14,7 @@ const NavBar = () => {
             <Button href="/" icon="Home"></ Button>
             <Button href="/notes" icon="PenLine"></ Button>
             <Button href="/stack" icon="Layers"></ Button>
-            <Button href="/work" icon="Command"></ Button>
+            <Button href="/blog" icon="Command"></ Button>
             <Button href="/about" icon="UserRound"></ Button>
         </ul>
         </nav>

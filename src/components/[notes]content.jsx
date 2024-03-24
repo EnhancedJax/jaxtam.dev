@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import NotesList from "./[notes]list";
 import OptViewPanel from "./OptViewPanel";
 import OptViewLayout from "./OptViewLayout";
-import { fadeIn, fadeInStagger } from "./variants.jsx";
+import { fadeIn, fadeInStagger } from "./variants";
 import { motion } from "framer-motion";
 
 import { Worker } from "@react-pdf-viewer/core";

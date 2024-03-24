@@ -10,7 +10,7 @@ const Panel = ({ thisPost, posts }) => {
   const router = useRouter();
 
   return (
-      <SidebarPanel title="Work">
+      <SidebarPanel title="Blog">
         <motion.div
           className="flex flex-col w-full gap-5"
           variants={fadeInStagger}
@@ -22,7 +22,7 @@ const Panel = ({ thisPost, posts }) => {
             variants={fadeIn}
             className="pl-3 text-base font-light text-white"
           >
-            My work
+            Thoughts
           </motion.h1>
           <div className="flex flex-col gap-2">
             <motion.div
@@ -59,7 +59,7 @@ const Panel = ({ thisPost, posts }) => {
                 variants={slideLeftSpring}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => router.push(`/work/${post.node.slug}`)}
+                onClick={() => router.push(`/blog/${post.node.slug}`)}
                 // ${selectedItem === item.course_code ? 'bg-cfg' : 'hover:bg-cfg'}
                 className={`w-full p-3 rounded-lg gap-4 inline-flex hover:bg-cfg`}
               >

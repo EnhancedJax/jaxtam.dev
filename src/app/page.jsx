@@ -151,7 +151,7 @@ export default function Home() {
             </div>
           </div>
           <motion.div variants={fadeIn}>
-            <SectionPointer>About</SectionPointer>
+            <SectionPointer showWhenSmall={false}>About</SectionPointer>
             <p
               className="self-stretch text-base font-light text-cpg">I'm Jax, a year 1 student studying at The University of Hong Kong.<br /><br />My passion is to deliver clean designs and user-oriented experiences that exceed expectations.<br /><br />I believe my attention to detail and dedication to excellence will allow me to thrive in the future.
             </p>
