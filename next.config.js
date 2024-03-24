@@ -1,9 +1,14 @@
-module.exports = {
-    typescript: {
-        // !! WARN !!
-        // Dangerously allow production builds to successfully complete even if
-        // your project has type errors.
-        // !! WARN !!
-        ignoreBuildErrors: true,
+const path = require("path");
+
+const nextConfig = {
+    webpack: config => {
+        config.module.rules.push({
+            test: /\.node$/,
+            use: "node-loader",
+        });
+
+        return config;
     },
-}
+};
+
+module.exports = nextConfig;

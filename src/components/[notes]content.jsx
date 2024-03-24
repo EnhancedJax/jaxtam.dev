@@ -7,6 +7,10 @@ import OptViewLayout from "./OptViewLayout";
 import { fadeIn, fadeInStagger } from "./variants.jsx";
 import { motion } from "framer-motion";
 
+import { Worker } from '@react-pdf-viewer/core';
+import { Viewer } from '@react-pdf-viewer/core';
+import '@react-pdf-viewer/core/lib/styles/index.css';
+
 export default function Content({notes}) {
 
     const [inputText, setInputText] = useState("");
@@ -24,6 +28,8 @@ export default function Content({notes}) {
 
     return (
         <>
+        
+      <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
             <OptViewPanel>
                 <motion.div className="flex flex-col w-full gap-10"
                     variants={fadeInStagger}
@@ -50,8 +56,9 @@ export default function Content({notes}) {
                 </motion.div>
             </OptViewPanel>
             <OptViewLayout>
-                <motion.iframe variants={fadeIn} src={iframeUrl} width="100%" height="100%" />
+                <Viewer fileUrl={iframeUrl} />
             </OptViewLayout>
+            </Worker>
         </>
     )
 }

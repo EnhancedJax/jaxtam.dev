@@ -26,6 +26,11 @@ const NotesList = ({notes, onItemClick, input}) => {
         setSelectedItem(code);
     }
 
+    useEffect(() => {
+        setSelectedItem(notes[0].node.code);
+        onItemClick(notes[0].node.pdf.url);
+    } , [notes])
+
     return (
         <AnimatePresence mode='popLayout' className="flex flex-col gap-4">
             {filteredData.map((item) => (
