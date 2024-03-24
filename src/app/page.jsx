@@ -91,7 +91,7 @@ export default function Home() {
               <motion.div
                 whileHover={{ scale: 1.05, translateY: -2 }}
               >
-                <FileDown className='cursor-pointer text-cdarkgray' onClick={() => window.open('/notes/Resume.pdf')} />
+                <FileDown className='cursor-pointer text-cdarkgray' onClick={() => window.open('/applications/Resume.pdf')} />
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05, translateY: -2 }}
