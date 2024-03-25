@@ -105,9 +105,7 @@ export const getPostDetails = async (slug) => {
           }
           createdAt
           slug
-          content {
-            raw
-          }
+          content
           categories {
             type
             slug

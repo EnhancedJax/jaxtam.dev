@@ -5,82 +5,15 @@ import { slideUp, fadeInStagger } from "./variants";
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import Date from "./DateString";
-import { CodeBlock, CopyBlock, codepen } from 'react-code-blocks';
+
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+
+import { DM_Mono } from "next/font/google";
+const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
 
 const Content = ({ thisPost }) => {
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
-
-    // console.log(obj, text, type);
-    
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = <b key={index}>{text}</b>;
-      }
-
-      if (obj.italic) {
-        modifiedText = <em key={index}>{text}</em>;
-      }
-
-      if (obj.underline) {
-        modifiedText = <u key={index}>{text}</u>;
-      }
-
-      if (obj.code) {
-        modifiedText = <code className="border-[1px] p-1 border-cborder rounded-sm" key={index}>{text}</code>;
-      }
-    }
-
-    switch (type) {
-      case "heading-two":
-        return (
-          <motion.h2 variants={slideUp} key={index} className="mt-8 text-lg text-cgray">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </motion.h2>
-        );
-      case "paragraph":
-        return (
-          <motion.p variants={slideUp} key={index} className="mt-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </motion.p>
-        );
-      case "image":
-        return (
-          <motion.img
-          variants={slideUp}
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-            className="mt-8 rounded-xl"
-          />
-        );
-        case "code-block":
-          console.log(modifiedText);
-          return (
-            <motion.div
-              variants={slideUp}
-              key={index}
-              className="mt-4 border-[1px] p-4 border-cborder rounded-xl overflow-hidden"
-            >
-              <CopyBlock
-                text={modifiedText[0].replace(/^.*?\n/, '')}
-                language={modifiedText[0].split('\n')[0]}
-                showLineNumbers={true}
-                theme={codepen}
-                wrapLongLines={true}
-              />
-            </motion.div>
-          );
-      default:
-        return modifiedText;
-    }
-  };
 
   return (
     <SidebarLayout>
@@ -112,14 +45,75 @@ const Content = ({ thisPost }) => {
                 {category.type.toUpperCase()}
               </motion.p>
             ))}
+            <Markdown 
+           remarkPlugins={[remarkGfm]}
+           className="text-base font-light"  
+           components={{
+            h1(props) {
+              const {node, ...rest} = props
+              return <motion.h1 variants={slideUp} className="text-lg font-light mt-7 text-cgray" {...rest} />
+            }
+            ,
+            p(props) {
+              const {node, ...rest} = props
+              return <motion.p variants={slideUp} className="mt-5 " {...rest} />
+            },
+            a(props) {
+              const {node, ...rest} = props
+              return (
+                <motion.div
+                className="inline-block"
+                initial={{ scale: 1, translateY: 0, color: "#93c5fd" }}
+                whileHover={{ scale: 1.05, translateY: -2, color: "#3b82f6" }}
+                whileTap={{ scale: 0.95, translateY: 0}}
+                >
+                  <a className="font-normal"  {...rest} />
+                </motion.div>
+              )
+            },
+            hr(props) {
+              const {node, ...rest} = props
+              return <motion.hr variants={slideUp} className="mt-5 border-cdarkgray" {...rest} />
+            }
+            ,
+            ol(props) {
+              const {node, ...rest} = props
+              return <motion.ol variants={slideUp} className="pl-5 mt-5 list-decimal"  {...rest} />
+            },
+            ul(props) {
+              const {node, ...rest} = props
+              return <motion.ul variants={slideUp} className="pl-5 mt-5 list-disc"  {...rest} />
+            },
+            li(props) {
+              const {node, ...rest} = props
+              return <li className="mb-2"  {...rest} />
+            },
+            img(props) {
+              const {node, ...rest} = props
+              return (
+                <div className="flex justify-center w-full">
+                  <motion.img variants={slideUp} className="rounded-lg" {...rest} />
+                </div>
+              )
+            },
+            code(props) {
+              const {children, className, node, ...rest} = props
+              const match = /language-(\w+)/.exec(className || '')
+              return match ? (
+                <div className="rounded-lg overflow-clip">
+                  <SyntaxHighlighter
+                    {...rest}
+                    children={String(children).replace(/\n$/, '')}
+                    language={match[1]}
+                  />
+                </div>
+              ) : (
+                <code className={`border-[1px] text-sm p-1 border-cborder rounded-lg ${dmmono.className}`} {...rest}>{children}</code>
+              )
+            }
+          }}>{
+           thisPost.content}</Markdown>
           </div>
-          {thisPost.content.raw.children.map((typeObj, index) => {
-            const children = typeObj.children.map((item, itemindex) =>
-              getContentFragment(itemindex, item.text, item)
-            );
-
-            return getContentFragment(index, children, typeObj, typeObj.type);
-          })}
         </div>
       </motion.div>
     </SidebarLayout>
