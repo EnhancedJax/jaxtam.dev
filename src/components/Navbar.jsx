@@ -3,9 +3,8 @@
 import { useState } from "react";
 import LucideIcon from "./LucideIcon";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
-import { navBarHover } from "./variants";
 import Link from "next/link";
+import Tooltip from "./Tooltip";
 
 const NavBar = () => {
   return (
@@ -50,19 +49,7 @@ const Button = ({ href, icon }) => {
         size="1.5rem"
         color={isActive ? activeColor : inactiveColor}
       />
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            variants={navBarHover}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className="absolute hidden p-1 text-xs text-white transform -translate-y-10 border rounded-lg text-light border-cborder bg-cfg left-16 top-1/2 lg:block"
-          >
-            <span>{href}</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Tooltip hoveredState={isHovered} text={href} direction="left"/>
     </Link>
   );
 };

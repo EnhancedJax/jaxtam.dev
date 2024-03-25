@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
-import { fadeIn, slideLeft, slideLeftSpring } from "./variants";
+import { fadeIn, slideLeft, slideSpring } from "./variants";
 
 const SidebarPanel = ({ title, children }) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -27,7 +27,7 @@ const SidebarPanel = ({ title, children }) => {
         {sideBarOpen && (
             <>
             <motion.div
-                variants={slideLeftSpring}
+                variants={slideSpring['left']}
                 initial="hidden"
                 animate="visible"
                 exit="hidden"

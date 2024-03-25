@@ -1,9 +1,14 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { fadeIn } from '@comp/variants'
+
 const SectionPointer = ({ children, showWhenSmall = true }) => {
     return (
 
-        <h2 className={`lg:absolute lg:block ${showWhenSmall ? '' : 'hidden'}`}>
+        <motion.h2 variants={fadeIn} className={`lg:absolute lg:block ${showWhenSmall ? '' : 'hidden'}`}>
             <p className="mb-4 text-base font-light lg:mb-0 lg:text-right lg:absolute text-cgray lg:right-10">{children}</p>
-        </h2>
+        </motion.h2>
     )
 }
 

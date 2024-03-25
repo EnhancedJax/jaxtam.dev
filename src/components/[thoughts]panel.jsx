@@ -2,7 +2,7 @@
 
 import Date from "./DateString";
 import SidebarPanel from "./SidebarPanel";
-import { fadeIn, fadeInStagger, slideLeftSpring } from "./variants";
+import { fadeIn, fadeInStagger, slideSpring } from "./variants";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
@@ -33,7 +33,7 @@ const Panel = ({ thisPost, posts }) => {
           </motion.div>
 
           <motion.div
-            variants={slideLeftSpring}
+            variants={slideSpring['left']}
             className={`w-full p-3 rounded-lg justify-start items-start gap-4 inline-flex bg-cfg`}
           >
             <div className="inline-flex flex-col items-start justify-start text-base font-light text-left grow">
@@ -55,7 +55,7 @@ const Panel = ({ thisPost, posts }) => {
           {posts.map((post, index) => (
             <motion.button
               key={index}
-              variants={slideLeftSpring}
+              variants={slideSpring['left']}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => router.push(`/thoughts/${post.node.slug}`)}
