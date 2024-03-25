@@ -20,6 +20,8 @@ My main focus these days is to design and practice building user interfaces and 
 When I'm not at the computer, I'm usually at the gym, photographing, hanging out with my girlfriend and two dogs, or eating Sam Gor mixian.
 `
 
+const footer = `Built with [Next.js](https://nextjs.org/), [Framer.Motion](https://www.framer.com/motion/) and [Tailwind CSS](https://tailwindcss.com/), deployed with [Vercel](https://vercel.com/). Dynamic content stored on [Hygraph](https://hygraph.com) and fetched with [GraphQL](https://graphql.org/). Loosely designed in [Figma](https://www.figma.com/file/jweQFqBujsTKhL6Zw44MON/Design?type=design&node-id=4%3A2&mode=design&t=O2Vfu63nmrOhawVX-1) and coded in [Visual Studio Code](https://code.visualstudio.com/).  Using the [Inter](https://rsms.me/inter/) typeface for sans and [DM Mono](https://fonts.google.com/specimen/DM+Mono) for monospace. Source code available on [GitHub](https://github.com/EnhancedJax/enhanced-jax.dev).`
+
 export default function Home() {
   return (
     <RegularLayout>
@@ -94,6 +96,7 @@ export default function Home() {
           <SectionPointer showWhenSmall={false}>About</SectionPointer>
           <MarkdownFormatted>{about}</MarkdownFormatted>
         </div>
+        <MarkdownFormatted className="mt-20 text-sm text-cgray">{footer}</MarkdownFormatted>
       </motion.div>
     </RegularLayout>
   );

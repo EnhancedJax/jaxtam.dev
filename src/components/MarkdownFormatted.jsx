@@ -9,11 +9,11 @@ import { motion } from "framer-motion";
 import { DM_Mono } from "next/font/google";
 const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
 
-const MarkdownFormatted = ({ children }) => {
+const MarkdownFormatted = ({ children, className }) => {
   return (
     <Markdown
       remarkPlugins={[remarkGfm]}
-      className="text-base font-light leading-relaxed text-cpg"
+      className={`text-base font-light leading-relaxed ${className}`}
       components={{
         h1(props) {
           const { node, ...rest } = props;
