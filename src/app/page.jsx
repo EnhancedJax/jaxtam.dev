@@ -1,14 +1,24 @@
 "use client";
 
-import { Github, Instagram, Mail, Copy, FileDown, Figma } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionPointer from "@comp/SectionPointer";
 import RegularLayout from "@comp/RegularLayout";
-import { slideRight, slideLeft, fadeInStagger, fadeIn } from "@comp/variants";
-const markdown = '# Hi, *Pluto*!'
+import { fadeInStagger, fadeIn } from "@comp/variants";
+import MarkdownFormatted from "@comp/MarkdownFormatted";
+import ActionButtons from "@comp/[about]actionbuttons";
+import Socials from "@comp/[about]socials";
 
 import { DM_Mono } from "next/font/google";
 const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
+
+const about = `Back in 2020, I decided to try my hand at creating [Rainmeter](https://rainmeter.net) themes and went down the rabbit hole of coding and front-end development. Fast-forward to today, I'm now pursuing my degree in **Computer Science at The University of Hong Kong**. 
+
+
+My main focus these days is to design and practice building user interfaces and web-apps, apart from my studies. I most enjoy building software that revolves around the user experience, built and designed with the users in mind. I also work on [LaTeX uni course notes](https://jaxtam.dev/notes), which aims to organize materials in a stripped-down yet cohesive way. 
+
+
+When I'm not at the computer, I'm usually at the gym, photographing, hanging out with my girlfriend and two dogs, or eating Sam Gor mixian.
+`
 
 export default function Home() {
   return (
@@ -32,9 +42,8 @@ export default function Home() {
             src="/images/headericon.jpg"
             variants={fadeIn}
           />
-          <motion.div
+          <div
             className="flex flex-col items-center self-stretch justify-start gap-5"
-            variants={fadeIn}
           >
             <motion.div
               className="flex flex-col items-center self-stretch justify-center gap-2"
@@ -57,124 +66,34 @@ export default function Home() {
               className="flex items-center justify-start gap-4"
               variants={fadeIn}
             >
-              <motion.div
+              <div
                 className="w-2 h-2 rounded-full bg-cgreen animate-ping"
-                variants={fadeIn}
-              ></motion.div>
-              <motion.div
+              ></div>
+              <div
                 className="absolute w-2 h-2 rounded-full bg-cgreen"
-                variants={fadeIn}
-              ></motion.div>
-              <motion.div
+              ></div>
+              <div
                 className="text-base font-light text-cgray"
-                variants={fadeIn}
               >
                 Available for new opportunities
-              </motion.div>
-            </motion.div>
-          </motion.div>
-          <motion.div
-            variants={fadeIn}
-            className="flex items-center self-stretch justify-center h-12 gap-5"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05, translateY: -2, color: "#EDEDED" }}
-              className="cursor-pointer text-cdarkgray"
-            >
-              <Github
-                onClick={() => window.open("https://github.com/EnhancedJax")}
-              />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05, translateY: -2, color: "#EDEDED" }}
-              className="cursor-pointer text-cdarkgray"
-            >
-              <Instagram
-                onClick={() =>
-                  window.open("https://www.instagram.com/enhancedjax/")
-                }
-              />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05, translateY: -2, color: "#EDEDED" }}
-              className="cursor-pointer text-cdarkgray"
-            >
-              <FileDown
-                onClick={() => window.open("/applications/Resume.pdf")}
-              />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05, translateY: -2, color: "#EDEDED" }}
-              className="cursor-pointer text-cdarkgray"
-            >
-              <Figma
-                onClick={() =>
-                  window.open(
-                    "https://www.figma.com/file/jweQFqBujsTKhL6Zw44MON/Design?type=design&node-id=4%3A2&mode=design&t=O2Vfu63nmrOhawVX-1"
-                  )
-                }
-              />
-            </motion.div>
-          </motion.div>
-          <div className="flex flex-col items-center justify-center w-full gap-2 md:flex-row md:gap-4">
-            <motion.div
-              className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-white rounded-lg justify-center items-center gap-2.5 flex"
-              variants={slideLeft}
-              whileHover={{ scale: 1.05, translateY: -4 }}
-              whileTap={{ scale: 0.95, translateY: -2 }}
-              onClick={() => window.open("mailto:jax.lytam@gmail.com")}
-            >
-              <motion.div
-                className="text-base font-light text-cbg"
-                variants={fadeIn}
-              >
-                Contact me
-              </motion.div>
-              <Mail className="w-5 h-5 text-cdarkgray" />
-            </motion.div>
-            <motion.div className="font-light text-cgray " variants={fadeIn}>
-              or
-            </motion.div>
-            <motion.div
-              className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-cfg rounded-lg border border-cborder justify-center items-center gap-2.5 flex"
-              variants={slideRight}
-              whileHover={{ scale: 1.05, translateY: -5 }}
-              whileTap={{ scale: 0.95, translateY: -2 }}
-              onClick={() =>
-                navigator.clipboard.writeText("jax.lytam@gmail.com")
-              }
-            >
-              <motion.div
-                className="text-base font-light text-white"
-                variants={fadeIn}
-              >
-                Copy email
-              </motion.div>
-              <Copy className="w-5 h-5 text-cdarkgray" />
+              </div>
             </motion.div>
           </div>
-          <div className="self-stretch h-10 p-2.5 flex-col justify-center items-center gap-2.5 flex">
+          <Socials/>
+          <ActionButtons/>
+          {/* <div className="self-stretch h-10 p-2.5 flex-col justify-center items-center gap-2.5 flex">
             <motion.div
               className={`${dmmono.className} text-sm text-center text-cdarkgray`}
               variants={fadeIn}
             >
               NT, HK ⋅ 22.2849° N, 114.1376° W
             </motion.div>
-          </div>
+          </div> */}
         </div>
-        <motion.div variants={fadeIn}>
+        <div>
           <SectionPointer showWhenSmall={false}>About</SectionPointer>
-          <p className="self-stretch text-base font-light text-cpg">
-            I'm Jax, a year 1 student studying at The University of Hong Kong.
-            <br />
-            <br />
-            My passion is to deliver clean designs and user-oriented experiences
-            that exceed expectations.
-            <br />
-            <br />I believe my attention to detail and dedication to excellence
-            will allow me to thrive in the future.
-          </p>
-        </motion.div>
+          <MarkdownFormatted>{about}</MarkdownFormatted>
+        </div>
       </motion.div>
     </RegularLayout>
   );

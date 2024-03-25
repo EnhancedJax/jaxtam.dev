@@ -57,7 +57,7 @@ const Button = ({ href, icon }) => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="absolute hidden p-1 text-xs text-white transform border rounded-lg text-light border-cborder bg-cfg left-16 top-1/2 lg:block"
+            className="absolute hidden p-1 text-xs text-white transform -translate-y-10 border rounded-lg text-light border-cborder bg-cfg left-16 top-1/2 lg:block"
           >
             <span>{href}</span>
           </motion.div>

@@ -74,7 +74,6 @@ export const navBarHover = {
   hidden: {
     opacity: 0,
     translateX: -40,
-    translateY: -12,
   },
 };
 

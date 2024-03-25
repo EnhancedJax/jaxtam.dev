@@ -1,0 +1,114 @@
+'use client';
+
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { slideUp, fadeInStagger } from "./variants";
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import { motion } from "framer-motion";
+
+import { DM_Mono } from "next/font/google";
+const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
+
+const MarkdownFormatted = ({ children }) => {
+  return (
+    <Markdown
+      remarkPlugins={[remarkGfm]}
+      className="text-base font-light leading-relaxed text-cpg"
+      components={{
+        h1(props) {
+          const { node, ...rest } = props;
+          return (
+            <motion.h1
+              variants={slideUp}
+              className="text-lg font-light mb-7 text-cgray"
+              {...rest}
+            />
+          );
+        },
+        p(props) {
+          const { node, ...rest } = props;
+          return <motion.p variants={slideUp} className="mb-5 " {...rest} />;
+        },
+        a(props) {
+          const { node, ...rest } = props;
+          return (
+            <motion.div
+              className="inline-block"
+              initial={{ scale: 1, translateY: 0, color: "#93c5fd" }}
+              whileHover={{ scale: 1.05, translateY: -2, color: "#3b82f6" }}
+              whileTap={{ scale: 0.95, translateY: 0 }}
+            >
+              <a className="font-normal" {...rest} />
+            </motion.div>
+          );
+        },
+        hr(props) {
+          const { node, ...rest } = props;
+          return (
+            <motion.hr
+              variants={slideUp}
+              className="mb-5 border-cdarkgray"
+              {...rest}
+            />
+          );
+        },
+        ol(props) {
+          const { node, ...rest } = props;
+          return (
+            <motion.ol
+              variants={slideUp}
+              className="pl-5 mb-5 list-decimal"
+              {...rest}
+            />
+          );
+        },
+        ul(props) {
+          const { node, ...rest } = props;
+          return (
+            <motion.ul
+              variants={slideUp}
+              className="pl-5 mb-5 list-disc"
+              {...rest}
+            />
+          );
+        },
+        li(props) {
+          const { node, ...rest } = props;
+          return <li className="mb-2" {...rest} />;
+        },
+        img(props) {
+          const { node, ...rest } = props;
+          return (
+            <div className="flex justify-center w-full">
+              <motion.img variants={slideUp} className="rounded-lg" {...rest} />
+            </div>
+          );
+        },
+        code(props) {
+          const { children, className, node, ...rest } = props;
+          const match = /language-(\w+)/.exec(className || "");
+          return match ? (
+            <div className="rounded-lg overflow-clip">
+              <SyntaxHighlighter
+                {...rest}
+                children={String(children).replace(/\n$/, "")}
+                language={match[1]}
+              />
+            </div>
+          ) : (
+            <code
+              className={`border-[1px] text-sm p-1 border-cborder rounded-lg ${dmmono.className}`}
+              {...rest}
+            >
+              {children}
+            </code>
+          );
+        },
+      }}
+    >
+      {children}
+    </Markdown>
+  );
+}
+
+export default MarkdownFormatted;
