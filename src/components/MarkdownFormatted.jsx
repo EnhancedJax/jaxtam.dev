@@ -20,7 +20,27 @@ const MarkdownFormatted = ({ children, className }) => {
           return (
             <motion.h1
               variants={slideUp}
-              className="text-lg font-light mb-7 text-cgray"
+              className="mt-2 mb-5 text-lg font-light text-cgray"
+              {...rest}
+            />
+          );
+        },
+        h2(props) {
+          const { node, ...rest } = props;
+          return (
+            <motion.h2
+              variants={slideUp}
+              className="mt-2 mb-5 font-light text-md text-cgray"
+              {...rest}
+            />
+          );
+        },
+        h3(props) {
+          const { node, ...rest } = props;
+          return (
+            <motion.h3
+              variants={slideUp}
+              className="mt-2 mb-5 text-base font-light text-cgray"
               {...rest}
             />
           );
