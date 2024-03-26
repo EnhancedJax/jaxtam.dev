@@ -138,3 +138,31 @@ export const getFeaturedPostSlug = async () => {
 
   return result.postsConnection.edges[0].node.slug;
 };
+
+export const getLatest3Work = async () => {
+  const query = gql`
+  query GetLatest3Work {
+    postsConnection(
+      orderBy: publishedAt_DESC
+      where: {categories_every: {slug_contains: "project"}}
+      first: 3
+    ) {
+      edges {
+        node {
+          slug
+          heroImage {
+            url
+          }
+          title
+        }
+      }
+    }
+  }
+  
+  
+    `;
+
+  const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
+
+  return result.postsConnection.edges;
+}
