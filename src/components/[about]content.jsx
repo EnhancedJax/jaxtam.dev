@@ -91,7 +91,7 @@ export default function Content({ works }) {
           <MarkdownFormatted>{about}</MarkdownFormatted>
         </div>
         <div className="w-full">
-          <SectionPointer showWhenSmall={false}>Projects</SectionPointer>
+          <SectionPointer>Projects</SectionPointer>
           {works.map((work, index) => (
             <WorkSection key={index} work={work.node} />
           ))}
