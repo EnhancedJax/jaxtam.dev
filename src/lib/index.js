@@ -110,6 +110,9 @@ export const getPostDetails = async (slug) => {
             type
             slug
           }
+          propTimeline
+          propRole
+          propOutcome
         }
       }
     `;

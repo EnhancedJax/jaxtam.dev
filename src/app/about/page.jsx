@@ -14,7 +14,7 @@ export default function Home() {
         variants={fadeInStagger}
         initial="hidden"
         animate="visible"
-        exit="hidden"
+        exit="hidden" 
       >
           <motion.div
             className="text-base font-light text-white "
