@@ -141,7 +141,7 @@ const ProjSection = ({ proj }) => {
         whileTap={{ scale: 0.98, translateY: -2 }}
       >
         <div className="relative mr-8 rounded-md min-w-48 h-36 overflow-clip">
-          <Image src={proj.image.url} fill={true} />
+          <Image src={proj.image.url} fill={true} key={proj.image.url} />
         </div>
         <div className="relative">
           <p className="text-base font-light">{proj.name}</p>
