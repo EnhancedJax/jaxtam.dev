@@ -1,9 +1,8 @@
-import Content from '@comp/[about]content'
-import { getLatest3Work } from '@src/lib/index'
+import Content from "@comp/[about]content";
+import { getLatest3Work, getProjects } from "@src/lib/index";
 
 export default async function Home() {
   const works = (await getLatest3Work()) || [];
-  return (
-    <Content works={works} />
-  );
+  const projects = (await getProjects()) || [];
+  return <Content writings={works} projects={projects} />;
 }

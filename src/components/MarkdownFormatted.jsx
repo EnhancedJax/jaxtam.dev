@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Markdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import { slideUp, fadeInStagger } from "./variants";
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { slideUp } from "./variants";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { motion } from "framer-motion";
 
 import { DM_Mono } from "next/font/google";
@@ -129,6 +129,6 @@ const MarkdownFormatted = ({ children, className }) => {
       {children}
     </Markdown>
   );
-}
+};
 
 export default MarkdownFormatted;

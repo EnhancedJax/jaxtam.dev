@@ -36,10 +36,6 @@ export const getPosts = async () => {
     postsConnection(orderBy: publishedAt_DESC) {
       edges {
         node {
-          author {
-            name
-            id
-          }
           excerpt
           createdAt
           title
@@ -67,10 +63,6 @@ export const getOtherPosts = async (slug) => {
     postsConnection(orderBy: publishedAt_DESC, where: {slug_not: $slug}) {
       edges {
         node {
-          author {
-            name
-            id
-          }
           createdAt
           title
           slug
@@ -99,9 +91,6 @@ export const getPostDetails = async (slug) => {
           title
           heroImage {
             url
-          }
-          author{
-            name
           }
           createdAt
           slug
@@ -169,3 +158,29 @@ export const getLatest3Work = async () => {
 
   return result.postsConnection.edges;
 }
+
+export const getProjects = async () => {
+  const query = gql`
+  query GetProjects {
+    projectsConnection(first: 10, orderBy: monthYear_DESC) {
+      edges {
+        node {
+          monthYear
+          name
+          techs
+          link
+          description
+          image {
+            url
+          }
+        }
+      }
+    }
+  }
+  `;
+
+  const result = await request('https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master', query);
+
+  return result.projectsConnection.edges;
+}
+

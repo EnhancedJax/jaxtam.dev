@@ -11,6 +11,7 @@ import { Archive } from "lucide-react";
 import Link from "next/link";
 
 import { DM_Mono } from "next/font/google";
+import Image from "next/image";
 const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
 
 const about = `Back in 2020, I decided to try my hand at creating [Rainmeter](https://rainmeter.net) themes and went down the rabbit hole of coding and front-end development. Fast-forward to today, I'm now pursuing my degree in **Computer Science at The University of Hong Kong**. 
@@ -24,7 +25,7 @@ When I'm not at the computer, I'm usually at the gym, photographing, hanging out
 
 const footer = `Built with [Next.js](https://nextjs.org/), [Framer.Motion](https://www.framer.com/motion/) and [Tailwind CSS](https://tailwindcss.com/), deployed with [Vercel](https://vercel.com/). Dynamic content stored on [Hygraph](https://hygraph.com) and fetched with [GraphQL](https://graphql.org/). Loosely designed in [Figma](https://www.figma.com/file/jweQFqBujsTKhL6Zw44MON/Design?type=design&node-id=4%3A2&mode=design&t=O2Vfu63nmrOhawVX-1) and coded in [Visual Studio Code](https://code.visualstudio.com/).  Using the [Inter](https://rsms.me/inter/) typeface for sans and [DM Mono](https://fonts.google.com/specimen/DM+Mono) for monospace. Source code available on [GitHub](https://github.com/EnhancedJax/enhanced-jax.dev).`;
 
-export default function Content({ works }) {
+export default function Content({ writings, projects }) {
   return (
     <RegularLayout>
       <motion.div
@@ -90,12 +91,18 @@ export default function Content({ works }) {
           <SectionPointer showWhenSmall={false}>About</SectionPointer>
           <MarkdownFormatted>{about}</MarkdownFormatted>
         </div>
-        <div className="w-full">
-          <SectionPointer>Projects</SectionPointer>
-          {works.map((work, index) => (
-            <WorkSection key={index} work={work.node} />
+        <motion.div className="w-full" variants={slideSpring["up"]}>
+          <SectionPointer>Writings</SectionPointer>
+          {writings.map((writing, index) => (
+            <WritingSection key={index} writing={writing.node} />
           ))}
-        </div>
+        </motion.div>
+        <motion.div className="w-full" variants={slideSpring["up"]}>
+          <SectionPointer>Projects</SectionPointer>
+          {projects.map((proj, index) => (
+            <ProjSection key={index} proj={proj.node} />
+          ))}
+        </motion.div>
         <MarkdownFormatted className="mt-20 text-sm text-cgray">
           {footer}
         </MarkdownFormatted>
@@ -104,24 +111,53 @@ export default function Content({ works }) {
   );
 }
 
-const WorkSection = ({ work }) => {
+const WritingSection = ({ writing }) => {
   return (
-    <Link href={`/thoughts/${work.slug}`}>
+    <Link href={`/thoughts/${writing.slug}`}>
       <motion.div
         className="w-full mb-4 border-[1px] rounded-lg p-2 border-cborder hover:bg-cborder hover:border-cdarkgray bg-cfg"
-        variants={slideSpring["up"]}
         whileHover={{ scale: 1.02, translateY: -4 }}
         whileTap={{ scale: 0.98, translateY: -2 }}
       >
         <div className="flex items-center gap-2 pt-1 pb-3 ml-1">
           <Archive size={20} className="text-cgray" />
-          <p className="text-base font-light">{work.title}</p>
+          <p className="text-base font-light">{writing.title}</p>
         </div>
         <img
-          src={work.heroImage.url}
+          src={writing.heroImage.url}
           className="object-cover w-full h-64 rounded-md"
         />
       </motion.div>
     </Link>
+  );
+};
+
+const ProjSection = ({ proj }) => {
+  return (
+    <a href={proj.link}>
+      <motion.div
+        className="w-full mb-4 flex border-[1px] rounded-lg p-4 border-cborder hover:bg-cborder hover:border-cdarkgray bg-cfg"
+        whileHover={{ scale: 1.02, translateY: -4 }}
+        whileTap={{ scale: 0.98, translateY: -2 }}
+      >
+        <div className="relative mr-8 rounded-md min-w-48 h-36 overflow-clip">
+          <Image src={proj.image.url} fill={true} />
+        </div>
+        <div className="relative">
+          <p className="text-base font-light">{proj.name}</p>
+          <p className="text-base font-light text-cgray">{proj.description}</p>
+          <div className="absolute bottom-0 left-0 flex gap-2">
+            {proj.techs.map((tech, index) => (
+              <div
+                key={index}
+                className="px-3 text-sm bg-opacity-50 rounded-full bg-cgreen text-cgreen"
+              >
+                {tech}
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </a>
   );
 };
