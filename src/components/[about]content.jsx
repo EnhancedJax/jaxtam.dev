@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import SectionPointer from "@comp/SectionPointer";
-import RegularLayout from "@comp/RegularLayout";
-import { fadeInStagger, fadeIn, slideSpring } from "@comp/variants";
 import MarkdownFormatted from "@comp/MarkdownFormatted";
+import RegularLayout from "@comp/RegularLayout";
+import SectionPointer from "@comp/SectionPointer";
 import ActionButtons from "@comp/[about]actionbuttons";
 import Socials from "@comp/[about]socials";
+import { fadeIn, fadeInStagger, slideSpring } from "@comp/variants";
+import { motion } from "framer-motion";
 import { Archive } from "lucide-react";
 import Link from "next/link";
 
@@ -143,10 +143,14 @@ const ProjSection = ({ proj }) => {
         <div className="relative mr-8 rounded-md min-w-48 h-36 overflow-clip">
           <Image src={proj.image.url} fill={true} key={proj.image.url} />
         </div>
-        <div className="relative">
-          <p className="text-base font-light">{proj.name}</p>
-          <p className="text-base font-light text-cgray">{proj.description}</p>
-          <div className="absolute bottom-0 left-0 flex gap-2">
+        <div className="relative flex flex-col justify-between">
+          <div>
+            <p className="text-base font-light">{proj.name}</p>
+            <p className="text-base font-light text-cgray">
+              {proj.description}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 mt-2">
             {proj.techs.map((tech, index) => (
               <div
                 key={index}
