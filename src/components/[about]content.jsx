@@ -94,15 +94,15 @@ export default function Content({ writings, projects }) {
           <MarkdownFormatted>{about}</MarkdownFormatted>
         </div>
         <motion.div className="w-full" variants={slideSpring["up"]}>
-          <SectionPointer>Writings</SectionPointer>
-          {writings.map((writing, index) => (
-            <WritingSection key={index} writing={writing.node} />
-          ))}
-        </motion.div>
-        <motion.div className="w-full" variants={slideSpring["up"]}>
           <SectionPointer>Projects</SectionPointer>
           {projects.map((proj, index) => (
             <ProjSection key={index} proj={proj.node} />
+          ))}
+        </motion.div>
+        <motion.div className="w-full" variants={slideSpring["up"]}>
+          <SectionPointer>Writings</SectionPointer>
+          {writings.map((writing, index) => (
+            <WritingSection key={index} writing={writing.node} />
           ))}
         </motion.div>
         <MarkdownFormatted className="mt-20 text-sm text-cgray">
@@ -156,7 +156,7 @@ const ProjSection = ({ proj }) => {
             {proj.techs.map((tech, index) => (
               <div
                 key={index}
-                className="px-3 text-sm bg-opacity-50 rounded-full bg-cgreen text-cgreen"
+                className="px-3 overflow-hidden text-sm bg-opacity-50 rounded-full bg-cgreen text-cgreen text-nowrap text-ellipsis max-w-[90%]"
               >
                 {tech}
               </div>
