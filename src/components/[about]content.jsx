@@ -13,7 +13,6 @@ import Link from "next/link";
 import { DM_Mono } from "next/font/google";
 import Image from "next/image";
 
-export const dynamic = "force-dynamic";
 const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
 
 const about = `Back in 2020, I decided to try my hand at creating [Rainmeter](https://rainmeter.net) themes and went down the rabbit hole of coding and front-end development. Fast-forward to today, I'm now pursuing my degree in **Computer Science at The University of Hong Kong**. 

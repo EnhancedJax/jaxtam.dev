@@ -1,5 +1,6 @@
 import Content from "@comp/[about]content";
 import { getLatest3Work, getProjects } from "@src/lib/index";
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const [works, projects] = await Promise.all([
