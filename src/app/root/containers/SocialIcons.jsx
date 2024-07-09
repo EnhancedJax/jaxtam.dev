@@ -6,7 +6,7 @@ import LucideIcon from "../../../components/LucideIcon";
 import Tooltip from "../../../components/Tooltip";
 import { fadeIn } from "../../../utils/animations";
 
-const Socials = () => {
+export default function SocialIcons() {
   return (
     <motion.div
       variants={fadeIn}
@@ -34,7 +34,7 @@ const Socials = () => {
       />
     </motion.div>
   );
-};
+}
 
 const Button = ({ open, icon, text }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -60,5 +60,3 @@ const Button = ({ open, icon, text }) => {
     </motion.div>
   );
 };
-
-export default Socials;

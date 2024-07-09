@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
-import Navbar from "../components/Navbar";
+import NavBar from "../components/Navbar";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.className} bg-cbg w-screen overflow-x-hidden h-screen text-cpg`}
       >
-        <Navbar />
+        <NavBar />
         <div className="flex items-center justify-center mb-16 lg:mb-0 lg:ml-16">
           {children}
         </div>
