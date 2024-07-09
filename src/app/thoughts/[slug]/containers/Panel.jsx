@@ -1,10 +1,14 @@
 "use client";
 
-import Date from "./DateString";
-import SidebarPanel from "./SidebarPanel";
-import { fadeIn, fadeInStagger, slideSpring } from "./variants";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import Date from "../../../../components/DateString";
+import SidebarPanel from "../../../../components/SidebarPanel";
+import {
+  fadeIn,
+  fadeInStagger,
+  slideSpring,
+} from "../../../../utils/animations";
 
 const Panel = ({ thisPost, posts }) => {
   const router = useRouter();
@@ -33,7 +37,7 @@ const Panel = ({ thisPost, posts }) => {
           </motion.div>
 
           <motion.div
-            variants={slideSpring['left']}
+            variants={slideSpring["left"]}
             className={`w-full p-3 rounded-lg justify-start items-start gap-4 inline-flex bg-cfg`}
           >
             <div className="inline-flex flex-col items-start justify-start text-base font-light text-left grow">
@@ -55,11 +59,10 @@ const Panel = ({ thisPost, posts }) => {
           {posts.map((post, index) => (
             <motion.button
               key={index}
-              variants={slideSpring['left']}
+              variants={slideSpring["left"]}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => router.push(`/thoughts/${post.node.slug}`)}
-              // ${selectedItem === item.course_code ? 'bg-cfg' : 'hover:bg-cfg'}
               className={`w-full p-3 rounded-lg gap-4 inline-flex hover:bg-cfg`}
             >
               <div className="inline-flex flex-col items-start justify-start text-base font-light text-left grow">

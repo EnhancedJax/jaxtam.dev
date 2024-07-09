@@ -1,6 +1,5 @@
-
-import LucideIcon from "@comp/LucideIcon";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import LucideIcon from "../../../components/LucideIcon";
 
 export const LangItem = ({ name, prog, level }) => {
   const progType = ["Proficient", "Fluent", "Advanced"];

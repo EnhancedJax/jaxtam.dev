@@ -1,9 +1,9 @@
 "use client";
 
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu } from "lucide-react";
-import { useEffect, useState } from "react";
-import { fadeIn, slideLeft, slideSpring } from "./variants";
+import { useState } from "react";
+import { fadeIn, slideSpring } from "../utils/animations";
 
 const SidebarPanel = ({ title, children }) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -18,32 +18,30 @@ const SidebarPanel = ({ title, children }) => {
           onClick={() => setSideBarOpen(!sideBarOpen)}
         />
       </div>
-        <div
-            className="hidden fixed top-0 left-[64px] lg:block px-3 pt-10 pb-20 w-[340px] border-r border-r-cborder h-screen overflow-auto"
-        >
-          {children}
+      <div className="hidden fixed top-0 left-[64px] lg:block px-3 pt-10 pb-20 w-[340px] border-r border-r-cborder h-screen overflow-auto">
+        {children}
       </div>
       <AnimatePresence>
         {sideBarOpen && (
-            <>
+          <>
             <motion.div
-                variants={slideSpring['left']}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className="fixed top-0 left-0 px-5 pt-10 pb-20 w-[340px] z-40 h-screen overflow-auto bg-cbg"
-                >
-                {children}
+              variants={slideSpring["left"]}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="fixed top-0 left-0 px-5 pt-10 pb-20 w-[340px] z-40 h-screen overflow-auto bg-cbg"
+            >
+              {children}
             </motion.div>
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className="fixed top-0 left-0 z-30 w-screen h-screen bg-black bg-opacity-20"
-            onClick={() => setSideBarOpen(!sideBarOpen)}
-          />
-        </>
+            <motion.div
+              variants={fadeIn}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="fixed top-0 left-0 z-30 w-screen h-screen bg-black bg-opacity-20"
+              onClick={() => setSideBarOpen(!sideBarOpen)}
+            />
+          </>
         )}
       </AnimatePresence>
     </>

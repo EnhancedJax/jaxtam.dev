@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import { getFeaturedPostSlug } from "@src/lib";
-import LogoLoader from "@comp/LogoLoader";
+import LogoLoader from "../../components/LogoLoader";
+import { getFeaturedPostSlug } from "../../lib";
 
 export default async function thoughts() {
   const featuredPostSlug = (await getFeaturedPostSlug()) || [];

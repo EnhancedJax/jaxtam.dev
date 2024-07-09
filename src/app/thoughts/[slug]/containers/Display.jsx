@@ -1,15 +1,14 @@
 "use client";
 
-import SidebarLayout from "./SidebarLayout";
-import { slideUp, fadeInStagger } from "./variants";
 import { motion } from "framer-motion";
-import React, { useEffect } from "react";
-import Date from "./DateString";
+import React from "react";
+import Date from "../../../../components/DateString";
+import SidebarLayout from "../../../../components/SidebarLayout";
+import { fadeInStagger, slideUp } from "../../../../utils/animations";
 
-import MarkdownFormatted from './MarkdownFormatted'
+import MarkdownFormatted from "../../../../components/MarkdownFormatted";
 
 const Content = ({ thisPost }) => {
-
   return (
     <SidebarLayout>
       <motion.div
@@ -31,8 +30,7 @@ const Content = ({ thisPost }) => {
             <motion.h1 variants={slideUp} className="text-xl">
               {thisPost.title}
             </motion.h1>
-            <motion.div
-              variants={slideUp}>
+            <motion.div variants={slideUp}>
               {thisPost.categories.map((category, index) => (
                 <p
                   className="py-1 px-2 w-min text-cgray border-[1px] border-cborder rounded-md text-sm"
@@ -42,7 +40,7 @@ const Content = ({ thisPost }) => {
                 </p>
               ))}
               {thisPost.propTimeline && (
-              <div className="my-6">
+                <div className="my-6">
                   <div className="flex mt-2">
                     <p className="w-20 text-cgray">Timeline</p>
                     <span className="w-fill">{thisPost.propTimeline}</span>
@@ -57,8 +55,8 @@ const Content = ({ thisPost }) => {
                       <p className="text-wrap ">{thisPost.propOutcome}</p>
                     </div>
                   </div>
-              </div>
-                )}
+                </div>
+              )}
             </motion.div>
             <MarkdownFormatted>{thisPost.content}</MarkdownFormatted>
           </div>

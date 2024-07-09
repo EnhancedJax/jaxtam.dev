@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeIn } from "@comp/variants";
-import LucideIcon from "./LucideIcon";
 import { useState } from "react";
-import Tooltip from "@comp/Tooltip";
+import LucideIcon from "../../../components/LucideIcon";
+import Tooltip from "../../../components/Tooltip";
+import { fadeIn } from "../../../utils/animations";
 
 const Socials = () => {
   return (
@@ -12,9 +12,21 @@ const Socials = () => {
       variants={fadeIn}
       className="flex items-center self-stretch justify-center h-12 gap-5"
     >
-      <Button text="Github" icon="Github" open="https://github.com/EnhancedJax" />
-      <Button text="Instagram" icon="Instagram" open="https://www.instagram.com/enhancedjax/" />
-      <Button text="Download resume" icon="FileDown" open="/applications/Resume.pdf" />
+      <Button
+        text="Github"
+        icon="Github"
+        open="https://github.com/EnhancedJax"
+      />
+      <Button
+        text="Instagram"
+        icon="Instagram"
+        open="https://www.instagram.com/enhancedjax/"
+      />
+      <Button
+        text="Download resume"
+        icon="FileDown"
+        open="/applications/Resume.pdf"
+      />
       <Button
         text="Figma design"
         icon="Figma"

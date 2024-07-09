@@ -1,11 +1,10 @@
 "use client";
 
-import SectionPointer from "@comp/SectionPointer";
 import { motion } from "framer-motion";
-import { SkillItem, SoftwareItem } from "@comp/StackItems";
-import RegularLayout from "@comp/RegularLayout";
-import { fadeIn, fadeInStagger } from "@comp/variants";
-import "react-circular-progressbar/dist/styles.css";
+import RegularLayout from "../../components/RegularLayout";
+import SectionPointer from "../../components/SectionPointer";
+import { fadeIn, fadeInStagger } from "../../utils/animations";
+import { SoftwareItem } from "./containers/StackItem";
 
 export default function Stack() {
   return (

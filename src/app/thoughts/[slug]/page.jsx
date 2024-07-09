@@ -1,7 +1,7 @@
-import Panel from "@comp/[thoughts]panel";
-import Content from "@comp/[thoughts]content";
-import { getPostDetails, getOtherPosts } from "@src/lib";
 import { redirect } from "next/navigation";
+import { getOtherPosts, getPostDetails } from "../../../lib";
+import Content from "./containers/Display";
+import Panel from "./containers/Panel";
 
 export default async function thoughts({ params }) {
   const thisPost = await getPostDetails(params.slug);

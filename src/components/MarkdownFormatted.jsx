@@ -1,13 +1,11 @@
 "use client";
 
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { slideUp } from "./variants";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { motion } from "framer-motion";
-
-import { DM_Mono } from "next/font/google";
-const dmmono = DM_Mono({ weight: "300", subsets: ["latin"] });
+import Markdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import remarkGfm from "remark-gfm";
+import { slideUp } from "../utils/animations";
+import { DM_MONO_FAMILY } from "../utils/constants";
 
 const MarkdownFormatted = ({ children, className }) => {
   return (
@@ -117,7 +115,7 @@ const MarkdownFormatted = ({ children, className }) => {
             </div>
           ) : (
             <code
-              className={`border-[1px] text-sm p-1 border-cborder rounded-lg ${dmmono.className}`}
+              className={`border-[1px] text-sm p-1 border-cborder rounded-lg ${DM_MONO_FAMILY.className}`}
               {...rest}
             >
               {children}
