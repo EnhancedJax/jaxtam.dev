@@ -1,10 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import remarkGfm from "remark-gfm";
-import { slideUp } from "../utils/animations";
 import { DM_MONO_FAMILY } from "../utils/constants";
 
 const MarkdownFormatted = ({ children, className }) => {
@@ -16,28 +12,19 @@ const MarkdownFormatted = ({ children, className }) => {
         h1(props) {
           const { node, ...rest } = props;
           return (
-            <motion.h1
-              variants={slideUp}
-              className="mt-2 mb-5 text-lg font-light text-cgray"
-              {...rest}
-            />
+            <h1 className="mt-2 mb-5 text-lg font-light text-cgray" {...rest} />
           );
         },
         h2(props) {
           const { node, ...rest } = props;
           return (
-            <motion.h2
-              variants={slideUp}
-              className="mt-2 mb-5 font-light text-md text-cgray"
-              {...rest}
-            />
+            <h2 className="mt-2 mb-5 font-light text-md text-cgray" {...rest} />
           );
         },
         h3(props) {
           const { node, ...rest } = props;
           return (
-            <motion.h3
-              variants={slideUp}
+            <h3
               className="mt-2 mb-5 text-base font-light text-cgray"
               {...rest}
             />
@@ -45,50 +32,27 @@ const MarkdownFormatted = ({ children, className }) => {
         },
         p(props) {
           const { node, ...rest } = props;
-          return <motion.p variants={slideUp} className="mb-5 " {...rest} />;
+          return <p className="mb-5 " {...rest} />;
         },
         a(props) {
           const { node, ...rest } = props;
           return (
-            <motion.span
-              className="inline-block"
-              initial={{ scale: 1, translateY: 0, color: "#93c5fd" }}
-              whileHover={{ scale: 1.05, translateY: -2, color: "#3b82f6" }}
-              whileTap={{ scale: 0.95, translateY: 0 }}
-            >
+            <span className="inline-block md-link-animation">
               <a className="font-normal" {...rest} />
-            </motion.span>
+            </span>
           );
         },
         hr(props) {
           const { node, ...rest } = props;
-          return (
-            <motion.hr
-              variants={slideUp}
-              className="mb-5 border-cdarkgray"
-              {...rest}
-            />
-          );
+          return <hr className="mb-5 border-cdarkgray" {...rest} />;
         },
         ol(props) {
           const { node, ...rest } = props;
-          return (
-            <motion.ol
-              variants={slideUp}
-              className="pl-5 mb-5 list-decimal"
-              {...rest}
-            />
-          );
+          return <ol className="pl-5 mb-5 list-decimal" {...rest} />;
         },
         ul(props) {
           const { node, ...rest } = props;
-          return (
-            <motion.ul
-              variants={slideUp}
-              className="pl-5 mb-5 list-disc"
-              {...rest}
-            />
-          );
+          return <ul className="pl-5 mb-5 list-disc" {...rest} />;
         },
         li(props) {
           const { node, ...rest } = props;
@@ -98,7 +62,7 @@ const MarkdownFormatted = ({ children, className }) => {
           const { node, ...rest } = props;
           return (
             <div className="flex justify-center w-full">
-              <motion.img variants={slideUp} className="rounded-lg" {...rest} />
+              <img className="rounded-lg" {...rest} />
             </div>
           );
         },

@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { fadeIn, slideSpring } from "../utils/animations";
+import { slideSpring, slideUp } from "../utils/animations";
 
 const SidebarPanel = ({ title, children }) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -34,7 +34,7 @@ const SidebarPanel = ({ title, children }) => {
               {children}
             </motion.div>
             <motion.div
-              variants={fadeIn}
+              variants={slideUp}
               initial="hidden"
               animate="visible"
               exit="hidden"

@@ -19,15 +19,6 @@ module.exports = {
         cyellow: "#FFC657",
       },
     },
-    // animation: {
-    //   fade: "fadeIn 10s ease-in-out",
-    // },
-    // keyframes: {
-    //   fadeIn: {
-    //     from: { opacity: 0 },
-    //     to: { opacity: 1 },
-    //   },
-    // },
     fontSize: {
       xxs: "10px",
       xs: "12px",

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Date from "../../../../components/DateString";
 import SidebarPanel from "../../../../components/SidebarPanel";
-import { fadeIn, slideSpring } from "../../../../utils/animations";
+import { slideSpring, slideUp } from "../../../../utils/animations";
 import { useAppContext } from "../../../provider";
 
 const Panel = ({ thisPost, posts }) => {
@@ -12,14 +12,14 @@ const Panel = ({ thisPost, posts }) => {
   return (
     <SidebarPanel title="Thoughts">
       <motion.h1
-        variants={fadeIn}
+        variants={slideUp}
         className="pl-3 text-base font-light text-white"
       >
         Thoughts
       </motion.h1>
       <div className="flex flex-col gap-2">
         <motion.div
-          variants={fadeIn}
+          variants={slideUp}
           className="pl-3 text-base font-light text-cgray"
         >
           You're reading
@@ -40,7 +40,7 @@ const Panel = ({ thisPost, posts }) => {
       </div>
       <div className="flex flex-col gap-2">
         <motion.div
-          variants={fadeIn}
+          variants={slideUp}
           className="pl-3 text-base font-light text-cgray"
         >
           Up next

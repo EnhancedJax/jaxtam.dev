@@ -3,13 +3,13 @@ export const slideUp = {
     opacity: 1,
     translateY: 0,
     transition: {
-      type: "spring",
-      duration: 1,
+      ease: "easeOut",
+      duration: 0.3,
     },
   },
   hidden: {
     opacity: 0,
-    translateY: 20,
+    translateY: 10,
   },
 };
 
@@ -27,7 +27,7 @@ export const slideRight = {
   },
 };
 
-export const fadeInStagger = {
+export const slideUpStagger = {
   visible: {
     opacity: 1,
     transition: {

@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useContext } from "react";
 import DateString from "../../../components/DateString";
 import LucideIcon from "../../../components/LucideIcon";
-import { fadeIn } from "../../../utils/animations";
+import { slideUp } from "../../../utils/animations";
 import { Context } from "../viewModel";
 
 export default function NotesSelect() {
@@ -18,14 +18,14 @@ export default function NotesSelect() {
   return (
     <div className="flex flex-col gap-3 grow">
       <motion.input
-        variants={fadeIn}
+        variants={slideUp}
         id="outlined-basic"
         onChange={inputHandler}
         placeholder="Type to search by course code"
         type="text"
         className="w-full p-4 bg-cborder rounded-lg border border-cborder flex-col justify-start items-start gap-2.5 flex text-cpg text-base font-light placeholder-cgray"
       />
-      <motion.div variants={fadeIn}>
+      <motion.div variants={slideUp}>
         <div className="flex flex-col w-full gap-4">
           <AnimatePresence mode="popLayout">
             {filteredData.map((item) => (

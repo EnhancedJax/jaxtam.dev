@@ -5,3 +5,17 @@
 img {
   pointer-events: none;
 }
+
+.md-link-animation {
+  transition: all 0.3s ease;
+  color: #93c5fd;
+}
+
+.md-link-animation:hover {
+  transform: scale(1.05) translateY(-2px);
+  color: #3b82f6;
+}
+
+.md-link-animation:active {
+  transform: scale(0.95) translateY(0);
+}

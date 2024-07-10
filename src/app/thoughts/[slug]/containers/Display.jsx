@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Date from "../../../../components/DateString";
 import SidebarLayout from "../../../../components/SidebarLayout";
-import { fadeInStagger, slideUp } from "../../../../utils/animations";
+import { slideUp, slideUpStagger } from "../../../../utils/animations";
 
 import MarkdownFormatted from "../../../../components/MarkdownFormatted";
 
@@ -12,7 +12,7 @@ const Content = ({ thisPost }) => {
     <SidebarLayout>
       <motion.div
         className="w-full text-base font-light"
-        variants={fadeInStagger}
+        variants={slideUpStagger}
         initial="hidden"
         animate="visible"
         exit="hidden"
@@ -57,7 +57,9 @@ const Content = ({ thisPost }) => {
                 </div>
               )}
             </motion.div>
-            <MarkdownFormatted>{thisPost.content}</MarkdownFormatted>
+            <motion.div variants={slideUp}>
+              <MarkdownFormatted>{thisPost.content}</MarkdownFormatted>
+            </motion.div>
           </div>
         </div>
       </motion.div>

@@ -2,45 +2,51 @@
 
 import { motion } from "framer-motion";
 import { Copy, Mail } from "lucide-react";
-import { fadeIn, slideLeft, slideRight } from "../../../utils/animations";
+import { useState } from "react";
+import { slideLeft, slideRight, slideUp } from "../../../utils/animations";
 
 const ActionButtons = () => {
+  const [slide, setSlide] = useState(false);
   return (
-    <div className="flex flex-col items-center justify-center w-full gap-2 md:flex-row md:gap-4">
+    <motion.div
+      className="flex flex-col items-center justify-center w-full gap-2 md:flex-row md:gap-4"
+      variants={slideUp}
+      onUpdate={(latest) => {
+        if (latest.opacity === 1) {
+          setSlide(true);
+        } else if (latest.opacity !== 0 && slide) {
+          setSlide(false);
+        }
+      }}
+    >
       <motion.div
-        className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-white rounded-lg justify-center items-center gap-2.5 flex"
         variants={slideLeft}
+        initial="hidden"
+        animate={slide ? "visible" : "hidden"}
+        className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-white rounded-lg justify-center items-center gap-2.5 flex"
         whileHover={{ scale: 1.05, translateY: -4 }}
         whileTap={{ scale: 0.95, translateY: -2 }}
         onClick={() => window.open("mailto:jax.lytam@gmail.com")}
       >
-        <motion.div className="text-base font-light text-cbg" variants={fadeIn}>
-          Contact me
-        </motion.div>
+        <div className="text-base font-light text-cbg">Contact me</div>
         <Mail className="w-5 h-5 text-cdarkgray" />
       </motion.div>
-      <motion.div
-        className="hidden font-light text-cgray md:block"
-        variants={fadeIn}
-      >
-        or
-      </motion.div>
+      <div className="hidden font-light text-cgray md:block">or</div>
       <motion.div
         className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-cfg rounded-lg border border-cborder justify-center items-center gap-2.5 hidden md:flex"
         variants={slideRight}
+        initial="hidden"
+        animate={slide ? "visible" : "hidden"}
         whileHover={{ scale: 1.05, translateY: -5 }}
         whileTap={{ scale: 0.95, translateY: -2 }}
         onClick={() => navigator.clipboard.writeText("jax.lytam@gmail.com")}
       >
-        <motion.div
-          className="text-base font-light text-white"
-          variants={fadeIn}
-        >
+        <div className="text-base font-light text-white" variants={slideUp}>
           Copy email
-        </motion.div>
+        </div>
         <Copy className="w-5 h-5 text-cdarkgray" />
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

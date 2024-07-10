@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import LucideIcon from "../../../components/LucideIcon";
 import Tooltip from "../../../components/Tooltip";
-import { fadeIn } from "../../../utils/animations";
+import { slideUp } from "../../../utils/animations";
 
 export default function SocialIcons() {
   return (
     <motion.div
-      variants={fadeIn}
-      className="flex items-center self-stretch justify-center h-12 gap-5"
+      variants={slideUp}
+      className="flex items-center self-stretch justify-center h-12 gap-6"
     >
       <Button
         text="Github"

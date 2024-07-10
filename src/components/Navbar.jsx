@@ -11,7 +11,7 @@ const NavBar = () => {
     <nav>
       <ul
         id="navbar"
-        className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-6 border-t border-cborder bg-cbg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col"
+        className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-3 border-t border-cborder bg-cbg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col"
       >
         <Button href="/" icon="CircleUser"></Button>
         <Button href="/notes" icon="NotebookText"></Button>

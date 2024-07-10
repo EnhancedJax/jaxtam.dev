@@ -4,27 +4,27 @@ import { motion } from "framer-motion";
 import { Undo2 } from "lucide-react";
 import Link from "next/link";
 import RegularLayout from "../components/RegularLayout";
-import { fadeIn, fadeInStagger, slideLeft } from "../utils/animations";
+import { slideLeft, slideUp, slideUpStagger } from "../utils/animations";
 
 export default function Home() {
   return (
     <RegularLayout>
       <motion.div
         className="flex flex-col items-center justify-center gap-4"
-        variants={fadeInStagger}
+        variants={slideUpStagger}
         initial="hidden"
         animate="visible"
         exit="hidden"
       >
         <motion.div
           className="text-base font-light text-white "
-          variants={fadeIn}
+          variants={slideUp}
         >
           404 Not Found
         </motion.div>
         <motion.div
           className="text-base font-light text-center text-cgray "
-          variants={fadeIn}
+          variants={slideUp}
         >
           The page you're looking for doesn't exist. Thanks for checking out
           this page though.
@@ -38,7 +38,7 @@ export default function Home() {
           >
             <motion.div
               className="text-base font-light text-cbg"
-              variants={fadeIn}
+              variants={slideUp}
             >
               Return to home page
             </motion.div>

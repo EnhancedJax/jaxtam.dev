@@ -22,15 +22,15 @@ export default async function Home() {
           <Head />
           <div>
             <SectionPointer showWhenSmall={false}>About</SectionPointer>
-            <MarkdownFormatted>{ABOUT_MD}</MarkdownFormatted>
+            <StaggerElement variants={slideSpring["up"]}>
+              <MarkdownFormatted>{ABOUT_MD}</MarkdownFormatted>
+            </StaggerElement>
           </div>
           <StaggerElement className="w-full" variants={slideSpring["up"]}>
             <SectionPointer>Projects</SectionPointer>
             {projects.map((proj, index) => (
               <Project key={index} proj={proj.node} />
             ))}
-          </StaggerElement>
-          <StaggerElement className="w-full" variants={slideSpring["up"]}>
             <SectionPointer>Writings</SectionPointer>
             {writings.map((writing, index) => (
               <Writing key={index} writing={writing.node} />
