@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "next-themes";
 import FunnyBackground from "../components/FunnyBackground";
 import NavBar from "../components/Navbar";
 import { FAMILY } from "../utils/constants";
@@ -13,16 +14,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <Analytics />
       <SpeedInsights />
       <AppProvider>
         <body
-          className={`${FAMILY.className} bg-cbg w-screen overflow-x-hidden h-screen text-cpg`}
+          className={`${FAMILY.className} w-screen overflow-x-hidden h-screen text-cpg bg-cbg`}
         >
-          <NavBar />
-          {children}
-          <FunnyBackground />
+          <ThemeProvider attribute="class" enableSystem={false}>
+            <NavBar />
+            {children}
+            <FunnyBackground />
+          </ThemeProvider>
         </body>
       </AppProvider>
     </html>

@@ -5,18 +5,29 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        cbg: "#232323",
-        cfg: "#282828",
-        cborder: "#343434",
-        cdarkgray: "#707070",
-        cgray: "#A0A0A0",
-        cpg: "#EDEDED", //paragraph
-        cgreen: "#34D399",
-        clblue: "#35CEFF",
-        cyellow: "#FFC657",
+        clBg: "#232323",
+        clFg: "#282828",
+        clBorder: "#343434",
+        clDarkgray: "#707070",
+        clGray: "#A0A0A0",
+        clPg: "#EDEDED", //paragraph
+        clGreen: "#34D399",
+        clBlue: "#35CEFF",
+        clYellow: "#FFC657",
+        /* ----------- Dark theme ----------- */
+        cdBg: "#232323",
+        cdFg: "#282828",
+        cdBorder: "#343434",
+        cdDarkgray: "#707070",
+        cdGray: "#A0A0A0",
+        cdPg: "#EDEDED", //paragraph
+        cdGreen: "#34D399",
+        cdBlue: "#35CEFF",
+        cdYellow: "#FFC657",
       },
     },
     fontSize: {
