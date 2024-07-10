@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sun } from "lucide-react";
+import { SwatchBook } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAppContext } from "../app/provider";
@@ -52,8 +52,8 @@ const NavBar = () => {
         ))}
         <ul className="absolute lg:bottom-4 right-4 lg:right-auto">
           <IconButton
-            tooltip="Toggle dark mode"
-            icon={Sun}
+            tooltip="Switch themes"
+            icon={SwatchBook}
             iconSize="1.2rem"
             handleClick={handleToggleTheme}
           />
