@@ -1,17 +1,17 @@
-import { CircleUser, Layers, NotebookText, PenLine } from "lucide-react";
+import { BookHeart, Layers, Lightbulb, Pen } from "lucide-react";
 
 const ROUTES = [
   {
     href: "/",
-    icon: CircleUser,
+    icon: Lightbulb,
   },
   {
     href: "/notes",
-    icon: NotebookText,
+    icon: BookHeart,
   },
   {
     href: "/thoughts",
-    icon: PenLine,
+    icon: Pen,
   },
   {
     href: "/stack",

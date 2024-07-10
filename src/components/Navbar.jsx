@@ -32,7 +32,7 @@ const NavBar = () => {
     <nav className="relative">
       <ul
         id="navbar"
-        className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-3 py-0 border-t border-border bg-bg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col lg:py-4"
+        className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-2 py-0 border-t border-border bg-bg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col lg:py-4"
       >
         {ROUTES.map((route, index) => (
           <IconButton
@@ -88,7 +88,7 @@ const IconButton = ({
       onClick={handleClick}
     >
       <div className={isActive ? "text-pg " : "text-gray "}>
-        <IconComponent size={iconSize} />
+        <IconComponent size={iconSize} strokeWidth={1.5} />
       </div>
       {children}
       <Tooltip hoveredState={isHovered} text={tooltip} direction="left" />
