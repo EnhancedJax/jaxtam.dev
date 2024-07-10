@@ -45,7 +45,7 @@ const NavBar = () => {
           >
             {localRoute === route.href && (
               <motion.div
-                className="box-border absolute top-0 w-px h-full bg-clpg dark:bg-cdpg -right-2"
+                className="absolute top-0 w-full h-full lg:w-px bg-clpg dark:bg-cdpg lg:-right-2 !opacity-10 lg:!opacity-100 right-0 rounded-lg"
                 layoutId="line"
               />
             )}
