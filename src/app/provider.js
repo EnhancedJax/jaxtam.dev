@@ -25,7 +25,7 @@ const AppProvider = ({ children }) => {
   };
 
   const handlePageChange = () => {
-    if (!isSameRoute(href)) {
+    if (href !== null && !isSameRoute(href)) {
       router.push(href);
     }
   };

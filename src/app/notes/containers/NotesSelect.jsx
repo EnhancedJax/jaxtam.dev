@@ -57,7 +57,11 @@ export default function NotesSelect() {
                       : ""
                   }`}
                 >
-                  <LucideIcon name={item.node.icon} size="1rem" color="#FFF" />
+                  <LucideIcon
+                    name={item.node.icon}
+                    size="1rem"
+                    className="text-clpg dark:text-cdpg"
+                  />
                 </div>
                 <div className="text-base font-light text-left grow">
                   <div className=" text-clpg dark:text-cdpg">

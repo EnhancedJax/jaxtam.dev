@@ -2,7 +2,7 @@
 
 const LogoLoader = () => {
   return (
-    <div className="flex items-center justify-center w-full h-full">
+    <div className="invert dark:invert-0">
       <style jsx>{`
         @keyframes coreanim {
           0% {

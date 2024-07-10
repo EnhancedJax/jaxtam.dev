@@ -47,7 +47,7 @@ export const SkillItem = ({ icon, name, description }) => {
   return (
     <div className="basis-[264px] grow h-[111px] p-4  bg-clfg dark:bg-cdfg rounded-lg justify-center items-center inline-flex gap-3">
       <div className="flex items-center justify-center w-[32px] px-2">
-        <LucideIcon name={icon} size={32} color="#FFF" />
+        <LucideIcon name={icon} size={32} />
       </div>
       <div className="inline-flex flex-col items-start justify-center grow shrink basis-0">
         <div className="text-base font-light text-white">{name}</div>

@@ -1,9 +1,9 @@
-import { icons } from 'lucide-react';
+import { icons } from "lucide-react";
 
-function LucideIcon({ name, color, size }) {
-    const LucideIcon = icons[name];
+function LucideIcon({ name, size, ...props }) {
+  const LucideIcon = icons[name];
 
-    return <LucideIcon color={color} size={size} />;
-};
+  return <LucideIcon size={size} {...props} />;
+}
 
 export default LucideIcon;
