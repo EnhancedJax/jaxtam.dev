@@ -14,6 +14,7 @@ const NavBar = () => {
   const handleClick = (href) => {
     if ((!isSameRoute(href) && pageAnimate) || isSameRoute(href)) {
       // prevents double animation
+      console.log(href);
       handleSetHRef(href);
       togglePageAnimate();
     }
@@ -30,7 +31,15 @@ const NavBar = () => {
         tooltip={href}
         icon={icon}
         handleClick={() => handleClick(href)}
-      />
+      >
+        {/* {isSameRoute(href) && (
+          <motion.div
+            className="absolute top-0 w-px h-full bg-red-500 -right-2"
+            layoutId="line"
+            key={href}
+          />
+        )} */}
+      </IconButton>
     );
   };
 
@@ -56,9 +65,8 @@ const NavBar = () => {
   );
 };
 
-const IconButton = ({ isActive, tooltip, handleClick, icon }) => {
+const IconButton = ({ isActive, tooltip, handleClick, icon, children }) => {
   const [isHovered, setIsHovered] = useState(false);
-
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -81,6 +89,7 @@ const IconButton = ({ isActive, tooltip, handleClick, icon }) => {
       >
         {icon}
       </div>
+      {children}
       <Tooltip hoveredState={isHovered} text={tooltip} direction="left" />
     </li>
   );

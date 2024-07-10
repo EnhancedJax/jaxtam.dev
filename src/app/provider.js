@@ -20,7 +20,7 @@ const AppProvider = ({ children }) => {
   const isSameRoute = (thisHref) => {
     const isGoingSamePage =
       pathName === thisHref ||
-      (pathName !== "/" && pathName.match(/^\/[A-Za-z]+/)[0] === thisHref);
+      (pathName !== "/" && pathName?.match(/^\/[A-Za-z]+/)?.[0] === thisHref);
     return isGoingSamePage;
   };
 
