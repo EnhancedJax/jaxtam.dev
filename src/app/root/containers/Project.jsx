@@ -2,11 +2,32 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRef } from "react";
 
-export default function Project({ proj }) {
+export default function Project({ key, proj }) {
+  const projectRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (window.scrollY === 0 && projectRef.current) {
+      const elementPosition = projectRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - 20; // 20px offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <a href={proj.link} draggable={false}>
+    <div
+      onClick={() => window.open(proj.url, "_blank")}
+      draggable={false}
+      key={key}
+      onMouseEnter={handleMouseEnter}
+    >
       <motion.div
+        ref={projectRef}
         className="w-full mb-4 flex border-[1px] rounded-lg p-4 border-cborder hover:bg-cborder hover:border-cdarkgray bg-cfg"
         whileHover={{ scale: 1.02, translateY: -4 }}
         whileTap={{ scale: 0.98, translateY: -2 }}
@@ -14,7 +35,12 @@ export default function Project({ proj }) {
         dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       >
         <div className="relative mr-8 rounded-md min-w-48 h-36 overflow-clip">
-          <Image src={proj.image.url} fill={true} key={proj.image.url} />
+          <Image
+            src={proj.image.url}
+            fill={true}
+            key={proj.image.url}
+            alt={proj.name}
+          />
         </div>
         <div className="relative flex flex-col justify-between">
           <div>
@@ -35,6 +61,6 @@ export default function Project({ proj }) {
           </div>
         </div>
       </motion.div>
-    </a>
+    </div>
   );
 }

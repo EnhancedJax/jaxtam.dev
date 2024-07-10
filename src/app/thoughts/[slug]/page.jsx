@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import PageWrapper from "../../../components/PageWrapper";
 import { getOtherPosts, getPostDetails } from "../../../lib";
 import Content from "./containers/Display";
 import Panel from "./containers/Panel";
@@ -12,9 +13,9 @@ export default async function thoughts({ params }) {
   }
 
   return (
-    <>
+    <PageWrapper>
       <Panel posts={posts} thisPost={thisPost} />
       <Content thisPost={thisPost} />
-    </>
+    </PageWrapper>
   );
 }

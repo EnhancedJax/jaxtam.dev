@@ -1,9 +1,10 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Inter } from "next/font/google";
+import FunnyBackground from "../components/FunnyBackground";
 import NavBar from "../components/Navbar";
+import { FAMILY } from "../utils/constants";
 import "./globals.css";
-const inter = Inter({ subsets: ["latin"] });
+import { AppProvider } from "./provider";
 
 export const metadata = {
   title: "Jax Tam.",
@@ -15,14 +16,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <Analytics />
       <SpeedInsights />
-      <body
-        className={`${inter.className} bg-cbg w-screen overflow-x-hidden h-screen text-cpg`}
-      >
-        <NavBar />
-        <div className="flex items-center justify-center mb-16 lg:mb-0 lg:ml-16">
+      <AppProvider>
+        <body
+          className={`${FAMILY.className} bg-cbg w-screen overflow-x-hidden h-screen text-cpg`}
+        >
+          <NavBar />
           {children}
-        </div>
-      </body>
+          <FunnyBackground />
+        </body>
+      </AppProvider>
     </html>
   );
 }

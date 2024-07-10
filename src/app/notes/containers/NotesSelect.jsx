@@ -26,8 +26,8 @@ export default function NotesSelect() {
         className="w-full p-4 bg-cborder rounded-lg border border-cborder flex-col justify-start items-start gap-2.5 flex text-cpg text-base font-light placeholder-cgray"
       />
       <motion.div variants={fadeIn}>
-        <AnimatePresence mode="popLayout">
-          <div className="flex flex-col w-full gap-4">
+        <div className="flex flex-col w-full gap-4">
+          <AnimatePresence mode="popLayout">
             {filteredData.map((item) => (
               <motion.button
                 key={item.node.code}
@@ -77,8 +77,8 @@ export default function NotesSelect() {
                 </div>
               </motion.button>
             ))}
-          </div>
-        </AnimatePresence>
+          </AnimatePresence>
+        </div>
       </motion.div>
     </div>
   );

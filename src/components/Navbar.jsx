@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import LucideIcon from "./LucideIcon";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { useState } from "react";
+import { useAppContext } from "../app/provider";
+import LucideIcon from "./LucideIcon";
 import Tooltip from "./Tooltip";
 
 const NavBar = () => {
@@ -28,6 +28,8 @@ const Button = ({ href, icon }) => {
   const location = usePathname();
   const isActive = location === href || location.startsWith(href + "/");
   const [isHovered, setIsHovered] = useState(false);
+  const { isNotGoingSamePage, pageAnimate, togglePageAnimate, handleSetHRef } =
+    useAppContext();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -38,19 +40,28 @@ const Button = ({ href, icon }) => {
   };
 
   return (
-    <Link
-      href={href}
+    <button
       className="relative p-3"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={() => {
+        if (
+          (isNotGoingSamePage(href) && pageAnimate) ||
+          !isNotGoingSamePage(href)
+        ) {
+          // prevents double animation
+          handleSetHRef(href);
+          togglePageAnimate();
+        }
+      }}
     >
       <LucideIcon
         name={icon}
         size="1.5rem"
         color={isActive ? activeColor : inactiveColor}
       />
-      <Tooltip hoveredState={isHovered} text={href} direction="left"/>
-    </Link>
+      <Tooltip hoveredState={isHovered} text={href} direction="left" />
+    </button>
   );
 };
 

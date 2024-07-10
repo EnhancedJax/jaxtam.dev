@@ -32,6 +32,7 @@ export const fadeInStagger = {
     opacity: 1,
     transition: {
       staggerChildren: 0.12,
+      duration: 0.5,
     },
   },
   hidden: {

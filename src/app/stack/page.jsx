@@ -1,22 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import PageWrapper from "../../components/PageWrapper";
 import RegularLayout from "../../components/RegularLayout";
 import SectionPointer from "../../components/SectionPointer";
-import { fadeIn, fadeInStagger } from "../../utils/animations";
+import { fadeIn } from "../../utils/animations";
 import { SoftwareItem } from "./containers/StackItem";
 
 export default function Stack() {
   return (
-    <>
+    <PageWrapper>
       <RegularLayout>
-        <motion.div
-          className="flex flex-col w-full gap-10"
-          variants={fadeInStagger}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
+        <PageWrapper className="flex flex-col w-full gap-10">
           <div className="flex flex-col items-start justify-center gap-2 pl-3">
             <motion.h1
               variants={fadeIn}
@@ -42,8 +37,8 @@ export default function Stack() {
               <SoftwareItem name="iTerm2" type="TERMINAL" icon="iterm2" />
             </div>
           </motion.div>
-        </motion.div>
+        </PageWrapper>
       </RegularLayout>
-    </>
+    </PageWrapper>
   );
 }

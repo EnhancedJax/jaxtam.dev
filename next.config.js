@@ -13,6 +13,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "www.discoverhongkong.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "ap-northeast-1.graphassets.com",
         port: "",
         pathname: "/**",

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
 import Date from "../../../../components/DateString";
 import SidebarLayout from "../../../../components/SidebarLayout";
 import { fadeInStagger, slideUp } from "../../../../utils/animations";

@@ -50,14 +50,14 @@ const MarkdownFormatted = ({ children, className }) => {
         a(props) {
           const { node, ...rest } = props;
           return (
-            <motion.div
+            <motion.span
               className="inline-block"
               initial={{ scale: 1, translateY: 0, color: "#93c5fd" }}
               whileHover={{ scale: 1.05, translateY: -2, color: "#3b82f6" }}
               whileTap={{ scale: 0.95, translateY: 0 }}
             >
               <a className="font-normal" {...rest} />
-            </motion.div>
+            </motion.span>
           );
         },
         hr(props) {
