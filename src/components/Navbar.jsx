@@ -1,20 +1,25 @@
 "use client";
 
-import { CircleUser, Layers, NotebookText, PenLine, Sun } from "lucide-react";
+import { motion } from "framer-motion";
+import { Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAppContext } from "../app/provider";
+import ROUTES from "../app/routes";
 import Tooltip from "./Tooltip";
 
 const NavBar = () => {
   const { isSameRoute, pageAnimate, togglePageAnimate, handleSetHRef } =
     useAppContext();
   const { theme, setTheme } = useTheme();
+  const pathName = usePathname();
+  const [localRoute, setLocalRoute] = useState(pathName);
 
   const handleClick = (href) => {
     if ((!isSameRoute(href) && pageAnimate) || isSameRoute(href)) {
       // prevents double animation
-      console.log(href);
+      setLocalRoute(href);
       handleSetHRef(href);
       togglePageAnimate();
     }
@@ -24,39 +29,33 @@ const NavBar = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  const RouteItem = ({ href, icon }) => {
-    return (
-      <IconButton
-        isActive={isSameRoute(href)}
-        tooltip={href}
-        icon={icon}
-        handleClick={() => handleClick(href)}
-      >
-        {/* {isSameRoute(href) && (
-          <motion.div
-            className="absolute top-0 w-px h-full bg-red-500 -right-2"
-            layoutId="line"
-            key={href}
-          />
-        )} */}
-      </IconButton>
-    );
-  };
-
   return (
     <nav className="relative">
       <ul
         id="navbar"
         className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-3 py-0 border-t border-clborder dark:border-cdborder bg-clbg dark:bg-cdbg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col lg:py-4"
       >
-        <RouteItem href="/" icon={<CircleUser size="1.5rem" />} />
-        <RouteItem href="/notes" icon={<NotebookText size="1.5rem" />} />
-        <RouteItem href="/thoughts" icon={<PenLine size="1.5rem" />} />
-        <RouteItem href="/stack" icon={<Layers size="1.5rem" />} />
+        {ROUTES.map((route, index) => (
+          <IconButton
+            isActive={isSameRoute(route.href)}
+            tooltip={route.href}
+            icon={route.icon}
+            handleClick={() => handleClick(route.href)}
+            key={route.href}
+          >
+            {localRoute === route.href && (
+              <motion.div
+                className="box-border absolute top-0 w-px h-full bg-clpg dark:bg-cdpg -right-2"
+                layoutId="line"
+              />
+            )}
+          </IconButton>
+        ))}
         <ul className="absolute lg:bottom-4 right-4 lg:right-auto">
           <IconButton
             tooltip="Toggle dark mode"
-            icon={<Sun size="1.2rem" />}
+            icon={Sun}
+            iconSize="1.2rem"
             handleClick={handleToggleTheme}
           />
         </ul>
@@ -65,14 +64,21 @@ const NavBar = () => {
   );
 };
 
-const IconButton = ({ isActive, tooltip, handleClick, icon, children }) => {
-  const [isHovered, setIsHovered] = useState(false);
+const IconButton = ({
+  isActive,
+  tooltip,
+  handleClick,
+  icon: IconComponent,
+  iconSize = "1.5rem",
+  children,
+}) => {
+  const [isHovered, setLocalRoute] = useState(false);
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    setLocalRoute(true);
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
+    setLocalRoute(false);
   };
 
   return (
@@ -87,7 +93,7 @@ const IconButton = ({ isActive, tooltip, handleClick, icon, children }) => {
           isActive ? "text-clpg dark:text-cdpg" : "text-cdgray dark:text-cdgray"
         }
       >
-        {icon}
+        <IconComponent size={iconSize} />
       </div>
       {children}
       <Tooltip hoveredState={isHovered} text={tooltip} direction="left" />
