@@ -32,7 +32,6 @@ const AppProvider = ({ children }) => {
     }
   };
   const handleSetHRef = (href) => {
-    console.log(!isNotGoingSamePage(href));
     setIsFunnyToggle(!isNotGoingSamePage(href));
     setHRef(href);
   };

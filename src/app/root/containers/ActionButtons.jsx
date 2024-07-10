@@ -19,11 +19,14 @@ const ActionButtons = () => {
         </motion.div>
         <Mail className="w-5 h-5 text-cdarkgray" />
       </motion.div>
-      <motion.div className="font-light text-cgray " variants={fadeIn}>
+      <motion.div
+        className="hidden font-light text-cgray md:block"
+        variants={fadeIn}
+      >
         or
       </motion.div>
       <motion.div
-        className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-cfg rounded-lg border border-cborder justify-center items-center gap-2.5 flex"
+        className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-cfg rounded-lg border border-cborder justify-center items-center gap-2.5 hidden md:flex"
         variants={slideRight}
         whileHover={{ scale: 1.05, translateY: -5 }}
         whileTap={{ scale: 0.95, translateY: -2 }}

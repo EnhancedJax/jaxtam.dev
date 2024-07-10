@@ -40,8 +40,8 @@ const Button = ({ href, icon }) => {
   };
 
   return (
-    <button
-      className="relative p-3"
+    <li
+      className="relative p-3 cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => {
@@ -61,7 +61,7 @@ const Button = ({ href, icon }) => {
         color={isActive ? activeColor : inactiveColor}
       />
       <Tooltip hoveredState={isHovered} text={href} direction="left" />
-    </button>
+    </li>
   );
 };
 

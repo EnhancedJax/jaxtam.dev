@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 const LogoLoader = () => {
   return (
-    <div className="flex items-center h-screen">
+    <div className="flex items-center justify-center w-full h-full">
       <style jsx>{`
         @keyframes coreanim {
           0% {
