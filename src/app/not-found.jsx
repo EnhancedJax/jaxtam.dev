@@ -23,7 +23,7 @@ export default function Home() {
           404 Not Found
         </motion.div>
         <motion.div
-          className="text-base font-light text-center text-cgray "
+          className="text-base font-light text-center  text-clgray dark:bg-cdgray "
           variants={slideUp}
         >
           The page you're looking for doesn't exist. Thanks for checking out
@@ -37,12 +37,12 @@ export default function Home() {
             whileTap={{ scale: 0.95, translateY: -2 }}
           >
             <motion.div
-              className="text-base font-light text-cbg"
+              className="text-base font-light  text-clbg dark:bg-cdbg"
               variants={slideUp}
             >
               Return to home page
             </motion.div>
-            <Undo2 className="w-5 h-5 text-cdarkgray" />
+            <Undo2 className="w-5 h-5  text-cldarkgray dark:bg-cddarkgray" />
           </motion.div>
         </Link>
       </motion.div>

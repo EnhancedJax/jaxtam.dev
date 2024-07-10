@@ -23,7 +23,10 @@ const Content = ({ thisPost }) => {
             className="w-full mb-8 rounded-xl"
           />
           <div className="flex flex-col gap-4">
-            <motion.p variants={slideUp} className="text-cgray">
+            <motion.p
+              variants={slideUp}
+              className=" text-clgray dark:text-cdgray"
+            >
               <Date dateString={thisPost.createdAt} dateFormat="dd/MM/yyyy" />
             </motion.p>
             <motion.h1 variants={slideUp} className="text-xl">
@@ -32,7 +35,7 @@ const Content = ({ thisPost }) => {
             <motion.div variants={slideUp}>
               {thisPost.categories.map((category, index) => (
                 <p
-                  className="py-1 px-2 w-min text-cgray border-[1px] border-cborder rounded-md text-sm"
+                  className="py-1 px-2 w-min  text-clgray dark:text-cdgray border-[1px]  border-clborder dark:border-cdborder rounded-md text-sm"
                   key={index}
                 >
                   {category.type.toUpperCase()}
@@ -41,15 +44,19 @@ const Content = ({ thisPost }) => {
               {thisPost.propTimeline && (
                 <div className="my-6">
                   <div className="flex mt-2">
-                    <p className="w-20 text-cgray">Timeline</p>
+                    <p className="w-20 text-clgray dark:text-cdgray">
+                      Timeline
+                    </p>
                     <span className="w-fill">{thisPost.propTimeline}</span>
                   </div>
                   <div className="flex mt-2">
-                    <p className="w-20 text-cgray">Role</p>
+                    <p className="w-20 text-clgray dark:text-cdgray">Role</p>
                     <span className="w-fill">{thisPost.propRole}</span>
                   </div>
                   <div className="flex mt-2">
-                    <p className="min-w-20 text-cgray">Outcome</p>
+                    <p className="min-w-20 text-clgray dark:text-cdgray">
+                      Outcome
+                    </p>
                     <div className="grow">
                       <p className="text-wrap ">{thisPost.propOutcome}</p>
                     </div>

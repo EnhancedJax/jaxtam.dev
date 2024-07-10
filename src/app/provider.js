@@ -17,22 +17,20 @@ const AppProvider = ({ children }) => {
   const router = useRouter();
   const pathName = usePathname();
 
-  const isNotGoingSamePage = (thisHref) => {
-    const bool =
-      thisHref !== null &&
-      pathName !== thisHref &&
-      ((!pathName.slice(1).startsWith(thisHref.slice(1)) && thisHref !== "/") ||
-        thisHref === "/");
-    return bool;
+  const isSameRoute = (thisHref) => {
+    const isGoingSamePage =
+      pathName === thisHref ||
+      (pathName !== "/" && pathName.match(/^\/[A-Za-z]+/)[0] === thisHref);
+    return isGoingSamePage;
   };
 
   const handlePageChange = () => {
-    if (isNotGoingSamePage(href)) {
+    if (!isSameRoute(href)) {
       router.push(href);
     }
   };
   const handleSetHRef = (href) => {
-    setIsFunnyToggle(!isNotGoingSamePage(href));
+    setIsFunnyToggle(isSameRoute(href));
     setHRef(href);
   };
 
@@ -44,7 +42,7 @@ const AppProvider = ({ children }) => {
         togglePageAnimate,
         handleSetHRef,
         handlePageChange,
-        isNotGoingSamePage,
+        isSameRoute,
       }}
     >
       {children}

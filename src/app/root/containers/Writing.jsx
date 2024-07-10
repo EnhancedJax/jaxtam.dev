@@ -8,12 +8,12 @@ export default function Writing({ writing }) {
   return (
     <Link href={`/thoughts/${writing.slug}`}>
       <motion.div
-        className="w-full mb-4 border-[1px] rounded-lg p-2 border-cborder hover:bg-cborder hover:border-cdarkgray bg-cfg"
+        className="w-full mb-4 border-[1px] rounded-lg p-2  border-clborder dark:border-cdborder hover:bg-clborder hover:dark:bg-cdborder hover:border-cldarkgray hover:dark:border-cddarkgray  bg-clfg dark:bg-cdfg"
         whileHover={{ scale: 1.02, translateY: -4 }}
         whileTap={{ scale: 0.98, translateY: -2 }}
       >
         <div className="flex items-center gap-2 pt-1 pb-3 ml-1">
-          <Archive size={20} className="text-cgray" />
+          <Archive size={20} className=" text-clgray dark:text-cdgray" />
           <p className="text-base font-light">{writing.title}</p>
         </div>
         <img

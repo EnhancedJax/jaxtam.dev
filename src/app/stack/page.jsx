@@ -15,13 +15,13 @@ export default function Stack() {
           <div className="flex flex-col items-start justify-center gap-2 pl-3">
             <motion.h1
               variants={slideUp}
-              className="text-xl font-light text-white"
+              className="text-xl font-light text-clpg dark:text-cdpg"
             >
               Stack
             </motion.h1>
             <motion.div
               variants={slideUp}
-              className="text-lg font-light text-cgray"
+              className="text-lg font-light text-clgray dark:text-cdgray"
             >
               Tools and technologies I use.
             </motion.div>

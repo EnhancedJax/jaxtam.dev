@@ -14,7 +14,7 @@ export default function NoteDisplay() {
   return (
     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
       <div className="relative w-full h-full">
-        <div className="absolute z-30 flex flex-col items-center px-2 py-4 mt-4 ml-4 rounded-full shadow-lg border-[1px] border-cgray bg-cpg">
+        <div className="absolute z-30 flex flex-col items-center px-2 py-4 mt-4 ml-4 rounded-full shadow-lg border-[1px] border-clborder bg-clbg dark:border-cdgray dark:bg-cdpg">
           <Toolbar>
             {(ToolbarSlot) => {
               const {

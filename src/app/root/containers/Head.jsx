@@ -19,7 +19,7 @@ export default function Head() {
         variants={slideUp}
       >
         <div
-          className={`${DM_MONO_FAMILY.className} text-sm h-7 text-cdarkgray`}
+          className={`${DM_MONO_FAMILY.className} text-sm h-7  text-cldarkgray dark:text-cddarkgray`}
         >
           12 / 30 / 2005
         </div>
@@ -36,22 +36,26 @@ export default function Head() {
           className="flex flex-col items-center self-stretch justify-center gap-1"
           variants={slideUp}
         >
-          <div className="text-xl font-light text-white ">Jax Tam</div>
-          <div className="text-lg font-light text-cgray ">{TITLE_TEXT}</div>
+          <div className="text-xl font-light text-cpg ">Jax Tam</div>
+          <div className="text-lg font-light text-clgray dark:text-cdgray ">
+            {TITLE_TEXT}
+          </div>
         </motion.div>
         <motion.div
           className="flex items-center justify-start gap-4"
           variants={slideUp}
         >
-          <div className="w-2 h-2 rounded-full bg-cgreen animate-ping"></div>
-          <div className="absolute w-2 h-2 rounded-full bg-cgreen"></div>
-          <div className="text-base font-light text-cgray">{STATUS_TEXT}</div>
+          <div className="w-2 h-2 rounded-full bg-clgreen dark:bg-cdgreen animate-ping"></div>
+          <div className="absolute w-2 h-2 rounded-full bg-clgreen dark:bg-cdgreen"></div>
+          <div className="text-base font-light text-clgray dark:text-cdgray">
+            {STATUS_TEXT}
+          </div>
         </motion.div>
       </div>
       <SocialIcons />
       <ActionButtons />
       <motion.div
-        className={`${DM_MONO_FAMILY.className} text-sm text-center text-cdarkgray`}
+        className={`${DM_MONO_FAMILY.className} text-sm text-center  text-cldarkgray dark:text-cddarkgray`}
         variants={slideUp}
       >
         NT, HK ⋅ 22.2849° N, 114.1376° W

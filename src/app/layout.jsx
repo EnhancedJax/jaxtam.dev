@@ -19,9 +19,9 @@ export default function RootLayout({ children }) {
       <SpeedInsights />
       <AppProvider>
         <body
-          className={`${FAMILY.className} w-screen overflow-x-hidden h-screen text-cpg bg-cbg`}
+          className={`${FAMILY.className} w-screen overflow-x-hidden h-screen  text-clpg dark:text-cdpg  bg-clbg dark:bg-cdbg transition-colors`}
         >
-          <ThemeProvider attribute="class" enableSystem={false}>
+          <ThemeProvider attribute="class" enableSystem={true}>
             <NavBar />
             {children}
             <FunnyBackground />

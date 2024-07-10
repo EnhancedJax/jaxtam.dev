@@ -50,7 +50,7 @@ const Button = ({ open, icon, text }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.05, translateY: -2, color: "#EDEDED" }}
-      className="relative cursor-pointer text-cdarkgray"
+      className="relative cursor-pointer text-cldarkgray dark:text-cddarkgray"
       onClick={() => window.open(open)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

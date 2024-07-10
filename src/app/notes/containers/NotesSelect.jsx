@@ -23,7 +23,7 @@ export default function NotesSelect() {
         onChange={inputHandler}
         placeholder="Type to search by course code"
         type="text"
-        className="w-full p-4 bg-cborder rounded-lg border border-cborder flex-col justify-start items-start gap-2.5 flex text-cpg text-base font-light placeholder-cgray"
+        className="w-full p-4  bg-clborder dark:bg-cdborder rounded-lg border  border-clborder dark:border-cdborder flex-col justify-start items-start gap-2.5 flex  text-clpg dark:text-cdpg text-base font-light  placeholder-clgray dark:placeholder-cdgray"
       />
       <motion.div variants={slideUp}>
         <div className="flex flex-col w-full gap-4">
@@ -41,33 +41,35 @@ export default function NotesSelect() {
                   handleItemClick(item.node.code, item.node.pdf.url)
                 }
                 className={`group grow p-3 rounded-lg flex  ${
-                  selectedItem === item.node.code ? "bg-cfg" : "hover:bg-cfg"
+                  selectedItem === item.node.code
+                    ? " bg-clfg dark:bg-cdfg"
+                    : "hover:bg-clfg hover:dark:bg-cdfg"
                 }`}
               >
                 <div
                   className={`w-10 h-10 mr-4 ${
                     item.node.isWorkInProgress
                       ? "opacity-70 bg-red-500"
-                      : "bg-cborder"
+                      : " bg-clborder dark:bg-cdborder"
                   }  rounded-xl flex items-center justify-center ${
                     selectedItem === item.node.code
-                      ? "border-2 border-cgray"
+                      ? "border-2  border-clgray dark:border-cdgray"
                       : ""
                   }`}
                 >
                   <LucideIcon name={item.node.icon} size="1rem" color="#FFF" />
                 </div>
                 <div className="text-base font-light text-left grow">
-                  <div className="text-cpg">
+                  <div className=" text-clpg dark:text-cdpg">
                     {item.node.code} {item.node.isWorkInProgress ? "(WIP)" : ""}
                   </div>
-                  <div className="w-48 h-auto text-cdarkgray text-ellipsis">
+                  <div className="w-48 h-auto text-cldarkgray dark:text-cddarkgray text-ellipsis">
                     <p>{item.node.title}</p>
                   </div>
-                  <div className="group-hover:hidden text-cdarkgray">
+                  <div className="group-hover:hidden text-cldarkgray dark:text-cddarkgray">
                     {item.node.semester}
                   </div>
-                  <div className="hidden group-hover:block text-cdarkgray">
+                  <div className="hidden group-hover:block text-cldarkgray dark:text-cddarkgray">
                     Last updated:{" "}
                     <DateString
                       dateString={item.node.pdf.updatedAt}

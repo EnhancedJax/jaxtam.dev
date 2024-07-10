@@ -1,35 +1,63 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { CircleUser, Layers, NotebookText, PenLine, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useState } from "react";
 import { useAppContext } from "../app/provider";
-import LucideIcon from "./LucideIcon";
 import Tooltip from "./Tooltip";
 
 const NavBar = () => {
+  const { isSameRoute, pageAnimate, togglePageAnimate, handleSetHRef } =
+    useAppContext();
+  const { theme, setTheme } = useTheme();
+
+  const handleClick = (href) => {
+    if ((!isSameRoute(href) && pageAnimate) || isSameRoute(href)) {
+      // prevents double animation
+      handleSetHRef(href);
+      togglePageAnimate();
+    }
+  };
+
+  const handleToggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  const RouteItem = ({ href, icon }) => {
+    return (
+      <IconButton
+        isActive={isSameRoute(href)}
+        tooltip={href}
+        icon={icon}
+        handleClick={() => handleClick(href)}
+      />
+    );
+  };
+
   return (
-    <nav>
+    <nav className="relative">
       <ul
         id="navbar"
-        className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-3 border-t border-cborder bg-cbg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col"
+        className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-3 py-0 border-t border-clborder dark:border-cdborder bg-clbg dark:bg-cdbg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col lg:py-4"
       >
-        <Button href="/" icon="CircleUser"></Button>
-        <Button href="/notes" icon="NotebookText"></Button>
-        <Button href="/thoughts" icon="PenLine"></Button>
-        <Button href="/stack" icon="Layers"></Button>
+        <RouteItem href="/" icon={<CircleUser size="1.5rem" />} />
+        <RouteItem href="/notes" icon={<NotebookText size="1.5rem" />} />
+        <RouteItem href="/thoughts" icon={<PenLine size="1.5rem" />} />
+        <RouteItem href="/stack" icon={<Layers size="1.5rem" />} />
+        <ul className="absolute lg:bottom-4 right-4 lg:right-auto">
+          <IconButton
+            tooltip="Toggle dark mode"
+            icon={<Sun size="1.2rem" />}
+            handleClick={handleToggleTheme}
+          />
+        </ul>
       </ul>
     </nav>
   );
 };
 
-const Button = ({ href, icon }) => {
-  const activeColor = "#EDEDED";
-  const inactiveColor = "#707070";
-  const location = usePathname();
-  const isActive = location === href || location.startsWith(href + "/");
+const IconButton = ({ isActive, tooltip, handleClick, icon }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const { isNotGoingSamePage, pageAnimate, togglePageAnimate, handleSetHRef } =
-    useAppContext();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -44,23 +72,16 @@ const Button = ({ href, icon }) => {
       className="relative p-3 cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={() => {
-        if (
-          (isNotGoingSamePage(href) && pageAnimate) ||
-          !isNotGoingSamePage(href)
-        ) {
-          // prevents double animation
-          handleSetHRef(href);
-          togglePageAnimate();
-        }
-      }}
+      onClick={handleClick}
     >
-      <LucideIcon
-        name={icon}
-        size="1.5rem"
-        color={isActive ? activeColor : inactiveColor}
-      />
-      <Tooltip hoveredState={isHovered} text={href} direction="left" />
+      <div
+        className={
+          isActive ? "text-clpg dark:text-cdpg" : "text-cdgray dark:text-cdgray"
+        }
+      >
+        {icon}
+      </div>
+      <Tooltip hoveredState={isHovered} text={tooltip} direction="left" />
     </li>
   );
 };

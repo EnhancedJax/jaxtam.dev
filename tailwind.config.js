@@ -9,25 +9,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        clBg: "#232323",
-        clFg: "#282828",
-        clBorder: "#343434",
-        clDarkgray: "#707070",
-        clGray: "#A0A0A0",
-        clPg: "#EDEDED", //paragraph
-        clGreen: "#34D399",
-        clBlue: "#35CEFF",
-        clYellow: "#FFC657",
+        clbg: "#f5f5f5",
+        clfg: "#ededed",
+        clborder: "#E5E7EB",
+        cldarkgray: "#4B5563",
+        clgray: "#6B7280",
+        clpg: "#374151", //paragraph
+        clgreen: "#10B981",
+        clblue: "#3B82F6",
+        clyellow: "#FBBF24",
         /* ----------- Dark theme ----------- */
-        cdBg: "#232323",
-        cdFg: "#282828",
-        cdBorder: "#343434",
-        cdDarkgray: "#707070",
-        cdGray: "#A0A0A0",
-        cdPg: "#EDEDED", //paragraph
-        cdGreen: "#34D399",
-        cdBlue: "#35CEFF",
-        cdYellow: "#FFC657",
+        cdbg: "#232323",
+        cdfg: "#282828",
+        cdborder: "#343434",
+        cddarkgray: "#707070",
+        cdgray: "#A0A0A0",
+        cdpg: "#EDEDED", //paragraph
+        cdgreen: "#34D399",
+        cdblue: "#35CEFF",
+        cdyellow: "#FFC657",
       },
     },
     fontSize: {
