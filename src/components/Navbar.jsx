@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAppContext } from "../app/provider";
@@ -10,9 +9,13 @@ import ROUTES from "../app/routes";
 import Tooltip from "./Tooltip";
 
 const NavBar = () => {
-  const { isSameRoute, pageAnimate, togglePageAnimate, handleSetHRef } =
-    useAppContext();
-  const { theme, setTheme } = useTheme();
+  const {
+    isSameRoute,
+    pageAnimate,
+    togglePageAnimate,
+    handleSetHRef,
+    handleToggleTheme,
+  } = useAppContext();
   const pathName = usePathname();
   const [localRoute, setLocalRoute] = useState(pathName);
 
@@ -25,15 +28,11 @@ const NavBar = () => {
     }
   };
 
-  const handleToggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
-
   return (
     <nav className="relative">
       <ul
         id="navbar"
-        className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-3 py-0 border-t border-clborder dark:border-cdborder bg-clbg dark:bg-cdbg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col lg:py-4"
+        className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-3 py-0 border-t border-border bg-bg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col lg:py-4"
       >
         {ROUTES.map((route, index) => (
           <IconButton
@@ -45,7 +44,7 @@ const NavBar = () => {
           >
             {localRoute === route.href && (
               <motion.div
-                className="absolute top-0 w-full h-full lg:w-px bg-clpg dark:bg-cdpg lg:-right-2 !opacity-10 lg:!opacity-100 right-0 rounded-lg"
+                className="absolute top-0 w-full h-full lg:w-px bg-pg lg:-right-2 !opacity-10 lg:!opacity-100 right-0 rounded-lg"
                 layoutId="line"
               />
             )}
@@ -88,11 +87,7 @@ const IconButton = ({
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      <div
-        className={
-          isActive ? "text-clpg dark:text-cdpg" : "text-cdgray dark:text-cdgray"
-        }
-      >
+      <div className={isActive ? "text-pg " : "text-gray "}>
         <IconComponent size={iconSize} />
       </div>
       {children}

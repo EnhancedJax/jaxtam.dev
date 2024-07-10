@@ -1,7 +1,9 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useContext, useState } from "react";
+import { THEMES } from "../utils/constants";
 const AppContext = createContext();
 const useAppContext = () => useContext(AppContext);
 
@@ -9,6 +11,16 @@ const AppProvider = ({ children }) => {
   const [pageAnimate, setPageAnimate] = useState(false);
   const [href, setHRef] = useState(null);
   const [isFunnyToggle, setIsFunnyToggle] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  const handleToggleTheme = () => {
+    console.log(theme);
+    const currentThemeIndex = THEMES.indexOf(theme);
+    const nextThemeIndex = (currentThemeIndex + 1) % THEMES.length;
+    const nextTheme = THEMES[nextThemeIndex];
+    console.log("Switching theme to", nextTheme);
+    setTheme(nextTheme);
+  };
 
   const togglePageAnimate = () => {
     setPageAnimate(!pageAnimate); // PageWrapper will then call handlePageChange after animation
@@ -39,10 +51,11 @@ const AppProvider = ({ children }) => {
       value={{
         pageAnimate,
         isFunnyToggle,
+        isSameRoute,
         togglePageAnimate,
         handleSetHRef,
         handlePageChange,
-        isSameRoute,
+        handleToggleTheme,
       }}
     >
       {children}

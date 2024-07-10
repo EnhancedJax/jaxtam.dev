@@ -6,9 +6,9 @@ export const LangItem = ({ name, prog, level }) => {
   const progColor = ["#FFC657", "#35CEFF", "#34D399"];
   return (
     <div className="flex items-center justify-between w-full">
-      <p className="text-base font-light text-clpg dark:text-cdpg">{name}</p>
+      <p className="text-base font-light text-pg ">{name}</p>
       <div className="inline-flex items-center gap-3 sm:gap-4">
-        <div className="justify-end hidden w-32 h-2 rounded-lg sm:inline-flex bg-clborder dark:bg-cdborder">
+        <div className="justify-end hidden w-32 h-2 rounded-lg sm:inline-flex bg-border ">
           <div
             className="h-full rounded-lg"
             style={{
@@ -45,15 +45,13 @@ export const LangItem = ({ name, prog, level }) => {
 
 export const SkillItem = ({ icon, name, description }) => {
   return (
-    <div className="basis-[264px] grow h-[111px] p-4  bg-clfg dark:bg-cdfg rounded-lg justify-center items-center inline-flex gap-3">
+    <div className="basis-[264px] grow h-[111px] p-4  bg-fg rounded-lg justify-center items-center inline-flex gap-3">
       <div className="flex items-center justify-center w-[32px] px-2">
         <LucideIcon name={icon} size={32} />
       </div>
       <div className="inline-flex flex-col items-start justify-center grow shrink basis-0">
         <div className="text-base font-light text-white">{name}</div>
-        <div className="text-sm font-light text-clgray dark:text-cdgray">
-          {description}
-        </div>
+        <div className="text-sm font-light text-gray ">{description}</div>
       </div>
     </div>
   );
@@ -61,19 +59,15 @@ export const SkillItem = ({ icon, name, description }) => {
 
 export const SoftwareItem = ({ name, type, icon }) => {
   return (
-    <div className="basis-[140px] grow h-[230px] p-3  bg-clfg dark:bg-cdfg rounded-lg flex-col gap-2.5 flex">
+    <div className="basis-[140px] grow h-[230px] p-3  bg-fg rounded-lg flex-col gap-2.5 flex">
       <div className="justify-center items-center gap-2.5 flex w-full h-full">
         <img className="w-[72px]" src={`./images/${icon}.webp`} />
       </div>
       <div className="flex flex-col items-start justify-center gap-2">
-        <div className="p-1.5 rounded-md border  border-clborder dark:border-cdborder justify-center items-start inline-flex">
-          <div className="text-xs font-light text-clgray dark:text-cdgray">
-            {type}
-          </div>
+        <div className="p-1.5 rounded-md border  border-border justify-center items-start inline-flex">
+          <div className="text-xs font-light text-gray ">{type}</div>
         </div>
-        <div className="text-base font-light text-clpg dark:text-cdpg">
-          {name}
-        </div>
+        <div className="text-base font-light text-pg ">{name}</div>
       </div>
     </div>
   );

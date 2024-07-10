@@ -23,7 +23,7 @@ export default function NotesSelect() {
         onChange={inputHandler}
         placeholder="Type to search by course code"
         type="text"
-        className="w-full p-4  bg-clborder dark:bg-cdborder rounded-lg border  border-clborder dark:border-cdborder flex-col justify-start items-start gap-2.5 flex  text-clpg dark:text-cdpg text-base font-light  placeholder-clgray dark:placeholder-cdgray"
+        className="w-full p-4  bg-border rounded-lg border  border-border flex-col justify-start items-start gap-2.5 flex  text-pg text-base font-light  placeholder-gray "
       />
       <motion.div variants={slideUp}>
         <div className="flex flex-col w-full gap-4">
@@ -42,38 +42,38 @@ export default function NotesSelect() {
                 }
                 className={`group grow p-3 rounded-lg flex  ${
                   selectedItem === item.node.code
-                    ? " bg-clfg dark:bg-cdfg"
-                    : "hover:bg-clfg hover:dark:bg-cdfg"
+                    ? " bg-fg "
+                    : "hover:bg-fg hover:"
                 }`}
               >
                 <div
                   className={`w-10 h-10 mr-4 ${
                     item.node.isWorkInProgress
                       ? "opacity-70 bg-red-500"
-                      : " bg-clborder dark:bg-cdborder"
+                      : " bg-border "
                   }  rounded-xl flex items-center justify-center ${
                     selectedItem === item.node.code
-                      ? "border-2  border-clgray dark:border-cdgray"
+                      ? "border-2  border-gray "
                       : ""
                   }`}
                 >
                   <LucideIcon
                     name={item.node.icon}
                     size="1rem"
-                    className="text-clpg dark:text-cdpg"
+                    className="text-pg "
                   />
                 </div>
                 <div className="text-base font-light text-left grow">
-                  <div className=" text-clpg dark:text-cdpg">
+                  <div className=" text-pg ">
                     {item.node.code} {item.node.isWorkInProgress ? "(WIP)" : ""}
                   </div>
-                  <div className="w-48 h-auto text-cldarkgray dark:text-cddarkgray text-ellipsis">
+                  <div className="w-48 h-auto text-darkgray text-ellipsis">
                     <p>{item.node.title}</p>
                   </div>
-                  <div className="group-hover:hidden text-cldarkgray dark:text-cddarkgray">
+                  <div className="group-hover:hidden text-darkgray ">
                     {item.node.semester}
                   </div>
-                  <div className="hidden group-hover:block text-cldarkgray dark:text-cddarkgray">
+                  <div className="hidden group-hover:block text-darkgray ">
                     Last updated:{" "}
                     <DateString
                       dateString={item.node.pdf.updatedAt}

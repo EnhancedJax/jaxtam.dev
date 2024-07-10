@@ -23,21 +23,17 @@ const ActionButtons = () => {
         variants={slideLeft}
         initial="hidden"
         animate={slide ? "visible" : "hidden"}
-        className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-white rounded-lg justify-center items-center gap-2.5 flex border border-clborder dark:border-none"
+        className="self-stretch h-[38px] px-11 py-2 cursor-pointer bg-pg rounded-lg justify-center items-center gap-2.5 flex border border-border "
         whileHover={{ scale: 1.05, translateY: -4 }}
         whileTap={{ scale: 0.95, translateY: -2 }}
         onClick={() => window.open("mailto:jax.lytam@gmail.com")}
       >
-        <div className="text-base font-light text-clpg dark:text-cdbg">
-          Contact me
-        </div>
-        <Mail className="w-5 h-5 text-cldarkgray dark:text-cddarkgray" />
+        <div className="text-base font-light text-bg ">Contact me</div>
+        <Mail className="w-5 h-5 text-gray " />
       </motion.div>
-      <div className="hidden font-light text-clgray dark:text-cdgray md:block">
-        or
-      </div>
+      <div className="hidden font-light text-gray md:block">or</div>
       <motion.div
-        className="self-stretch h-[38px] px-11 py-2 cursor-pointer  bg-clfg dark:bg-cdfg rounded-lg border  border-clborder dark:border-cdborder justify-center items-center gap-2.5 hidden md:flex"
+        className="self-stretch h-[38px] px-11 py-2 cursor-pointer  bg-fg rounded-lg border  border-border justify-center items-center gap-2.5 hidden md:flex"
         variants={slideRight}
         initial="hidden"
         animate={slide ? "visible" : "hidden"}
@@ -45,13 +41,10 @@ const ActionButtons = () => {
         whileTap={{ scale: 0.95, translateY: -2 }}
         onClick={() => navigator.clipboard.writeText("jax.lytam@gmail.com")}
       >
-        <div
-          className="text-base font-light text-clpg dark:text-cdpg"
-          variants={slideUp}
-        >
+        <div className="text-base font-light text-pg " variants={slideUp}>
           Copy email
         </div>
-        <Copy className="w-5 h-5 text-clpg dark:text-cddarkgray" />
+        <Copy className="w-5 h-5 text-gray " />
       </motion.div>
     </motion.div>
   );

@@ -9,25 +9,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        clbg: "#f5f5f5",
-        clfg: "#ededed",
-        clborder: "#E5E7EB",
-        cldarkgray: "#4B5563",
-        clgray: "#6B7280",
-        clpg: "#374151", //paragraph
-        clgreen: "#10B981",
-        clblue: "#3B82F6",
-        clyellow: "#FBBF24",
-        /* ----------- Dark theme ----------- */
-        cdbg: "#232323",
-        cdfg: "#282828",
-        cdborder: "#343434",
-        cddarkgray: "#707070",
-        cdgray: "#A0A0A0",
-        cdpg: "#EDEDED", //paragraph
-        cdgreen: "#34D399",
-        cdblue: "#35CEFF",
-        cdyellow: "#FFC657",
+        bg: "var(--bg)",
+        fg: "var(--fg)",
+        border: "var(--border)",
+        darkgray: "var(--dark-gray)",
+        gray: "var(--gray)",
+        pg: "var(--pg)",
+        green: "#10b981",
+        blue: "#3b82f6",
+        yellow: "#fbbf24",
       },
     },
     fontSize: {

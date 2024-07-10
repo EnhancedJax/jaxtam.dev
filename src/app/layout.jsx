@@ -3,7 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "next-themes";
 import FunnyBackground from "../components/FunnyBackground";
 import NavBar from "../components/Navbar";
-import { FAMILY } from "../utils/constants";
+import { FAMILY, THEMES } from "../utils/constants";
 import "./globals.css";
 import { AppProvider } from "./provider";
 
@@ -17,17 +17,17 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <Analytics />
       <SpeedInsights />
-      <AppProvider>
-        <body
-          className={`${FAMILY.className} w-screen overflow-x-hidden h-screen  text-clpg dark:text-cdpg  bg-clbg dark:bg-cdbg transition-colors`}
-        >
-          <ThemeProvider attribute="class" enableSystem={true}>
+      <body
+        className={`${FAMILY.className} w-screen overflow-x-hidden h-screen  text-pg  bg-bg transition-colors`}
+      >
+        <ThemeProvider attribute="class" themes={THEMES}>
+          <AppProvider>
             <NavBar />
             {children}
             <FunnyBackground />
-          </ThemeProvider>
-        </body>
-      </AppProvider>
+          </AppProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

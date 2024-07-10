@@ -13,7 +13,7 @@ const MarkdownFormatted = ({ children, className }) => {
           const { node, ...rest } = props;
           return (
             <h1
-              className="mt-2 mb-5 text-lg font-light  text-clgray dark:bg-cdgray"
+              className="mt-2 mb-5 text-lg font-light  text-gray "
               {...rest}
             />
           );
@@ -22,7 +22,7 @@ const MarkdownFormatted = ({ children, className }) => {
           const { node, ...rest } = props;
           return (
             <h2
-              className="mt-2 mb-5 font-light text-md  text-clgray dark:bg-cdgray"
+              className="mt-2 mb-5 font-light text-md  text-gray "
               {...rest}
             />
           );
@@ -31,7 +31,7 @@ const MarkdownFormatted = ({ children, className }) => {
           const { node, ...rest } = props;
           return (
             <h3
-              className="mt-2 mb-5 text-base font-light  text-clgray dark:bg-cdgray"
+              className="mt-2 mb-5 text-base font-light  text-gray "
               {...rest}
             />
           );
@@ -50,12 +50,7 @@ const MarkdownFormatted = ({ children, className }) => {
         },
         hr(props) {
           const { node, ...rest } = props;
-          return (
-            <hr
-              className="mb-5  border-cldarkgray dark:bg-cddarkgray"
-              {...rest}
-            />
-          );
+          return <hr className="mb-5  border-darkgray " {...rest} />;
         },
         ol(props) {
           const { node, ...rest } = props;
@@ -81,7 +76,7 @@ const MarkdownFormatted = ({ children, className }) => {
           const { children, className, node, ...rest } = props;
           const match = /language-(\w+)/.exec(className || "");
           return match ? (
-            <div className="rounded-lg overflow-clip">
+            <div className="rounded-lg overflow-ip">
               <SyntaxHighlighter
                 {...rest}
                 children={String(children).replace(/\n$/, "")}
@@ -90,7 +85,7 @@ const MarkdownFormatted = ({ children, className }) => {
             </div>
           ) : (
             <code
-              className={`border-[1px] text-sm p-1  border-clborder dark:bg-cdborder rounded-lg ${DM_MONO_FAMILY.className}`}
+              className={`border-[1px] text-sm p-1  border-border rounded-lg ${DM_MONO_FAMILY.className}`}
               {...rest}
             >
               {children}

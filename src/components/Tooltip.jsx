@@ -34,7 +34,7 @@ const Tooltip = ({ direction, hoveredState, text }) => {
           animate="visible"
           exit="hidden"
           style={offset[direction]}
-          className="absolute z-10 hidden p-1 text-xs font-light border rounded-lg text-clpg dark:text-cdpg border-clborder dark:border-cdborder bg-clfg dark:bg-cdfg lg:block"
+          className="absolute z-10 hidden p-1 text-xs font-light border rounded-lg text-pg border-border bg-fg lg:block"
         >
           <span className=" text-nowrap">{text}</span>
         </motion.div>

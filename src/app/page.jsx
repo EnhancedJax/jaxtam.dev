@@ -36,7 +36,7 @@ export default async function Home() {
               <Writing key={index} writing={writing.node} />
             ))}
           </StaggerElement>
-          <MarkdownFormatted className="mt-20 text-sm text-clgray dark:text-cdgray">
+          <MarkdownFormatted className="mt-20 text-sm text-gray ">
             {FOOTER_MD}
           </MarkdownFormatted>
         </div>

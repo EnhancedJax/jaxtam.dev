@@ -9,7 +9,7 @@ const SectionPointer = ({ children, showWhenSmall = true }) => {
       variants={slideUp}
       className={`lg:absolute lg:block ${showWhenSmall ? "" : "hidden"}`}
     >
-      <p className="mb-4 text-base font-light lg:mb-0 lg:text-right lg:absolute text-clgray dark:text-cdgray lg:right-10">
+      <p className="mb-4 text-base font-light lg:mb-0 lg:text-right lg:absolute text-gray lg:right-10">
         {children}
       </p>
     </motion.h2>
