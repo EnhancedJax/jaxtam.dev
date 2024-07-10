@@ -76,7 +76,7 @@ const MarkdownFormatted = ({ children, className }) => {
           const { children, className, node, ...rest } = props;
           const match = /language-(\w+)/.exec(className || "");
           return match ? (
-            <div className="rounded-lg overflow-ip">
+            <div className="rounded-lg overflow-clip">
               <SyntaxHighlighter
                 {...rest}
                 children={String(children).replace(/\n$/, "")}
