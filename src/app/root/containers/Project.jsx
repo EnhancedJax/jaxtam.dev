@@ -1,30 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Link } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
 
 export default function Project({ key, proj }) {
-  const projectRef = useRef(null);
-
-  const handleMouseEnter = () => {
-    if (window.scrollY === 0 && projectRef.current) {
-      const elementPosition = projectRef.current.getBoundingClientRect().top;
-      const offsetPosition = elementPosition - 20; // 20px offset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <motion.div
       onClick={() => window.open(proj.link)}
       key={key}
-      onMouseEnter={handleMouseEnter}
-      ref={projectRef}
       className="w-full mb-4 flex border-[1px] rounded-lg p-6 border-border hover:bg-border hover:hover:border-darkgray hover: bg-fg cursor-pointer flex-col md:flex-row relative overflow-clip"
       whileHover={{ scale: 1.02, translateY: -4 }}
       whileTap={{ scale: 0.98, translateY: -2 }}
@@ -39,14 +23,21 @@ export default function Project({ key, proj }) {
       </div>
       <div className="relative flex flex-col justify-between">
         <div>
-          <p className="text-base font-light">{proj.name}</p>
+          <p className="text-base font-light ">
+            {proj.name}
+            <Link
+              className="inline-block ml-2 -mt-1 text-gray"
+              strokeWidth={2}
+              size={12}
+            />
+          </p>
           <p className="text-base font-light text-gray ">{proj.description}</p>
         </div>
         <div className="flex flex-wrap gap-2 mt-2">
           {proj.techs.map((tech, index) => (
             <div
               key={index}
-              className="px-3 overflow-hidden text-sm bg-opacity-50 rounded-full  bg-green  text-green text-nowrap text-ellipsis max-w-[90%]"
+              className="px-3 overflow-hidden text-sm bg-opacity-30 rounded-full  bg-green  text-green text-nowrap text-ellipsis max-w-[90%]"
             >
               {tech}
             </div>

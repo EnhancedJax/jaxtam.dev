@@ -1,8 +1,20 @@
 "use client";
 
+import { useTheme } from "next-themes";
+import { DARKTHEMES, THEMES } from "../utils/constants";
+
 const LogoLoader = () => {
+  const { theme } = useTheme();
   return (
-    <div className="invert dark:invert-0">
+    <div
+      className={
+        theme
+          ? DARKTHEMES.includes(THEMES.findIndex((t) => t === theme))
+            ? ""
+            : "invert"
+          : ""
+      }
+    >
       <style jsx>{`
         @keyframes coreanim {
           0% {

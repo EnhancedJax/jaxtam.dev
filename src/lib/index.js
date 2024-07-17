@@ -126,7 +126,7 @@ export const getFeaturedPostSlug = async () => {
   return result.postsConnection.edges[0].node.slug;
 };
 
-export const getLatest3Work = async () => {
+export const getHomePage = async () => {
   const query = gql`
     query GetLatest3Work {
       postsConnection(
@@ -144,17 +144,6 @@ export const getLatest3Work = async () => {
           }
         }
       }
-    }
-  `;
-
-  const result = await request(API_URL, query);
-
-  return result.postsConnection.edges;
-};
-
-export const getProjects = async () => {
-  const query = gql`
-    query GetProjects {
       projectsConnection(first: 10, orderBy: monthYear_DESC) {
         edges {
           node {
@@ -169,10 +158,27 @@ export const getProjects = async () => {
           }
         }
       }
+      experiencesConnection(first: 10, orderBy: startDate_DESC) {
+        edges {
+          node {
+            company
+            position
+            description
+            tags
+            link
+            timeline
+            startDate
+          }
+        }
+      }
     }
   `;
 
   const result = await request(API_URL, query);
 
-  return result.projectsConnection.edges;
+  return {
+    latestWorks: result.postsConnection.edges,
+    projects: result.projectsConnection.edges,
+    experiences: result.experiencesConnection.edges,
+  };
 };

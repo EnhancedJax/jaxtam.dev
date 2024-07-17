@@ -7,9 +7,11 @@ const SectionPointer = ({ children, showWhenSmall = true }) => {
   return (
     <motion.h2
       variants={slideUp}
-      className={`lg:absolute lg:block ${showWhenSmall ? "" : "hidden"}`}
+      className={`sticky border-b border-border -top-px z-10 mb-3 py-4 bg-bg lg:absolute lg:block lg:p-0 lg:top-auto lg:border-b-0 transition-colors ${
+        showWhenSmall ? "" : "hidden"
+      }`}
     >
-      <p className="mb-4 text-base font-light lg:mb-0 lg:text-right lg:absolute text-gray lg:right-10">
+      <p className="font-light tracking-widest uppercase text-gray lg:tracking-normal lg:normal-case lg:text-right lg:absolute lg:right-10">
         {children}
       </p>
     </motion.h2>

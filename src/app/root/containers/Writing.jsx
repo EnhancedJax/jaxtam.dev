@@ -13,7 +13,7 @@ export default function Writing({ writing }) {
         whileTap={{ scale: 0.98, translateY: -2 }}
       >
         <div className="flex items-center gap-2 pt-1 pb-3 ml-1">
-          <Archive size={20} className=" text-gray " />
+          <Archive size={20} strokeWidth={1.75} className=" text-gray" />
           <p className="text-base font-light">{writing.title}</p>
         </div>
         <img

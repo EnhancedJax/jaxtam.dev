@@ -1,12 +1,10 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "next-themes";
-import { Suspense } from "react";
 import FunnyBackground from "../components/FunnyBackground";
 import NavBar from "../components/Navbar";
 import { FAMILY, THEMES } from "../utils/constants";
 import "./globals.css";
-import Loading from "./loading";
 import { AppProvider } from "./provider";
 
 export const metadata = {
@@ -25,7 +23,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class" themes={THEMES}>
           <AppProvider>
             <NavBar />
-            <Suspense fallback={<Loading />}>{children}</Suspense>
+            {children}
             <FunnyBackground />
           </AppProvider>
         </ThemeProvider>

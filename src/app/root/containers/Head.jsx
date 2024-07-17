@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { slideUp } from "../../../utils/animations";
 import {
@@ -12,8 +13,19 @@ import ActionButtons from "./ActionButtons";
 import SocialIcons from "./SocialIcons";
 
 export default function Head() {
+  const { theme } = useTheme();
+
   return (
-    <div className="flex flex-col items-center self-stretch gap-4">
+    <div className="relative flex flex-col items-center self-stretch gap-4">
+      {theme === "tailwind" && (
+        <div className="absolute flex justify-center flex-none w-screen overflow-hidden h-max -top-10 -z-10">
+          <img
+            src="/images/tailwindbg.png"
+            alt="bg"
+            className="w-[90rem] flex-none max-w-none"
+          />
+        </div>
+      )}
       <motion.div
         className="flex flex-col items-center self-stretch gap-4"
         variants={slideUp}
