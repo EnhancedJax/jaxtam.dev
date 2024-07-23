@@ -9,7 +9,7 @@ export default function Project({ key, proj }) {
     <motion.div
       onClick={() => window.open(proj.link)}
       key={key}
-      className="w-full mb-4 flex border-[1px] rounded-lg p-6 border-border hover:bg-border hover:hover:border-darkgray hover: bg-fg cursor-pointer flex-col md:flex-row relative overflow-clip"
+      className="w-full mb-4 flex border-[1px] rounded-lg p-6 border-border hover:bg-bordero hover:border-darkgray bg-fgo backdrop-blur-md cursor-pointer flex-col md:flex-row relative overflow-clip"
       whileHover={{ scale: 1.02, translateY: -4 }}
       whileTap={{ scale: 0.98, translateY: -2 }}
     >

@@ -23,7 +23,7 @@ export default function NotesSelect() {
         onChange={inputHandler}
         placeholder="Type to search by course code"
         type="text"
-        className="w-full p-4  bg-border rounded-lg border  border-border flex-col justify-start items-start gap-2.5 flex  text-pg text-base font-light  placeholder-gray "
+        className="w-full p-4  bg-border rounded-lg border  border-border flex-col justify-start items-start gap-2.5 flex  text-pg text-base font-light  placeholder-darkgray  focus:outline-none"
       />
       <motion.div variants={slideUp}>
         <div className="flex flex-col w-full gap-4">
@@ -64,7 +64,7 @@ export default function NotesSelect() {
                   />
                 </div>
                 <div className="text-base font-light text-left grow">
-                  <div className=" text-pg ">
+                  <div className=" text-pg">
                     {item.node.code} {item.node.isWorkInProgress ? "(WIP)" : ""}
                   </div>
                   <div className="w-48 h-auto text-darkgray text-ellipsis">

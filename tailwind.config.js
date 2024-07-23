@@ -11,7 +11,9 @@ module.exports = {
       colors: {
         bg: "var(--bg)",
         fg: "var(--fg)",
+        fgo: "var(--fgo)",
         border: "var(--border)",
+        bordero: "var(--bordero)",
         darkgray: "var(--dark-gray)",
         gray: "var(--gray)",
         pg: "var(--pg)",

@@ -20,11 +20,48 @@ img {
   transform: scale(0.95) translateY(0);
 }
 
+.wave {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 :root {
   /* Light theme (default) */
   --bg: #f5f5f5;
   --fg: #ededed;
+  --fgo: #e8e8e880;
   --border: #e5e7eb;
+  --bordero: #dadde480;
   --dark-gray: #4b5563;
   --gray: #6b7280;
   --pg: #374151;
@@ -33,7 +70,9 @@ img {
 .dark {
   --bg: #232323;
   --fg: #282828;
+  --fgo: #29292980;
   --border: #343434;
+  --bordero: #363636a9;
   --dark-gray: #707070;
   --gray: #a0a0a0;
   --pg: #ededed;
@@ -42,7 +81,9 @@ img {
 .desert {
   --bg: #fdf6e3;
   --fg: #eee8d5;
-  --border: #93a1a1;
+  --fgo: #e4dfce80;
+  --border: #93a1a180;
+  --bordero: #93a1a180;
   --dark-gray: #657b83;
   --gray: #839496;
   --pg: #586e75;
@@ -51,7 +92,9 @@ img {
 .tailwind {
   --bg: #0e172a;
   --fg: #171f32;
+  --fgo: #1d253980;
   --border: #2e394d;
+  --bordero: #313d53a9;
   --dark-gray: rgb(100 116 139);
   --gray: #94a3b8;
   --pg: #eee;
