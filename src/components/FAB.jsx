@@ -11,15 +11,14 @@ export default function FAB() {
   const handleClick = async () => {
     if (clicked || isLoading) return;
     setIsLoading(true);
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("Waves")
-      .insert([{ created_at: new Date().toISOString() }])
-      .select();
+      .insert([{ created_at: new Date().toISOString() }]);
 
     if (error) {
       console.error("Error inserting data:", error);
     } else {
-      console.log("Data inserted successfully:", data);
+      console.log("Sent successfully!");
     }
     setClicked(true);
     setIsLoading(false);
