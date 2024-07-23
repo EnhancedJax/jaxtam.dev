@@ -19,6 +19,7 @@ export default function Writing({ writing }) {
         <img
           src={writing.heroImage.url}
           className="object-cover w-full h-64 rounded-md"
+          alt={writing.heroImage.title}
         />
       </motion.div>
     </Link>

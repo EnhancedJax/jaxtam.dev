@@ -5,7 +5,7 @@ import { Undo2 } from "lucide-react";
 import Link from "next/link";
 import PageWrapper from "../../components/PageWrapper";
 import RegularLayout from "../../components/RegularLayout";
-import { slideLeft, slideUp, slideUpStagger } from "../../utils/animations";
+import { slideLeft, slideUp, staggerParent } from "../../utils/animations";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <RegularLayout>
         <motion.div
           className="flex flex-col items-center justify-center gap-4"
-          variants={slideUpStagger}
+          variants={staggerParent()}
           initial="hidden"
           animate="visible"
           exit="hidden"

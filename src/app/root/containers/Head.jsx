@@ -38,6 +38,7 @@ export default function Head() {
         <Image
           className="w-[72px] h-[72px] rounded-full"
           src="/images/headericon.jpg"
+          priority
           width="72"
           height="72"
           alt="Avatar"

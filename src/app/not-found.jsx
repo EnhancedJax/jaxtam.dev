@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { Undo2 } from "lucide-react";
 import Link from "next/link";
 import LogoLoader from "../components/LogoLoader";
-import { slideLeft, slideUp, slideUpStagger } from "../utils/animations";
+import { slideLeft, slideUp, staggerParent } from "../utils/animations";
 
 export default function Home() {
   return (
     <motion.div
       className="flex flex-col items-center justify-center w-full h-full gap-4"
-      variants={slideUpStagger}
+      variants={staggerParent()}
       initial="hidden"
       animate="visible"
       exit="hidden"

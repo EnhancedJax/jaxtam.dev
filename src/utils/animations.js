@@ -27,17 +27,19 @@ export const slideRight = {
   },
 };
 
-export const slideUpStagger = {
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      duration: 0.5,
+export const staggerParent = (staggerDelay = 0.12, duration = 0.5) => {
+  return {
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: staggerDelay,
+        duration: duration,
+      },
     },
-  },
-  hidden: {
-    opacity: 0,
-  },
+    hidden: {
+      opacity: 0,
+    },
+  };
 };
 
 export const fadeIn = {

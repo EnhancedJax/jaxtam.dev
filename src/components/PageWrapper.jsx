@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useAppContext } from "../app/provider";
-import { slideUpStagger } from "../utils/animations";
+import { staggerParent } from "../utils/animations";
 
 export default function PageWrapper({ children, ...props }) {
   const { togglePageAnimate, pageAnimate, handlePageChange, isFunnyToggle } =
@@ -24,7 +24,7 @@ export default function PageWrapper({ children, ...props }) {
     <motion.div
       className="items-center justify-center mb-16 lg:mb-0 lg:ml-16"
       style={{ display: hide ? "none" : "flex" }}
-      variants={slideUpStagger}
+      variants={staggerParent(0.08)}
       initial="hidden"
       animate={pageAnimate ? "visible" : "hidden"}
       exit="hidden"

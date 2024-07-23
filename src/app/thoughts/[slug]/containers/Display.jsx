@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Date from "../../../../components/DateString";
 import SidebarLayout from "../../../../components/SidebarLayout";
-import { slideUp, slideUpStagger } from "../../../../utils/animations";
+import { slideUp, staggerParent } from "../../../../utils/animations";
 
 import MarkdownFormatted from "../../../../components/MarkdownFormatted";
 
@@ -12,7 +12,7 @@ const Content = ({ thisPost }) => {
     <SidebarLayout>
       <motion.div
         className="w-full text-base font-light"
-        variants={slideUpStagger}
+        variants={staggerParent()}
         initial="hidden"
         animate="visible"
         exit="hidden"

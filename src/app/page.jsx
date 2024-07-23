@@ -7,6 +7,7 @@ import { getHomePage } from "../lib/index";
 import { slideSpring } from "../utils/animations";
 import { ABOUT_MD, FOOTER_MD } from "../utils/constants";
 import Experience from "./root/containers/Experience";
+import Flair from "./root/containers/Flair";
 import Head from "./root/containers/Head";
 import Project from "./root/containers/Project";
 import Writing from "./root/containers/Writing";
@@ -29,6 +30,7 @@ export default async function Home() {
             {experiences.map((exp, index) => (
               <Experience key={index} exp={exp.node} />
             ))}
+            <Flair style={{ top: "40%" }} />
             <SectionPointer>Projects</SectionPointer>
             {projects.map((proj, index) => (
               <Project key={index} proj={proj.node} />
