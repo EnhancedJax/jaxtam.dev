@@ -5,7 +5,12 @@ import { slideSpring } from "../utils/animations";
 
 // PARENT MUST BE RELATIVE
 
-const Tooltip = ({ direction, hoveredState, text }) => {
+const Tooltip = ({
+  direction = "up",
+  hoveredState = false,
+  text = "",
+  isHiddenResponsive = false,
+}) => {
   const offset = {
     left: {
       top: "25%",
@@ -13,10 +18,10 @@ const Tooltip = ({ direction, hoveredState, text }) => {
     },
     right: {
       top: "25%",
-      right: "4rem",
+      right: "calc(100% + 1rem)",
     },
     up: {
-      bottom: "2rem",
+      bottom: "calc(100% + 1rem)",
       left: `-${text.length / 3}ch`,
     },
     down: {
@@ -34,7 +39,9 @@ const Tooltip = ({ direction, hoveredState, text }) => {
           animate="visible"
           exit="hidden"
           style={offset[direction]}
-          className="absolute z-10 hidden p-1 text-xs font-light border rounded-lg text-pg border-border bg-fg lg:block"
+          className={`absolute z-10 p-1 text-xs font-light border rounded-lg text-pg border-border bg-fg ${
+            isHiddenResponsive ? "hidden lg:block" : ""
+          }`}
         >
           <span className=" text-nowrap">{text}</span>
         </motion.div>
