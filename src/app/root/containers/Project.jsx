@@ -13,8 +13,9 @@ export default function Project({ key, proj }) {
       whileHover={{ scale: 1.02, translateY: -4 }}
       whileTap={{ scale: 0.98, translateY: -2 }}
     >
-      <div className="absolute top-0 left-0 object-cover w-full h-full mr-6 rounded-md  blur-sm opacity-10 overflow-clip md:relative md:min-w-48 md:w-auto md:h-36 md:blur-none md:opacity-100">
+      <div className="absolute top-0 left-0 w-full h-full mr-6 rounded-md blur-sm opacity-10 overflow-clip md:relative md:min-w-48 md:w-auto md:h-36 md:blur-none md:opacity-100">
         <Image
+          className="object-cover"
           src={proj.image.url}
           fill={true}
           key={proj.image.url}

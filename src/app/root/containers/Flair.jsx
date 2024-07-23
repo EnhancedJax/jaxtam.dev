@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 export default function Flair({ ...props }) {
   const [isMobile, setIsMobile] = useState(false);
   const [inView, setInView] = useState(false);
-  const [baseDistance, setBaseDistance] = useState(400);
+  const [baseDistance, setBaseDistance] = useState(350);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -99,7 +99,7 @@ const FlairItem = ({ index, total, inView, baseDistance, ...props }) => {
     const angleFactor = Math.abs(Math.abs(angle) - 90) / 90;
     return (
       baseDistance +
-      angleFactor * (50 + Math.random() * 100) +
+      angleFactor * (100 + Math.random() * 100) +
       Math.random() * 150
     );
   }, [angle, baseDistance]);
