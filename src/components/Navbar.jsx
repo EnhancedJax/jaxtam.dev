@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { SwatchBook } from "lucide-react";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAppContext } from "../app/provider";
 import ROUTES from "../app/routes";
@@ -15,51 +14,50 @@ const NavBar = () => {
     togglePageAnimate,
     handleSetHRef,
     handleToggleTheme,
+    setNavbarRouteState,
+    navbarRouteState,
   } = useAppContext();
-  const pathName = usePathname();
-  const [localRoute, setLocalRoute] = useState(pathName);
 
   const handleClick = (href) => {
     if ((!isSameRoute(href) && pageAnimate) || isSameRoute(href)) {
       // prevents double animation
-      setLocalRoute(href);
+      setNavbarRouteState(href);
       handleSetHRef(href);
       togglePageAnimate();
     }
   };
 
   return (
-    <nav className="relative">
-      <ul
-        id="navbar"
-        className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-2 py-0 border-t border-border bg-bg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col lg:py-4"
-      >
-        {ROUTES.map((route, index) => (
-          <IconButton
-            isActive={isSameRoute(route.href)}
-            tooltip={route.href}
-            icon={route.icon}
-            handleClick={() => handleClick(route.href)}
-            key={route.href}
-          >
-            {localRoute === route.href && (
-              <motion.div
-                className="absolute top-0 w-full h-full lg:w-px bg-pg lg:-right-2 !opacity-10 lg:!opacity-100 right-0 rounded-lg"
-                layoutId="line"
-              />
-            )}
-          </IconButton>
-        ))}
-        <span className="absolute lg:bottom-4 right-4 lg:right-auto">
-          <IconButton
-            tooltip="Switch themes"
-            icon={SwatchBook}
-            iconSize="1.2rem"
-            handleClick={handleToggleTheme}
-          />
-        </span>
+    <header className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 py-0 border-t border-border bg-bg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col lg:py-4">
+      <nav>
+        <ul className="flex items-center justify-center w-full h-full gap-2 lg:flex-col ">
+          {ROUTES.map((route, index) => (
+            <IconButton
+              isActive={isSameRoute(route.href)}
+              tooltip={route.href}
+              icon={route.icon}
+              handleClick={() => handleClick(route.href)}
+              key={route.href}
+            >
+              {isSameRoute(route.href, navbarRouteState) && (
+                <motion.div
+                  className="absolute top-0 w-full h-full lg:w-px bg-pg lg:-right-2 !opacity-10 lg:!opacity-100 right-0 rounded-lg"
+                  layoutId="line"
+                />
+              )}
+            </IconButton>
+          ))}
+        </ul>
+      </nav>
+      <ul className="absolute lg:bottom-4 right-4 lg:right-auto">
+        <IconButton
+          tooltip="Switch themes"
+          icon={SwatchBook}
+          iconSize="1.2rem"
+          handleClick={handleToggleTheme}
+        />
       </ul>
-    </nav>
+    </header>
   );
 };
 
@@ -71,31 +69,36 @@ const IconButton = ({
   iconSize = "1.5rem",
   children,
 }) => {
-  const [isHovered, setLocalRoute] = useState(false);
+  const [isHovered, setNavbarRouteState] = useState(false);
   const handleMouseEnter = () => {
-    setLocalRoute(true);
+    setNavbarRouteState(true);
   };
 
   const handleMouseLeave = () => {
-    setLocalRoute(false);
+    setNavbarRouteState(false);
   };
 
   return (
-    <li
-      className="relative w-12 h-12 p-3 cursor-pointer"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <a className={isActive ? "text-pg " : "text-gray "} onClick={handleClick}>
+    <li>
+      <button
+        className={`relative p-3 cursor-pointer ${
+          isActive ? "text-pg " : "text-gray "
+        } rounded-md`}
+        aria-label={tooltip}
+        id={tooltip}
+        onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <IconComponent size={iconSize} strokeWidth={1.5} />
-      </a>
-      {children}
-      <Tooltip
-        hoveredState={isHovered}
-        text={tooltip}
-        direction="left"
-        isHiddenResponsive
-      />
+        {children}
+        <Tooltip
+          hoveredState={isHovered}
+          text={tooltip}
+          direction="left"
+          isHiddenResponsive
+        />
+      </button>
     </li>
   );
 };

@@ -86,6 +86,7 @@ export const getPostDetails = async (slug) => {
     query GetPostDetails($slug: String!) {
       post(where: { slug: $slug }) {
         title
+        description
         heroImage {
           url
         }
@@ -96,9 +97,7 @@ export const getPostDetails = async (slug) => {
           type
           slug
         }
-        propTimeline
-        propRole
-        propOutcome
+        props
       }
     }
   `;

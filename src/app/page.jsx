@@ -9,7 +9,7 @@ import { slideSpring } from "../utils/animations";
 import { ABOUT_MD, FOOTER_MD } from "../utils/constants";
 import Experience from "./root/containers/Experience";
 import Flair from "./root/containers/Flair";
-import Head from "./root/containers/Head";
+import Main from "./root/containers/Main";
 import Project from "./root/containers/Project";
 import Writing from "./root/containers/Writing";
 
@@ -20,31 +20,40 @@ export default async function Home() {
       <FAB />
       <RegularLayout>
         <div className="flex flex-col items-center justify-start w-full gap-10">
-          <Head />
-          <div>
-            <SectionPointer>About</SectionPointer>
-            <StaggerElement variants={slideSpring["up"]}>
-              <MarkdownFormatted>{ABOUT_MD}</MarkdownFormatted>
+          <Main />
+          <section>
+            <div>
+              <SectionPointer>About</SectionPointer>
+              <StaggerElement variants={slideSpring["up"]}>
+                <MarkdownFormatted>{ABOUT_MD}</MarkdownFormatted>
+              </StaggerElement>
+            </div>
+          </section>
+          <section>
+            <StaggerElement
+              className="w-full h-full"
+              variants={slideSpring["up"]}
+            >
+              <SectionPointer>Experiences</SectionPointer>
+              {experiences.map((exp, index) => (
+                <Experience key={index} exp={exp.node} />
+              ))}
+              <Flair style={{ top: "40%" }} />
+              <SectionPointer>Projects</SectionPointer>
+              {projects.map((proj, index) => (
+                <Project key={index} proj={proj.node} />
+              ))}
+              <SectionPointer>Writings</SectionPointer>
+              {latestWorks.map((writing, index) => (
+                <Writing key={index} writing={writing.node} />
+              ))}
             </StaggerElement>
-          </div>
-          <StaggerElement className="w-full" variants={slideSpring["up"]}>
-            <SectionPointer>Experiences</SectionPointer>
-            {experiences.map((exp, index) => (
-              <Experience key={index} exp={exp.node} />
-            ))}
-            <Flair style={{ top: "40%" }} />
-            <SectionPointer>Projects</SectionPointer>
-            {projects.map((proj, index) => (
-              <Project key={index} proj={proj.node} />
-            ))}
-            <SectionPointer>Writings</SectionPointer>
-            {latestWorks.map((writing, index) => (
-              <Writing key={index} writing={writing.node} />
-            ))}
-          </StaggerElement>
-          <MarkdownFormatted className="mt-20 text-sm text-gray ">
-            {FOOTER_MD}
-          </MarkdownFormatted>
+          </section>
+          <footer>
+            <MarkdownFormatted className="mt-20 text-sm text-gray ">
+              {FOOTER_MD}
+            </MarkdownFormatted>
+          </footer>
         </div>
       </RegularLayout>
     </PageWrapper>

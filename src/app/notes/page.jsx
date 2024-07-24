@@ -2,12 +2,17 @@ import OptViewLayout from "../../components/OptViewLayout";
 import OptViewPanel from "../../components/OptViewPanel";
 import PageWrapper from "../../components/PageWrapper";
 import { getNotes } from "../../lib/";
-import Head from "./containers/Head";
+import Main from "./containers/Main";
 import NoteDisplay from "./containers/NoteDisplay";
 import NotesSelect from "./containers/NotesSelect";
 import { ContextProvider } from "./viewModel";
 
 export const dynamic = "force-dynamic";
+
+export const metadata = {
+  title: "Typed Notes",
+  description: "A collection of my typed notes.",
+};
 
 export default async function Notes() {
   const notes = (await getNotes()) || [];
@@ -16,7 +21,7 @@ export default async function Notes() {
       <ContextProvider data={{ notes }}>
         <OptViewPanel>
           <div className="flex flex-col w-full gap-10">
-            <Head />
+            <Main />
             <NotesSelect />
           </div>
         </OptViewPanel>

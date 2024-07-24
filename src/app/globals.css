@@ -109,9 +109,23 @@ img {
   }
 }
 
-:focus {
+:focus-visible {
   outline-style: dashed;
   outline-offset: 5px;
   outline-width: 2px;
   outline-color: var(--pg);
+}
+
+.flair-item {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }

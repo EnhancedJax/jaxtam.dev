@@ -12,11 +12,11 @@ import {
 import ActionButtons from "./ActionButtons";
 import SocialIcons from "./SocialIcons";
 
-export default function Head() {
+export default function Main() {
   const { theme } = useTheme();
 
   return (
-    <div className="relative flex flex-col items-center self-stretch gap-4">
+    <main className="relative flex flex-col items-center self-stretch gap-4">
       {theme === "tailwind" && (
         <div className="absolute flex justify-center flex-none w-screen overflow-hidden h-max -top-10 -z-10">
           <img
@@ -30,11 +30,11 @@ export default function Head() {
         className="flex flex-col items-center self-stretch gap-4"
         variants={slideUp}
       >
-        <div
+        <span
           className={`${DM_MONO_FAMILY.className} text-sm h-7  text-darkgray `}
         >
           12 / 30 / 2005
-        </div>
+        </span>
         <Image
           className="w-[72px] h-[72px] rounded-full"
           src="/headericon.jpg"
@@ -49,8 +49,8 @@ export default function Head() {
           className="flex flex-col items-center self-stretch justify-center gap-1"
           variants={slideUp}
         >
-          <div className="text-xl font-light text-cpg ">Jax Tam</div>
-          <div className="text-lg font-light text-gray ">{TITLE_TEXT}</div>
+          <h1 className="text-xl font-light text-cpg ">Jax Tam</h1>
+          <h2 className="text-lg font-light text-gray ">{TITLE_TEXT}</h2>
         </motion.div>
         <motion.div
           className="flex items-center justify-start gap-4"
@@ -58,7 +58,7 @@ export default function Head() {
         >
           <div className="w-2 h-2 rounded-full bg-green animate-ping"></div>
           <div className="absolute w-2 h-2 rounded-full bg-green "></div>
-          <div className="text-base font-light text-gray ">{STATUS_TEXT}</div>
+          <h3 className="text-base font-light text-gray ">{STATUS_TEXT}</h3>
         </motion.div>
       </div>
       <SocialIcons />
@@ -69,6 +69,6 @@ export default function Head() {
       >
         NT, HK ⋅ 22.2849° N, 114.1376° W
       </motion.div>
-    </div>
+    </main>
   );
 }

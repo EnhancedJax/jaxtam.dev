@@ -9,8 +9,11 @@ import "./globals.css";
 import { AppProvider } from "./provider";
 
 export const metadata = {
-  title: "Jax Tam",
-  description: "Jax's personal website!",
+  title: {
+    template: "%s - Jax Tam",
+    default: "Jax Tam",
+  },
+  description: "A Front-end developer based in Hong Kong.",
 };
 
 export default function RootLayout({ children }) {

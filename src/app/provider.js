@@ -8,10 +8,14 @@ const AppContext = createContext();
 const useAppContext = () => useContext(AppContext);
 
 const AppProvider = ({ children }) => {
+  const router = useRouter();
+  const pathName = usePathname();
+
   const [pageAnimate, setPageAnimate] = useState(false);
   const [href, setHRef] = useState(null);
   const [isFunnyToggle, setIsFunnyToggle] = useState(false);
   const [alertStack, setAlertStack] = useState([]);
+  const [navbarRouteState, setNavbarRouteState] = useState(pathName);
   const { theme, setTheme } = useTheme();
 
   const handleToggleTheme = () => {
@@ -27,24 +31,30 @@ const AppProvider = ({ children }) => {
     setPageAnimate(!pageAnimate); // PageWrapper will then call handlePageChange after animation
   };
 
-  const router = useRouter();
-  const pathName = usePathname();
-
-  const isSameRoute = (thisHref) => {
-    const isGoingSamePage =
-      pathName === thisHref ||
-      (pathName !== "/" && pathName?.match(/^\/[A-Za-z]+/)?.[0] === thisHref);
-    return isGoingSamePage;
+  const isSameRoute = (thisHref, route = null) => {
+    const currentRoute = route || pathName;
+    const is =
+      currentRoute === thisHref ||
+      (currentRoute !== "/" &&
+        currentRoute?.match(/^\/[A-Za-z]+/)?.[0] === thisHref);
+    return is;
   };
 
-  const handlePageChange = () => {
-    if (href !== null && !isSameRoute(href)) {
-      router.push(href);
+  const handlePageChange = (immediateHref) => {
+    const toHref = immediateHref || href;
+    console.log("handlePageChange", toHref, isSameRoute(toHref));
+    if (toHref !== null && !isSameRoute(toHref)) {
+      router.push(toHref);
     }
   };
   const handleSetHRef = (href) => {
     setIsFunnyToggle(isSameRoute(href));
     setHRef(href);
+  };
+  const handleDirectPageChange = (href) => {
+    setNavbarRouteState(href);
+    handleSetHRef(href);
+    handlePageChange(href);
   };
 
   const clearAlert = (id) => {
@@ -71,9 +81,12 @@ const AppProvider = ({ children }) => {
         alertStack,
         newAlert,
         clearAlert,
+        navbarRouteState,
+        setNavbarRouteState,
         handleSetHRef,
         handlePageChange,
         handleToggleTheme,
+        handleDirectPageChange,
       }}
     >
       {children}

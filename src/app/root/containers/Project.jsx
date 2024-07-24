@@ -6,8 +6,8 @@ import Image from "next/image";
 
 export default function Project({ key, proj }) {
   return (
-    <motion.div
-      onClick={() => window.open(proj.link)}
+    <motion.a
+      href={proj.link}
       key={key}
       className="w-full mb-4 flex border-[1px] rounded-lg p-6 border-border hover:bg-bordero hover:border-darkgray bg-fgo backdrop-blur-md cursor-pointer flex-col md:flex-row relative overflow-clip"
       whileHover={{ scale: 1.02, translateY: -4 }}
@@ -45,6 +45,6 @@ export default function Project({ key, proj }) {
           ))}
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }
