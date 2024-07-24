@@ -132,7 +132,6 @@ const FlairItem = ({ index, total, inView, baseDistance, ...props }) => {
               transition: {
                 duration: randomDuration,
                 ease: "easeOut",
-                delay: index * 0.05,
               },
             }
           : {}

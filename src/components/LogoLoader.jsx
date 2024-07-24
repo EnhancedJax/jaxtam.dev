@@ -35,7 +35,7 @@ const LogoLoader = () => {
           animation: coreanim 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
         }
       `}</style>
-      <img src="/images/logo.png" className="w-16 h-16" />
+      <img src="/logo.png" className="w-16 h-16" />
     </div>
   );
 };

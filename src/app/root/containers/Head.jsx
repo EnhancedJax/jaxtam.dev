@@ -20,7 +20,7 @@ export default function Head() {
       {theme === "tailwind" && (
         <div className="absolute flex justify-center flex-none w-screen overflow-hidden h-max -top-10 -z-10">
           <img
-            src="/images/tailwindbg.png"
+            src="/tailwindbg.png"
             alt="bg"
             className="w-[90rem] flex-none max-w-none"
           />
@@ -37,7 +37,7 @@ export default function Head() {
         </div>
         <Image
           className="w-[72px] h-[72px] rounded-full"
-          src="/images/headericon.jpg"
+          src="/headericon.jpg"
           priority
           width="72"
           height="72"

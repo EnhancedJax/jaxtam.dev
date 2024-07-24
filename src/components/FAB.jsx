@@ -1,11 +1,13 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { fadeIn, slideSpring } from "../utils/animations";
+import { useAppContext } from "../app/provider";
+import { slideSpring } from "../utils/animations";
 import { supabase } from "../utils/supabaseClient";
 import Tooltip from "./Tooltip";
 
 export default function FAB() {
+  const { newAlert } = useAppContext();
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -21,15 +23,18 @@ export default function FAB() {
       .insert([{ created_at: new Date().toISOString(), message }]);
 
     if (error) {
-      console.error("Error inserting data:", error);
+      newAlert("error", "Error!", error);
     } else {
-      console.log("Sent successfully!");
+      newAlert("success", "Sent successfully!", "");
     }
     setIsLoading(false);
   };
 
   const handleClick = () => {
-    if (isClicked) return;
+    if (isClicked) {
+      newAlert("info", "Hey! You already said hi!", "");
+      return;
+    }
     setIsClicked(true);
     setModalClosed(false);
     setMessage("");
@@ -68,8 +73,8 @@ export default function FAB() {
       <AnimatePresence>
         {isClicked && !modalClosed && (
           <motion.div
-            className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full backdrop-blur-md bg-black/50"
-            variants={fadeIn}
+            className="fixed top-0 left-0 z-50 flex flex-col items-center justify-center w-full h-full p-4 bg-opacity-50 backdrop-blur-md bg-fgo"
+            variants={slideSpring["up"]}
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -79,19 +84,15 @@ export default function FAB() {
               }
             }}
           >
+            <p className="text-3xl wave">👋🏻</p>
             <motion.div
-              className="flex flex-col items-center p-5 border rounded-3xl bg-bg border-border min-w-96"
-              variants={slideSpring["up"]}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
+              className="flex flex-col items-center w-full p-5 rounded-3xl lg:min-w-96 lg:w-auto"
               transition={{ delay: 0.5 }}
             >
-              <p className="text-3xl shadow-sm wave">👋🏻</p>
-              <p className="text-xl">Hello!</p>
+              <p className="text-xl">Hello! Hi!</p>
               <motion.input
-                placeholder="Leave a message!"
-                className="w-full p-4 bg-border mt-4 rounded-lg border border-border flex-col justify-start items-start gap-2.5 flex text-pg text-base font-light placeholder-darkgray focus:outline-none"
+                placeholder="💭  Leave a message?"
+                className="w-full p-4 bg-bordero mt-4 rounded-lg border border-border flex-col justify-start items-start gap-2.5 flex text-pg text-base font-light placeholder-darkgray focus:outline-none"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 value={message}
@@ -102,8 +103,8 @@ export default function FAB() {
                   }
                 }}
               />
-              <p className="mt-4 text-sm text-darkgray">
-                Click outside to send
+              <p className="px-4 py-2 mt-4 text-sm rounded-full text-darkgray bg-fgo">
+                Click anywhere to send!
               </p>
             </motion.div>
           </motion.div>

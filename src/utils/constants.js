@@ -24,3 +24,5 @@ export const API_URL =
 
 export const THEMES = ["light", "dark", "tailwind", "desert"];
 export const DARKTHEMES = [1, 2];
+
+export const ALERT_TIMEOUT = 3000;

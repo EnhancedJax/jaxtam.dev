@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "next-themes";
+import Alert from "../components/Alert";
 import FunnyBackground from "../components/FunnyBackground";
 import NavBar from "../components/Navbar";
 import { FAMILY, THEMES } from "../utils/constants";
@@ -8,8 +9,8 @@ import "./globals.css";
 import { AppProvider } from "./provider";
 
 export const metadata = {
-  title: "Jax Tam.",
-  description: "A beautiful portfolio website.",
+  title: "Jax Tam",
+  description: "Jax's personal website!",
 };
 
 export default function RootLayout({ children }) {
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
             <NavBar />
             {children}
             <FunnyBackground />
+            <Alert />
           </AppProvider>
         </ThemeProvider>
       </body>

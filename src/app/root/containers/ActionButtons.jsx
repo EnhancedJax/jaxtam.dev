@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Copy, Mail } from "lucide-react";
+import { FileDown, Mail } from "lucide-react";
 import { useState } from "react";
 import { slideLeft, slideRight, slideUp } from "../../../utils/animations";
 
@@ -39,12 +39,12 @@ const ActionButtons = () => {
         animate={slide ? "visible" : "hidden"}
         whileHover={{ scale: 1.05, translateY: -5 }}
         whileTap={{ scale: 0.95, translateY: -2 }}
-        onClick={() => navigator.clipboard.writeText("jax.lytam@gmail.com")}
+        onClick={() => window.open("/applications/Resume.pdf")}
       >
         <div className="text-base font-light text-pg " variants={slideUp}>
-          Copy email
+          Snatch resume
         </div>
-        <Copy className="w-5 h-5 text-gray " />
+        <FileDown className="w-5 h-5 text-gray " />
       </motion.div>
     </motion.div>
   );

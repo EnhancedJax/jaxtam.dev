@@ -29,7 +29,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className="relative">
+    <nav className="relative">
       <ul
         id="navbar"
         className="fixed bottom-0 z-20 flex items-center justify-center w-screen h-16 gap-2 py-0 border-t border-border bg-bg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col lg:py-4"
@@ -50,16 +50,16 @@ const NavBar = () => {
             )}
           </IconButton>
         ))}
-        <li className="absolute lg:bottom-4 right-4 lg:right-auto">
+        <span className="absolute lg:bottom-4 right-4 lg:right-auto">
           <IconButton
             tooltip="Switch themes"
             icon={SwatchBook}
             iconSize="1.2rem"
             handleClick={handleToggleTheme}
           />
-        </li>
+        </span>
       </ul>
-    </header>
+    </nav>
   );
 };
 
@@ -82,14 +82,13 @@ const IconButton = ({
 
   return (
     <li
-      className="relative p-3 cursor-pointer"
+      className="relative w-12 h-12 p-3 cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
     >
-      <div className={isActive ? "text-pg " : "text-gray "}>
+      <a className={isActive ? "text-pg " : "text-gray "} onClick={handleClick}>
         <IconComponent size={iconSize} strokeWidth={1.5} />
-      </div>
+      </a>
       {children}
       <Tooltip
         hoveredState={isHovered}

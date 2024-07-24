@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useContext, useState } from "react";
-import { THEMES } from "../utils/constants";
+import { ALERT_TIMEOUT, THEMES } from "../utils/constants";
 const AppContext = createContext();
 const useAppContext = () => useContext(AppContext);
 
@@ -11,6 +11,7 @@ const AppProvider = ({ children }) => {
   const [pageAnimate, setPageAnimate] = useState(false);
   const [href, setHRef] = useState(null);
   const [isFunnyToggle, setIsFunnyToggle] = useState(false);
+  const [alertStack, setAlertStack] = useState([]);
   const { theme, setTheme } = useTheme();
 
   const handleToggleTheme = () => {
@@ -46,6 +47,20 @@ const AppProvider = ({ children }) => {
     setHRef(href);
   };
 
+  const clearAlert = (id) => {
+    setAlertStack((prev) => prev.filter((alert) => alert.id !== id));
+  };
+
+  const newAlert = (type, text, message) => {
+    const newAlertId = Date.now();
+
+    setAlertStack((prev) => [...prev, { id: newAlertId, type, text, message }]);
+
+    setTimeout(() => {
+      clearAlert(newAlertId);
+    }, ALERT_TIMEOUT);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -53,6 +68,9 @@ const AppProvider = ({ children }) => {
         isFunnyToggle,
         isSameRoute,
         togglePageAnimate,
+        alertStack,
+        newAlert,
+        clearAlert,
         handleSetHRef,
         handlePageChange,
         handleToggleTheme,

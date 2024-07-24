@@ -61,7 +61,7 @@ export const SoftwareItem = ({ name, type, icon }) => {
   return (
     <div className="basis-[140px] grow h-[230px] p-3  bg-fg rounded-lg flex-col gap-2.5 flex">
       <div className="justify-center items-center gap-2.5 flex w-full h-full">
-        <img className="w-[72px]" src={`./images/${icon}.webp`} />
+        <img className="w-[72px]" src={`/${icon}.webp`} />
       </div>
       <div className="flex flex-col items-start justify-center gap-2">
         <div className="p-1.5 rounded-md border  border-border justify-center items-start inline-flex">
