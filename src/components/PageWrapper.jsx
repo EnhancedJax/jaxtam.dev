@@ -22,7 +22,7 @@ export default function PageWrapper({ children, ...props }) {
 
   return (
     <motion.div
-      className="items-center justify-center mb-16 lg:mb-0 lg:ml-16"
+      className="items-center justify-center mb-16 overflow-hidden lg:mb-0 lg:ml-16"
       style={{ display: hide ? "none" : "flex" }}
       variants={staggerParent(0.08)}
       initial="hidden"

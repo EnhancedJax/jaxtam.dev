@@ -7,8 +7,6 @@ import NoteDisplay from "./containers/NoteDisplay";
 import NotesSelect from "./containers/NotesSelect";
 import { ContextProvider } from "./viewModel";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Typed Notes",
   description: "A collection of my typed notes.",

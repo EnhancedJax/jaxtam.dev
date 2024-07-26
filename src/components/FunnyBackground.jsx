@@ -15,8 +15,9 @@ export default function FunnyBackground() {
     >
       {isFunnyToggle && (
         <Image
-          className="object-cover blur-md"
-          src="https://www.discoverhongkong.com/content/dam/dhk/intl/explore/attractions/best-ways-to-marvel-at-iconic-victoria-harbour/best-ways-to-marvel-at-iconic-victoria-harbour-1920x1080.jpg"
+          className="object-cover blur-sm"
+          src="https://live.staticflickr.com/6135/5978562722_ce85d95d93_h.jpg"
+          alt="Hong Kong"
           fill={true}
         />
       )}

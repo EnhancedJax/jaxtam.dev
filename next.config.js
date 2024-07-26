@@ -13,7 +13,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.discoverhongkong.com",
+        hostname: "live.staticflickr.com",
         port: "",
         pathname: "/**",
       },
