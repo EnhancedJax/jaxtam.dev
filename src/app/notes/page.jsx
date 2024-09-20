@@ -12,6 +12,8 @@ export const metadata = {
   description: "A collection of my typed notes.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function Notes() {
   const notes = (await getNotes()) || [];
   return (
