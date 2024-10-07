@@ -33,7 +33,7 @@ const ActionButtons = () => {
       </motion.a>
       <div className="hidden font-light text-gray md:block">or</div>
       <motion.a
-        className="self-stretch h-[38px] px-11 py-2 cursor-pointer  bg-fg rounded-lg border  border-border justify-center items-center gap-2.5 hidden md:flex"
+        className="self-stretch h-[38px] px-11 py-2 cursor-pointer  bg-fg rounded-lg border  border-border justify-center items-center gap-2.5 flex"
         variants={slideRight}
         initial="hidden"
         animate={slide ? "visible" : "hidden"}

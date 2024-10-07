@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Undo2 } from "lucide-react";
 import Link from "next/link";
 import LogoLoader from "../components/LogoLoader";
 import { slideLeft, slideUp, staggerParent } from "../utils/animations";
@@ -38,7 +37,6 @@ export default function Home() {
           >
             Return to home page
           </motion.div>
-          <Undo2 className="w-5 h-5 text-pg " />
         </motion.div>
       </Link>
     </motion.div>

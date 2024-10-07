@@ -31,6 +31,7 @@ export default function RootLayout({ children }) {
             {children}
             <FunnyBackground />
             <Alert />
+            {/* <Cursor /> */}
           </AppProvider>
         </ThemeProvider>
       </body>

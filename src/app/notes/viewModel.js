@@ -1,15 +1,14 @@
 "use client";
 
 import { createContext, useEffect, useState } from "react";
+import { DEFAULT_PDF_URL } from "../../utils/constants";
 
 const Context = createContext();
 
 const ContextProvider = ({ data, children }) => {
   const { notes } = data;
   const [inputText, setInputText] = useState("");
-  const [iframeUrl, setIframeUrl] = useState(
-    "https://mag.wcoomd.org/uploads/2018/05/blank.pdf"
-  );
+  const [iframeUrl, setIframeUrl] = useState(DEFAULT_PDF_URL);
   const [selectedItem, setSelectedItem] = useState(null);
 
   let inputHandler = (e) => {

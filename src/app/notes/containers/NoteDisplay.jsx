@@ -4,6 +4,7 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import { toolbarPlugin } from "@react-pdf-viewer/toolbar";
 import "@react-pdf-viewer/toolbar/lib/styles/index.css";
 import { useContext } from "react";
+import { PDF_WORKER_URL } from "../../../utils/constants";
 import { Context } from "../viewModel";
 
 export default function NoteDisplay() {
@@ -12,7 +13,7 @@ export default function NoteDisplay() {
   const toolbarPluginInstance = toolbarPlugin();
   const { Toolbar } = toolbarPluginInstance;
   return (
-    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+    <Worker workerUrl={PDF_WORKER_URL}>
       <div className="relative w-full h-full">
         <div className="absolute z-30 flex flex-col items-center px-2 py-4 mt-4 ml-4 rounded-full shadow-lg border-[1px] border-border bg-neutral-100 ">
           <Toolbar>

@@ -39,3 +39,8 @@ export const FLAIR_ITEMS = [
   { name: "postman", pos: { x: 375, y: -209 } },
   { name: "vscode", pos: { x: 355, y: -335 } },
 ];
+
+export const DEFAULT_PDF_URL =
+  "https://mag.wcoomd.org/uploads/2018/05/blank.pdf";
+export const PDF_WORKER_URL =
+  "https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
