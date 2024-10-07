@@ -42,7 +42,7 @@ const AppProvider = ({ children }) => {
 
   const handlePageChange = (immediateHref) => {
     const toHref = immediateHref || href;
-    console.log("handlePageChange", toHref, isSameRoute(toHref));
+    // console.log("handlePageChange", toHref, isSameRoute(toHref));
     if (toHref !== null && !isSameRoute(toHref)) {
       router.push(toHref);
     }

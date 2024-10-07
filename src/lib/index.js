@@ -29,6 +29,34 @@ export const getNotes = async () => {
   return result.notesConnection.edges;
 };
 
+export const getNoteDetails = async (code) => {
+  const query = gql`
+    query GetNoteDetails($code: String!) {
+      notesConnection(where: { code: $code }) {
+        edges {
+          node {
+            isWorkInProgress
+            semester
+            title
+            code
+            colorCode
+            icon
+            pdf {
+              fileName
+              updatedAt
+              size
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+  const result = await request(API_URL, query, { code });
+
+  return result.notesConnection.edges[0]?.node;
+};
+
 export const getPosts = async () => {
   const query = gql`
     query MyQuery {
