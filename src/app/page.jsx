@@ -13,6 +13,11 @@ import Main from "./root/containers/Main";
 import Project from "./root/containers/Project";
 import Writing from "./root/containers/Writing";
 
+export const metadata = {
+  description:
+    "Jax Tam is a web developer who builds digital products with the users in mind. Based in Hong Kong.",
+};
+
 export default async function Home() {
   const { latestWorks, projects, experiences } = await getHomePage();
   return (

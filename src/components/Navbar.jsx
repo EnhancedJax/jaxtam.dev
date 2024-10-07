@@ -36,7 +36,8 @@ const NavBar = () => {
               isActive={isSameRoute(route.href)}
               tooltip={route.href}
               icon={route.icon}
-              handleClick={() => handleClick(route.href)}
+              handleClick={handleClick}
+              href={route.href}
               key={route.href}
             >
               {isSameRoute(route.href, navbarRouteState) && (
@@ -67,6 +68,7 @@ const IconButton = ({
   handleClick,
   icon: IconComponent,
   iconSize = "1.5rem",
+  href,
   children,
 }) => {
   const [isHovered, setNavbarRouteState] = useState(false);
@@ -80,13 +82,17 @@ const IconButton = ({
 
   return (
     <li>
-      <button
-        className={`relative p-3 cursor-pointer ${
+      <a
+        href={href}
+        className={`relative block p-3 cursor-pointer ${
           isActive ? "text-pg " : "text-gray "
         } rounded-md`}
         aria-label={tooltip}
         id={tooltip}
-        onClick={handleClick}
+        onClick={(e) => {
+          e.preventDefault();
+          handleClick(href);
+        }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -98,7 +104,7 @@ const IconButton = ({
           direction="left"
           isHiddenResponsive
         />
-      </button>
+      </a>
     </li>
   );
 };

@@ -4,7 +4,7 @@ import { API_URL } from "../utils/constants";
 export const getNotes = async () => {
   const query = gql`
     query GetNotes {
-      notesConnection(orderBy: isWorkInProgress_ASC) {
+      notesConnection(orderBy: createdAt_DESC) {
         edges {
           node {
             isWorkInProgress

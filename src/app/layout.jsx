@@ -13,7 +13,8 @@ export const metadata = {
     template: "%s - Jax Tam",
     default: "Jax Tam",
   },
-  description: "A Front-end developer based in Hong Kong.",
+  description:
+    "Jax Tam is a web developer who builds digital products with the users in mind. Based in Hong Kong.",
 };
 
 export default function RootLayout({ children }) {

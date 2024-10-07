@@ -5,7 +5,7 @@ export const FAMILY = Ubuntu({
   weight: ["300", "400", "500", "700"],
 });
 
-export const TITLE_TEXT = `Front-end developer`;
+export const TITLE_TEXT = `Full-stack developer`;
 export const STATUS_TEXT = `Available for new opportunities ⋅ Student @ HKU`;
 
 export const ABOUT_MD = `Back in 2020, I decided to try my hand at creating [Rainmeter](https://rainmeter.net) themes and went down the rabbit hole of coding and front-end development. Fast-forward to today, I'm now pursuing my degree in **Computer Science at The University of Hong Kong**. 
