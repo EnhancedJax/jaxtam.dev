@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       <Analytics />
       <SpeedInsights />
       <body
-        className={`${FAMILY.className} w-screen overflow-x-hidden h-screen  text-pg  bg-bg transition-colors`}
+        className={`${FAMILY.className} w-screen overflow-x-hidden h-screen text-pg bg-bg transition-colors`}
       >
         <ThemeProvider attribute="class" themes={THEMES}>
           <AppProvider>
