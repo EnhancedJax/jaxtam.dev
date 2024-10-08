@@ -3,7 +3,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 
-export default function ExpandingA({ expandClassName, children, ...props }) {
+export default function ExpandingA({
+  expandClassName,
+  animateFromCircle = false,
+  children,
+  ...props
+}) {
   const [isExpanding, setIsExpanding] = useState(false);
   const linkRef = useRef(null);
   const [linkRect, setLinkRect] = useState(null);
@@ -54,6 +59,7 @@ export default function ExpandingA({ expandClassName, children, ...props }) {
               height: linkRect.height,
               opacity: 0,
               zIndex: 9999,
+              borderRadius: animateFromCircle ? "500px" : undefined,
             }}
             animate={{
               top: 0,
@@ -61,6 +67,7 @@ export default function ExpandingA({ expandClassName, children, ...props }) {
               width: "100vw",
               height: "100vh",
               opacity: 1,
+              borderRadius: animateFromCircle ? "0" : undefined,
             }}
             className={expandClassName}
             exit={{ opacity: 0 }}

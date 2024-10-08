@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Figma, Github, Instagram, Linkedin } from "lucide-react";
+import { Figma, Github, Linkedin } from "lucide-react";
 import { useState } from "react";
+import ExpandingA from "../../../components/ExpandingA";
 import Threads from "../../../components/Icons/Threads";
 import Tooltip from "../../../components/Tooltip";
 import { slideUp } from "../../../utils/animations";
@@ -15,9 +16,6 @@ export default function SocialIcons() {
     >
       <Button text="Github" open="https://github.com/EnhancedJax">
         <Github />
-      </Button>
-      <Button text="Instagram" open="https://www.instagram.com/enhancedjax/">
-        <Instagram />
       </Button>
       <Button text="Threads" open="https://www.threads.net/@enhancedjax">
         <Threads width={24} height={24} />
@@ -50,15 +48,17 @@ const Button = ({ open, text, children }) => {
   };
 
   return (
-    <motion.a
+    <ExpandingA
       whileHover={{ scale: 1.05, translateY: -2 }}
       className="relative block cursor-pointer text-darkgray hover:text-pg"
+      expandClassName="bg-pg"
+      animateFromCircle={true}
       href={open}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {children}
       <Tooltip hoveredState={isHovered} text={text} direction="down" />
-    </motion.a>
+    </ExpandingA>
   );
 };
