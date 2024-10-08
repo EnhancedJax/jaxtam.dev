@@ -1,14 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Link } from "lucide-react";
 import Image from "next/image";
+import ExpandingA from "../../../components/ExpandingA";
 
 export default function Project({ key, proj }) {
   return (
-    <motion.a
+    <ExpandingA
       href={proj.link}
       key={key}
+      expandClassName="bg-fg rounded-lg"
       className="w-full mb-4 flex border-[1px] rounded-lg p-6 border-border hover:bg-bordero hover:border-darkgray bg-fgo backdrop-blur-md cursor-pointer flex-col md:flex-row relative overflow-clip"
       whileHover={{ scale: 1.02, translateY: -4 }}
       whileTap={{ scale: 0.98, translateY: -2 }}
@@ -45,6 +46,6 @@ export default function Project({ key, proj }) {
           ))}
         </div>
       </div>
-    </motion.a>
+    </ExpandingA>
   );
 }
