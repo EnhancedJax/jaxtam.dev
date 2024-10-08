@@ -61,7 +61,7 @@ const AppProvider = ({ children }) => {
     setAlertStack((prev) => prev.filter((alert) => alert.id !== id));
   };
 
-  const newAlert = (type, text, message) => {
+  const newAlert = ({ type, text, message }) => {
     const newAlertId = Date.now();
 
     setAlertStack((prev) => [...prev, { id: newAlertId, type, text, message }]);

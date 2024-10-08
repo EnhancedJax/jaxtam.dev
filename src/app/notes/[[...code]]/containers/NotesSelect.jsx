@@ -24,9 +24,9 @@ export default function NotesSelect({ setIsPanelOpen }) {
         <ul className="flex flex-col w-full gap-4">
           <AnimatePresence mode="popLayout">
             {filteredData.map((item) => (
-              <li>
+              <li key={item.node.code}>
                 <motion.a
-                  key={item.node.code}
+                  key={`link-${item.node.code}`}
                   initial={{ x: -100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: 200, opacity: 0 }}

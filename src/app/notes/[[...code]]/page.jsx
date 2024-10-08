@@ -1,6 +1,7 @@
 import PageWrapper from "../../../components/PageWrapper";
 import SidebarLayout from "../../../components/SidebarLayout";
 import { getNoteDetails, getNotes } from "../../../lib";
+import ActionButton from "./containers/ActionButton";
 import NoteDisplay from "./containers/NoteDisplay";
 import Panel from "./containers/Panel";
 import { ContextProvider } from "./viewModel";
@@ -33,6 +34,7 @@ export default async function Notes({ params: { code } }) {
   return (
     <PageWrapper>
       <ContextProvider data={{ notes, slugCode }}>
+        <ActionButton />
         <Panel />
         <SidebarLayout>
           <NoteDisplay />

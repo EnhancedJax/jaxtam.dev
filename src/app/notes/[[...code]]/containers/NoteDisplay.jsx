@@ -66,7 +66,7 @@ export default function NoteDisplay() {
         <Viewer
           fileUrl={iframeUrl}
           plugins={[toolbarPluginInstance]}
-          initialPage={1}
+          // initialPage={0}
         />
       </div>
     </Worker>

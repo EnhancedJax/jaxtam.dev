@@ -1,4 +1,3 @@
-import FAB from "../components/FAB";
 import MarkdownFormatted from "../components/MarkdownFormatted";
 import PageWrapper from "../components/PageWrapper";
 import RegularLayout from "../components/RegularLayout";
@@ -22,7 +21,6 @@ export default async function Home() {
   const { latestWorks, projects, experiences } = await getHomePage();
   return (
     <PageWrapper>
-      <FAB />
       <RegularLayout>
         <div className="flex flex-col items-center justify-start w-full gap-10">
           <Main />

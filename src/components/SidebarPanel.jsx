@@ -7,7 +7,7 @@ import { slideSpring, slideUp } from "../utils/animations";
 const SidebarPanel = ({ title, isOpen, setIsOpen, children }) => {
   return (
     <>
-      <div className="fixed top-0 z-20 flex items-center justify-between w-screen h-16 px-4 border-b lg:hidden border-border bg-bg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col">
+      <div className="fixed top-0 z-40 flex items-center justify-between w-screen h-16 px-4 border-b lg:hidden border-border bg-bg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col">
         <h1 className="text-base font-light text-pg ">{title}</h1>
         <Menu
           size="20"

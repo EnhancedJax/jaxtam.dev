@@ -24,16 +24,18 @@ export default function Alert() {
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-4 p-4">
-              <span className={alert.type === "error" ? "text-red-500" : ""}>
-                {alert.type === "success" ? (
-                  <Check />
-                ) : alert.type === "info" ? (
-                  <Info />
-                ) : (
-                  <TriangleAlert />
-                )}
-              </span>
+            <div className="flex flex-row items-center gap-4 p-3">
+              {alert.type && (
+                <span className={alert.type === "error" ? "text-red-500" : ""}>
+                  {alert.type === "success" ? (
+                    <Check />
+                  ) : alert.type === "info" ? (
+                    <Info />
+                  ) : alert.type === "warning" ? (
+                    <TriangleAlert />
+                  ) : null}
+                </span>
+              )}
               <div>
                 <p>{alert.text}</p>
                 <p className="text-sm text-gray">{alert.message}</p>
