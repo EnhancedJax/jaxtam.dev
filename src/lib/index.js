@@ -63,7 +63,6 @@ export const getPosts = async () => {
       postsConnection(orderBy: publishedAt_DESC) {
         edges {
           node {
-            excerpt
             createdAt
             title
             slug
