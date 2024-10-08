@@ -5,11 +5,13 @@ import { DARKTHEMES, THEMES } from "../utils/constants";
 
 const LogoLoader = () => {
   const { theme } = useTheme();
+
   return (
     <div
       className={
         theme
-          ? DARKTHEMES.includes(THEMES.findIndex((t) => t === theme))
+          ? DARKTHEMES.includes(THEMES.findIndex((t) => t === theme)) ||
+            theme === "system" // website defaults to dark
             ? ""
             : "invert"
           : ""
