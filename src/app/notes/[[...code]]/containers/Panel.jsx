@@ -1,5 +1,4 @@
 "use client";
-import { format, parseISO } from "date-fns";
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
 import SidebarPanel from "../../../../components/SidebarPanel";
@@ -19,28 +18,26 @@ export default function Panel() {
       isOpen={isPanelOpen}
       setIsOpen={setIsPanelOpen}
     >
-      <div className="flex flex-col w-full gap-10">
-        <span className="flex flex-col justify-center gap-2 pl-3">
+      <div className="w-full">
+        <span className="flex flex-col justify-center gap-2 pl-3 mb-10">
           <motion.h1
             variants={slideUp}
-            className="text-xl font-light text-pg lg:text-base"
+            className="text-base font-light text-pg"
           >
-            {selectedNote ? selectedNote.title : "HKU Notes by Jax"}
+            {selectedNote ? selectedNote.title + " Notes" : "HKU Notes by Jax"}
           </motion.h1>
-          <motion.h2
+          <motion.p
             variants={slideUp}
-            className="text-lg font-light text-gray lg:text-base"
+            className="text-base font-light text-gray"
           >
             {selectedNote
-              ? ` ${selectedNote.code} notes for the semester ${
-                  selectedNote.semester
-                }. Last updated on ${format(
-                  parseISO(selectedNote.pdf.updatedAt),
-                  "MMM dd"
-                )}`
+              ? `You're viewing ${selectedNote.code} notes for The University of Hong Kong.`
               : "Composed with ❤️ & LaTeX"}
-          </motion.h2>
+          </motion.p>
         </span>
+        <p className="pl-3 mb-4 text-sm font-light text-gray">
+          View my other notes
+        </p>
         <NotesSelect setIsPanelOpen={setIsPanelOpen} />
       </div>
     </SidebarPanel>
