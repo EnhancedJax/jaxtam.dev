@@ -34,6 +34,7 @@ export default function ExpandingA({ expandClassName, children, ...props }) {
     setTimeout(() => {
       setIsExpanding(false);
       setLinkRect(null);
+      window.location.href = null;
     }, 1000);
   };
 
