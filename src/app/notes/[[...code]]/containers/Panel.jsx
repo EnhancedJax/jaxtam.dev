@@ -9,7 +9,9 @@ import NotesSelect from "./NotesSelect";
 
 export default function Panel() {
   const { selectedNote, slugCode } = useContext(Context);
-  const [isPanelOpen, setIsPanelOpen] = useState(slugCode === undefined);
+  const [isPanelOpen, setIsPanelOpen] = useState(
+    slugCode === undefined && window.innerWidth < 1024
+  );
 
   return (
     <SidebarPanel
