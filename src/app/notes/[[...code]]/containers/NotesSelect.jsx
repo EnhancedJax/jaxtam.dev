@@ -6,7 +6,7 @@ import LucideIcon from "../../../../components/LucideIcon";
 import { slideUp } from "../../../../utils/animations";
 import { Context } from "../viewModel";
 
-export default function NotesSelect() {
+export default function NotesSelect({ setIsPanelOpen }) {
   const { inputHandler, handleItemClick, filteredData, selectedNoteCode } =
     useContext(Context);
 
@@ -35,6 +35,7 @@ export default function NotesSelect() {
                   whileTap={{ scale: 0.95 }}
                   onClick={(e) => {
                     e.preventDefault();
+                    setIsPanelOpen(false);
                     handleItemClick(item.node.code, item.node.pdf.url);
                   }}
                   href={`/notes/${item.node.code}`}

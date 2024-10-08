@@ -42,12 +42,14 @@ const ContextProvider = ({ data, children }) => {
       initNoteIndex = foundIndex === -1 ? 0 : foundIndex;
     }
     setSelectedNoteCode(notes[initNoteIndex].node.code);
+    setSelectedNote(notes[initNoteIndex].node);
     setIframeUrl(notes[initNoteIndex].node.pdf.url);
   }, [notes, slugCode]);
 
   return (
     <Context.Provider
       value={{
+        slugCode,
         inputText,
         inputHandler,
         handleItemClick,

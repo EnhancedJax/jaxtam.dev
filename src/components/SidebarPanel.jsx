@@ -2,12 +2,9 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu } from "lucide-react";
-import { useState } from "react";
 import { slideSpring, slideUp } from "../utils/animations";
 
-const SidebarPanel = ({ title, children }) => {
-  const [sideBarOpen, setSideBarOpen] = useState(false);
-
+const SidebarPanel = ({ title, isOpen, setIsOpen, children }) => {
   return (
     <>
       <div className="fixed top-0 z-20 flex items-center justify-between w-screen h-16 px-4 border-b lg:hidden border-border bg-bg lg:top-0 lg:border-r lg:border-t-0 lg:w-16 lg:h-full lg:flex-col">
@@ -15,14 +12,14 @@ const SidebarPanel = ({ title, children }) => {
         <Menu
           size="20"
           className="cursor-pointer text-gray "
-          onClick={() => setSideBarOpen(!sideBarOpen)}
+          onClick={() => setIsOpen(!isOpen)}
         />
       </div>
       <div className="hidden fixed top-0 left-[64px] lg:block px-3 pt-10 pb-20 w-[340px] border-r border-r-border h-screen overflow-auto">
         {children}
       </div>
       <AnimatePresence>
-        {sideBarOpen && (
+        {isOpen && (
           <>
             <motion.div
               variants={slideSpring["left"]}
@@ -39,7 +36,7 @@ const SidebarPanel = ({ title, children }) => {
               animate="visible"
               exit="hidden"
               className="fixed top-0 left-0 z-30 w-screen h-screen bg-black bg-opacity-20"
-              onClick={() => setSideBarOpen(!sideBarOpen)}
+              onClick={() => setIsOpen(!isOpen)}
             />
           </>
         )}

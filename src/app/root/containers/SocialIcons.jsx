@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Figma, Github, Instagram } from "lucide-react";
+import { Figma, Github, Instagram, Linkedin } from "lucide-react";
 import { useState } from "react";
 import Threads from "../../../components/Icons/Threads";
 import Tooltip from "../../../components/Tooltip";
@@ -21,6 +21,12 @@ export default function SocialIcons() {
       </Button>
       <Button text="Threads" open="https://www.threads.net/@enhancedjax">
         <Threads width={24} height={24} />
+      </Button>
+      <Button
+        text="LinkedIn"
+        open="https://www.linkedin.com/in/jax-tam-9536832b9/"
+      >
+        <Linkedin />
       </Button>
       <Button
         text="Figma design"
@@ -44,15 +50,15 @@ const Button = ({ open, text, children }) => {
   };
 
   return (
-    <motion.div
+    <motion.a
       whileHover={{ scale: 1.05, translateY: -2 }}
-      className="relative cursor-pointer text-darkgray hover:text-pg"
-      onClick={() => window.open(open)}
+      className="relative block cursor-pointer text-darkgray hover:text-pg"
+      href={open}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {children}
       <Tooltip hoveredState={isHovered} text={text} direction="down" />
-    </motion.div>
+    </motion.a>
   );
 };

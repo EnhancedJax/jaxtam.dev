@@ -1,10 +1,8 @@
 import PageWrapper from "../../../components/PageWrapper";
 import SidebarLayout from "../../../components/SidebarLayout";
-import SidebarPanel from "../../../components/SidebarPanel";
 import { getNoteDetails, getNotes } from "../../../lib";
-import Main from "./containers/Main";
 import NoteDisplay from "./containers/NoteDisplay";
-import NotesSelect from "./containers/NotesSelect";
+import Panel from "./containers/Panel";
 import { ContextProvider } from "./viewModel";
 
 export const generateMetadata = async ({ params: { code } }) => {
@@ -31,17 +29,11 @@ export const generateMetadata = async ({ params: { code } }) => {
 export default async function Notes({ params: { code } }) {
   const notes = (await getNotes()) || [];
   const slugCode = code?.[0];
-  const noteDetails = slugCode ? await getNoteDetails(slugCode) : null;
 
   return (
     <PageWrapper>
       <ContextProvider data={{ notes, slugCode }}>
-        <SidebarPanel title="HKU Notes">
-          <div className="flex flex-col w-full gap-10">
-            <Main noteDetails={noteDetails} />
-            <NotesSelect />
-          </div>
-        </SidebarPanel>
+        <Panel />
         <SidebarLayout>
           <NoteDisplay />
         </SidebarLayout>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Date from "../../../../components/DateString";
 import SidebarPanel from "../../../../components/SidebarPanel";
 import { slideSpring, slideUp } from "../../../../utils/animations";
@@ -8,9 +9,14 @@ import { useAppContext } from "../../../provider";
 
 const Panel = ({ thisPost, posts }) => {
   const { togglePageAnimate, handleSetHRef } = useAppContext();
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   return (
-    <SidebarPanel title="Thoughts">
+    <SidebarPanel
+      title="Thoughts"
+      isOpen={isPanelOpen}
+      setIsOpen={setIsPanelOpen}
+    >
       <nav aria-label="Blog posts navigation">
         <motion.h2
           variants={slideUp}
