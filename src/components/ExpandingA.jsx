@@ -29,7 +29,7 @@ export default function ExpandingA({ expandClassName, children, ...props }) {
   };
 
   const handleAnimationComplete = () => {
-    // window.location.href = props.href;
+    window.location.href = props.href;
     // Reset animation after 3 seconds
     setTimeout(() => {
       setIsExpanding(false);
