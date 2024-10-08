@@ -9,6 +9,12 @@ export default function ExpandingA({ expandClassName, children, ...props }) {
   const [linkRect, setLinkRect] = useState(null);
 
   const handleClick = (e) => {
+    if (e.altKey) {
+      // If Alt key is pressed, open in new tab without animation
+      window.open(props.href, "_blank");
+      return;
+    }
+
     e.preventDefault();
     if (linkRef.current) {
       const rect = linkRef.current.getBoundingClientRect();
@@ -23,7 +29,12 @@ export default function ExpandingA({ expandClassName, children, ...props }) {
   };
 
   const handleAnimationComplete = () => {
-    window.location.href = props.href;
+    // window.location.href = props.href;
+    // Reset animation after 3 seconds
+    setTimeout(() => {
+      setIsExpanding(false);
+      setLinkRect(null);
+    }, 1000);
   };
 
   return (
