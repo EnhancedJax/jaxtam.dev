@@ -41,9 +41,14 @@ const ContextProvider = ({ data, children }) => {
       console.log("foundIndex", foundIndex, slugCode);
       initNoteIndex = foundIndex === -1 ? 0 : foundIndex;
     }
+    document.body.style.overflow = "hidden";
     setSelectedNoteCode(notes[initNoteIndex].node.code);
     setSelectedNote(notes[initNoteIndex].node);
     setIframeUrl(notes[initNoteIndex].node.pdf.url);
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [notes, slugCode]);
 
   return (
