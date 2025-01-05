@@ -8,7 +8,7 @@ export default function FullscreenModal() {
   const [isVisible, setIsVisible] = useState(true);
 
   const handleTakeMeThere = () => {
-    window.open("https://notes.jaxtam.com", "_blank");
+    window.open("https://notes.jaxtam.dev", "_blank");
     setIsVisible(false);
   };
 
