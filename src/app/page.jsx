@@ -42,7 +42,7 @@ export default async function Home() {
                 <Experience key={index} exp={exp.node} />
               ))}
               <Flair style={{ top: "40%" }} />
-              <SectionPointer>Projects</SectionPointer>
+              <SectionPointer>Open Source Projects</SectionPointer>
               {projects.map((proj, index) => (
                 <Project key={index} proj={proj.node} />
               ))}
