@@ -1,6 +1,6 @@
 "use client";
 
-import { SwatchBook } from "lucide-react";
+import { SwatchesIcon } from "@phosphor-icons/react/ssr";
 import { useState } from "react";
 import { useAppContext } from "../app/provider";
 import Tooltip from "./Tooltip";
@@ -13,13 +13,13 @@ const NavBar = () => {
     <header className="fixed bottom-4 left-4 z-20">
       <button
         type="button"
-        className="relative block p-3 rounded-md cursor-pointer text-gray hover:text-pg"
+        className="block relative p-3 rounded-md cursor-pointer text-gray hover:text-pg"
         aria-label="Switch themes"
         onClick={handleToggleTheme}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <SwatchBook size="1.2rem" strokeWidth={1.5} />
+        <SwatchesIcon size="1.2rem" weight="fill" />
         <Tooltip
           hoveredState={isHovered}
           text="Switch themes"

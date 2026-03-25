@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Link } from "lucide-react";
+import { LinkSimpleIcon } from "@phosphor-icons/react/ssr";
 import { useRef } from "react";
 
 export default function Experience({ key, exp }) {
@@ -34,9 +34,9 @@ export default function Experience({ key, exp }) {
           <p className="text-base font-light ">
             {exp.position} at {exp.company}
             {exp?.link && (
-              <Link
+              <LinkSimpleIcon
                 className="inline-block ml-2 -mt-1 text-gray"
-                strokeWidth={2}
+                weight="bold"
                 size={12}
               />
             )}

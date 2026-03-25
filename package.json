@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
     "date-fns": "^3.6.0",
@@ -17,7 +18,6 @@
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "locomotive-scroll": "^5.0.0-beta.21",
-    "lucide-react": "^0.360.0",
     "next": "14.1.4",
     "next-themes": "^0.3.0",
     "react": "^18",

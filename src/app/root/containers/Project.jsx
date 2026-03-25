@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "lucide-react";
+import { LinkSimpleIcon } from "@phosphor-icons/react/ssr";
 import Image from "next/image";
 import ExpandingA from "../../../components/ExpandingA";
 
@@ -27,9 +27,9 @@ export default function Project({ key, proj }) {
         <div>
           <p className="text-base font-light ">
             {proj.name}
-            <Link
+            <LinkSimpleIcon
               className="inline-block ml-2 -mt-1 text-gray"
-              strokeWidth={2}
+              weight="bold"
               size={12}
             />
           </p>

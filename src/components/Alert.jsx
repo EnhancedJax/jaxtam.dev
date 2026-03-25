@@ -1,7 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Info, TriangleAlert } from "lucide-react";
+import {
+  CheckIcon,
+  InfoIcon,
+  WarningIcon,
+} from "@phosphor-icons/react/ssr";
 import { useAppContext } from "../app/provider";
 import { ALERT_TIMEOUT } from "../utils/constants";
 
@@ -28,11 +32,11 @@ export default function Alert() {
               {alert.type && (
                 <span className={alert.type === "error" ? "text-red-500" : ""}>
                   {alert.type === "success" ? (
-                    <Check />
+                    <CheckIcon />
                   ) : alert.type === "info" ? (
-                    <Info />
+                    <InfoIcon />
                   ) : alert.type === "warning" ? (
-                    <TriangleAlert />
+                    <WarningIcon />
                   ) : null}
                 </span>
               )}
