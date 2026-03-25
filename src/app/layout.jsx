@@ -19,11 +19,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="overflow-x-hidden" suppressHydrationWarning>
       <Analytics />
       <SpeedInsights />
       <body
-        className={`${FAMILY.className} w-screen overflow-x-hidden h-screen text-pg bg-bg transition-colors`}
+        className={`${FAMILY.className} h-screen w-full max-w-[100vw] overflow-x-hidden text-pg bg-bg transition-colors`}
       >
         <ThemeProvider attribute="class" themes={THEMES}>
           <AppProvider>
