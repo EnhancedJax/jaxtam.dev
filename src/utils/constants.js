@@ -25,7 +25,7 @@ export const FOOTER_MD = `Built with [Next.js](https://nextjs.org/), [Framer.Mot
 export const API_URL =
   "https://api-ap-northeast-1.hygraph.com/v2/clu02tgq901ar07wgk8vzgj2i/master";
 
-export const THEMES = ["light", "dark", "tailwind", "desert"];
-export const DARKTHEMES = [1, 2];
+export const THEMES = ["light", "dark"];
+export const DARKTHEMES = [1];
 
 export const ALERT_TIMEOUT = 3000;

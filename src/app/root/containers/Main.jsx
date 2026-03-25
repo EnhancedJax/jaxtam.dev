@@ -1,32 +1,35 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import TypingHeading from "../../../components/TypingHeading";
+import { DARKTHEMES, THEMES } from "../../../utils/constants";
 import ActionButtons from "./ActionButtons";
 
 export default function Main() {
+  const { resolvedTheme } = useTheme();
+  const themeIndex = resolvedTheme ? THEMES.indexOf(resolvedTheme) : -1;
+  const isLightTheme = themeIndex !== -1 && !DARKTHEMES.includes(themeIndex);
+  const backgroundSrc = isLightTheme
+    ? "/background-light.jpg"
+    : "/background.JPG";
+
   return (
     <main
-      className="flex relative flex-col gap-4 justify-center items-center self-stretch pt-32"
+      className="flex relative flex-col gap-4 justify-center items-center self-stretch pt-32 transition-all"
       style={{
         backgroundColor: "var(--bg)",
         backgroundImage: [
           "linear-gradient(to right, var(--border) 1px, transparent 1px)",
           "linear-gradient(to bottom, var(--border) 1px, transparent 1px)",
         ].join(", "),
-        backgroundSize: "4em",
+        backgroundSize: "4em 4em",
       }}
     >
-      <div className="object-cover relative w-full h-full">
+      <div className="object-cover relative w-full h-full lg:max-w-[1000px]">
         <img
-          src="/background.JPG"
+          src={backgroundSrc}
           alt="bg"
-          className="object-cover w-full h-full"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, white 50%, white 75%, transparent 90%)",
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, white 50%, white 75%, transparent 90%)",
-          }}
+          className="object-cover w-full h-full hero-main-bg-mask"
         />
         <img
           src="/subject.png"
@@ -40,12 +43,14 @@ export default function Main() {
           }}
         />
       </div>
-      <div className="flex absolute top-0 right-0 bottom-0 left-0 flex-col items-center self-stretch mt-20 pointer-events-none">
-        <span className="mb-2 text-base text-gray">Jax Tam</span>
-        <TypingHeading
-          text="FULL STACK ENGINEER_"
-          className="text-center font-medium uppercase leading-[0.85] tracking-tight text-foreground text-[clamp(3rem,15vw,18rem)]"
-        />
+      <div className="flex absolute top-0 right-0 bottom-0 left-0 flex-col">
+        <div className="flex w-full flex-col items-center self-center mt-20 pointer-events-none lg:max-w-[1000px]">
+          <span className="mb-2 text-gray">Jax Tam</span>
+          <TypingHeading
+            text="FULL STACK ENGINEER_"
+            className="text-center font-medium uppercase leading-[0.85] tracking-tight text-foreground text-[clamp(3rem,15vw,18rem)] lg:text-[clamp(3rem,150px,18rem)]"
+          />
+        </div>
       </div>
       <ActionButtons />
       {/* {theme === "tailwind" && (
@@ -89,7 +94,7 @@ export default function Main() {
         >
           <div className="w-2 h-2 rounded-full animate-ping bg-green"></div>
           <div className="absolute w-2 h-2 rounded-full bg-green"></div>
-          <h3 className="text-base font-light text-gray">{STATUS_TEXT}</h3>
+          <h3 className="font-light text-gray">{STATUS_TEXT}</h3>
         </motion.div>
       </div>
       <SocialIcons />

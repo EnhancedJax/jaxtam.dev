@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { LinkSimpleIcon } from "@phosphor-icons/react/ssr";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 
 export default function Experience({ key, exp }) {
@@ -31,7 +31,7 @@ export default function Experience({ key, exp }) {
     >
       <div className="relative flex flex-col justify-between">
         <div>
-          <p className="text-base font-light ">
+          <p className=" font-light ">
             {exp.position} at {exp.company}
             {exp?.link && (
               <LinkSimpleIcon
@@ -41,7 +41,7 @@ export default function Experience({ key, exp }) {
               />
             )}
           </p>
-          <p className="text-base font-light text-gray ">{exp.description}</p>
+          <p className=" font-light text-gray ">{exp.description}</p>
         </div>
         <div className="flex flex-wrap gap-2 mt-2">
           {exp.tags.map((tech, index) => (

@@ -25,7 +25,7 @@ export default function Project({ key, proj }) {
       </div>
       <div className="relative flex flex-col justify-between">
         <div>
-          <p className="text-base font-light ">
+          <p className=" font-light ">
             {proj.name}
             <LinkSimpleIcon
               className="inline-block ml-2 -mt-1 text-gray"
@@ -33,7 +33,7 @@ export default function Project({ key, proj }) {
               size={12}
             />
           </p>
-          <p className="text-base font-light text-gray ">{proj.description}</p>
+          <p className=" font-light text-gray ">{proj.description}</p>
         </div>
         <div className="flex flex-wrap gap-2 mt-2">
           {proj.techs.map((tech, index) => (

@@ -7,7 +7,7 @@ const MarkdownFormatted = ({ children, className }) => {
   return (
     <Markdown
       remarkPlugins={[remarkGfm]}
-      className={`text-base font-light leading-relaxed ${className}`}
+      className={` font-light leading-relaxed ${className}`}
       components={{
         h1(props) {
           const { node, ...rest } = props;
@@ -29,12 +29,7 @@ const MarkdownFormatted = ({ children, className }) => {
         },
         h3(props) {
           const { node, ...rest } = props;
-          return (
-            <h3
-              className="mt-2 mb-5 text-base font-light  text-gray "
-              {...rest}
-            />
-          );
+          return <h3 className="mt-2 mb-5  font-light  text-gray " {...rest} />;
         },
         p(props) {
           const { node, ...rest } = props;

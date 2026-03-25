@@ -15,11 +15,11 @@ export default function Home() {
       exit="hidden"
     >
       <LogoLoader />
-      <motion.div className="text-base font-light text-pg " variants={slideUp}>
+      <motion.div className=" font-light text-pg " variants={slideUp}>
         404 Not Found
       </motion.div>
       <motion.div
-        className="text-base font-light text-center text-gray "
+        className=" font-light text-center text-gray "
         variants={slideUp}
       >
         The page you're looking for doesn't exist.
@@ -31,10 +31,7 @@ export default function Home() {
           whileHover={{ scale: 1.05, translateY: -4 }}
           whileTap={{ scale: 0.95, translateY: -2 }}
         >
-          <motion.div
-            className="text-base font-light text-bg "
-            variants={slideUp}
-          >
+          <motion.div className=" font-light text-bg " variants={slideUp}>
             Return to home page
           </motion.div>
         </motion.div>

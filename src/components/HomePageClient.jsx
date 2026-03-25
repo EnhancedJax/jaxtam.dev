@@ -40,7 +40,7 @@ export default function HomePageClient() {
                 {homeContent.experiences.map((exp, index) => (
                   <Experience key={index} exp={exp.node} />
                 ))}
-                <SectionPointer>Open Source Projects</SectionPointer>
+                <SectionPointer>Projects</SectionPointer>
                 {homeContent.projects.map((proj, index) => (
                   <Project key={index} proj={proj.node} />
                 ))}

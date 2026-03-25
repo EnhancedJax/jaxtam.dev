@@ -1,5 +1,6 @@
 "use client";
 
+import { HandshakeIcon } from "@phosphor-icons/react/dist/ssr";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ExpandingA from "../../../components/ExpandingA";
@@ -9,7 +10,7 @@ const ActionButtons = () => {
   const [slide, setSlide] = useState(false);
   return (
     <motion.div
-      className="flex flex-row gap-2 justify-center items-center w-full px-10 md:w-[640px]"
+      className="flex flex-row gap-2 justify-center items-center w-full px-8 md:w-[640px]"
       variants={slideUp}
       onUpdate={(latest) => {
         if (latest.opacity === 1) {
@@ -28,7 +29,8 @@ const ActionButtons = () => {
         whileTap={{ scale: 0.95, translateY: -2 }}
         href="mailto:jax.lytam@gmail.com"
       >
-        <p className="text-base font-light text-bg">Hire me</p>
+        <HandshakeIcon size={20} className="text-bg" weight="fill" />
+        <p className="font-light  text-bg">Hire me</p>
       </motion.a>
       {/* <div className="hidden font-light text-gray md:block">or</div> */}
       <ExpandingA
@@ -41,7 +43,7 @@ const ActionButtons = () => {
         expandClassName="bg-fg rounded-none"
         className="flex min-w-0 flex-1 self-stretch h-[38px] py-2 cursor-pointer bg-fg rounded-full border border-border justify-center items-center gap-2.5"
       >
-        <p className="text-base font-light text-pg" variants={slideUp}>
+        <p className="font-light  text-pg" variants={slideUp}>
           Get full resume
         </p>
       </ExpandingA>

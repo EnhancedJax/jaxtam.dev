@@ -6,6 +6,60 @@ img {
   pointer-events: none;
 }
 
+.hero-main-bg-mask {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    white 60%,
+    white 75%,
+    transparent 90%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    white 60%,
+    white 75%,
+    transparent 90%
+  );
+}
+
+@media (min-width: 1024px) {
+  .hero-main-bg-mask {
+    -webkit-mask-image:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        white 60%,
+        white 75%,
+        transparent 90%
+      ),
+      linear-gradient(
+        to right,
+        transparent 0%,
+        white 8%,
+        white 92%,
+        transparent 100%
+      );
+    mask-image:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        white 60%,
+        white 75%,
+        transparent 90%
+      ),
+      linear-gradient(
+        to right,
+        transparent 0%,
+        white 8%,
+        white 92%,
+        transparent 100%
+      );
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
+
 .md-link-animation {
   transition: all 0.3s ease;
   color: #93c5fd;
