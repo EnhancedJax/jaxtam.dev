@@ -2,97 +2,65 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 
-function docBottom(el) {
+/** Scroll distance after the slide-in completes that equals one full turn. */
+const PX_PER_360 = 500;
+
+function heroDocBottom(el) {
   if (!el) return 0;
   const r = el.getBoundingClientRect();
   return r.bottom + window.scrollY;
 }
 
-/** Scroll distance after the slide-in completes that equals one full turn. */
-const PX_PER_360 = 200;
-
 /**
- * Decorative “Hire me” pair: slide in from off-screen left/right once the hero
- * has left the viewport; after that, each side rotates from its center — 360°
- * per 200px scrolled (left clockwise, right counter-clockwise).
+ * Decorative “Hire me” pair: slide in from off-screen left/right as the user
+ * scrolls from the top; fully in place once the hero has left the viewport
+ * (`useScroll` target offsets: start aligned with top → end aligned with top).
+ * After that, each side rotates from its center — 360° per PX_PER_360 scrolled.
  */
 export default function HireMeScroll({ heroRef }) {
-  const { scrollY } = useScroll();
-
-  const opacity = useTransform(scrollY, (y) => {
-    const el = heroRef.current;
-    if (!el) return 0;
-    const heroEnd = docBottom(el);
-    const vh = window.innerHeight;
-    const slideEnd = heroEnd + vh * 0.38;
-    if (y <= heroEnd) return 0;
-    if (y >= slideEnd) return 1;
-    return (y - heroEnd) / (slideEnd - heroEnd);
+  const { scrollY, scrollYProgress: heroSlideProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
   });
 
-  const slideLeftX = useTransform(scrollY, (y) => {
-    const el = heroRef.current;
-    if (!el) return "-60vw";
-    const heroEnd = docBottom(el);
-    const vh = window.innerHeight;
-    const slideEnd = heroEnd + vh * 0.38;
-    if (y <= heroEnd) return "-60vw";
-    if (y >= slideEnd) return "0vw";
-    const t = (y - heroEnd) / (slideEnd - heroEnd);
-    return `${-60 * (1 - t)}vw`;
-  });
-
-  const slideRightX = useTransform(scrollY, (y) => {
-    const el = heroRef.current;
-    if (!el) return "60vw";
-    const heroEnd = docBottom(el);
-    const vh = window.innerHeight;
-    const slideEnd = heroEnd + vh * 0.38;
-    if (y <= heroEnd) return "60vw";
-    if (y >= slideEnd) return "0vw";
-    const t = (y - heroEnd) / (slideEnd - heroEnd);
-    return `${60 * (1 - t)}vw`;
-  });
+  const slideLeftX = useTransform(heroSlideProgress, [0, 1], ["-26ch", "0rem"]);
+  const slideRightX = useTransform(heroSlideProgress, [0, 1], ["26ch", "0rem"]);
 
   const rotateLeft = useTransform(scrollY, (y) => {
     const el = heroRef.current;
     if (!el) return 0;
-    const heroEnd = docBottom(el);
-    const vh = window.innerHeight;
-    const slideEnd = heroEnd + vh * 0.38;
-    if (y <= slideEnd) return 0;
-    return ((y - slideEnd) / PX_PER_360) * 360;
+    const end = heroDocBottom(el);
+    if (y <= end) return 0;
+    return ((y - end) / PX_PER_360) * 360;
   });
 
   const rotateRight = useTransform(scrollY, (y) => {
     const el = heroRef.current;
     if (!el) return 0;
-    const heroEnd = docBottom(el);
-    const vh = window.innerHeight;
-    const slideEnd = heroEnd + vh * 0.38;
-    if (y <= slideEnd) return 0;
-    return -((y - slideEnd) / PX_PER_360) * 360;
+    const end = heroDocBottom(el);
+    if (y <= end) return 0;
+    return -((y - end) / PX_PER_360) * 360;
   });
 
   return (
     <div
-      className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+      className="overflow-hidden fixed inset-0 z-10 pointer-events-none"
       aria-hidden
     >
       <motion.div
         className="absolute left-0 top-[42%] -translate-y-1/2 pl-2 md:pl-4 origin-center"
-        style={{ x: slideLeftX, rotate: rotateLeft, opacity }}
+        style={{ x: slideLeftX, rotate: rotateLeft }}
       >
-        <span className="block text-3xl font-light md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
-          Hire me
+        <span className="block text-3xl font-black md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
+          HIRE ME
         </span>
       </motion.div>
       <motion.div
         className="absolute right-0 top-[42%] -translate-y-1/2 pr-2 md:pr-4 origin-center"
-        style={{ x: slideRightX, rotate: rotateRight, opacity }}
+        style={{ x: slideRightX, rotate: rotateRight }}
       >
-        <span className="block text-3xl font-light md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
-          Hire me
+        <span className="block text-3xl font-black md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
+          HIRE ME
         </span>
       </motion.div>
     </div>

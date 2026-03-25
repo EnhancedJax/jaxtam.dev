@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef } from "react";
+import dynamic from "next/dynamic";
+import { useEffect, useRef, useState } from "react";
 import Experience from "../app/root/containers/Experience";
 import Main from "../app/root/containers/Main";
 import Project from "../app/root/containers/Project";
@@ -12,8 +13,21 @@ import RegularLayout from "./RegularLayout";
 import SectionPointer from "./SectionPointer";
 import StaggerElement from "./StaggerElement";
 
+const MD_UP_MQ = "(min-width: 1400px)";
+
+const HireMeScroll = dynamic(() => import("./HireMeScroll"), { ssr: false });
+
 export default function HomePageClient() {
   const heroRef = useRef(null);
+  const [showHireMeScroll, setShowHireMeScroll] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(MD_UP_MQ);
+    const sync = () => setShowHireMeScroll(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   return (
     <div className="relative w-full">
@@ -52,6 +66,7 @@ export default function HomePageClient() {
               </MarkdownFormatted>
             </footer> */}
           </div>
+          {showHireMeScroll ? <HireMeScroll heroRef={heroRef} /> : null}
         </RegularLayout>
       </div>
     </div>

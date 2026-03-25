@@ -1,17 +1,28 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import TypingHeading from "../../../components/TypingHeading";
 import { DARKTHEMES, THEMES } from "../../../utils/constants";
 import ActionButtons from "./ActionButtons";
+
+const HERO_WIDTH = 4032;
+const HERO_HEIGHT = 3024;
 
 export default function Main() {
   const { resolvedTheme } = useTheme();
   const themeIndex = resolvedTheme ? THEMES.indexOf(resolvedTheme) : -1;
   const isLightTheme = themeIndex !== -1 && !DARKTHEMES.includes(themeIndex);
   const backgroundSrc = isLightTheme
-    ? "/background-light.jpg"
-    : "/background.JPG";
+    ? "/background-light.webp"
+    : "/background-dark.webp";
+
+  const [bgReady, setBgReady] = useState(false);
+  const [subjectReady, setSubjectReady] = useState(false);
+
+  useEffect(() => {
+    setBgReady(false);
+  }, [backgroundSrc]);
 
   return (
     <main
@@ -25,14 +36,17 @@ export default function Main() {
         backgroundSize: "4em 4em",
       }}
     >
-      <div className="object-cover relative w-full h-full lg:max-w-[1000px]">
+      <div
+        className="object-cover relative w-full h-full lg:max-w-[1000px]"
+        style={{ aspectRatio: `${HERO_WIDTH} / ${HERO_HEIGHT}` }}
+      >
         <img
           src={backgroundSrc}
           alt="bg"
           className="object-cover w-full h-full hero-main-bg-mask"
         />
         <img
-          src="/subject.png"
+          src="/subject.webp"
           alt="fg"
           className="object-cover absolute top-0 left-0 z-10 w-full h-full"
           style={{
@@ -43,8 +57,8 @@ export default function Main() {
           }}
         />
       </div>
-      <div className="flex absolute top-0 right-0 bottom-0 left-0 flex-col">
-        <div className="flex w-full flex-col items-center self-center mt-20 pointer-events-none lg:max-w-[1000px]">
+      <div className="flex absolute top-0 right-0 bottom-0 left-0 flex-col pointer-events-none">
+        <div className="flex w-full flex-col items-center self-center mt-20 lg:max-w-[1000px]">
           <span className="mb-2 text-gray">Jax Tam</span>
           <TypingHeading
             text="FULL STACK ENGINEER_"

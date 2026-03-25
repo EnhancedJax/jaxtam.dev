@@ -8,16 +8,7 @@ export const FAMILY = Raleway({
 export const TITLE_TEXT = `Full-stack developer`;
 export const STATUS_TEXT = `Available for new opportunities ⋅ Student @ HKU`;
 
-export const ABOUT_MD = `Back in 2020, I decided to try my hand at creating [Rainmeter](https://rainmeter.net) themes and went down the rabbit hole of coding and software development. Fast-forward to today, I'm now pursuing my degree in **Computer Science at The University of Hong Kong**. 
-
-
-My main focus these days is to design and develop user software with diverse technologies, apart from my studies. I most enjoy building software that revolves around the user experience, built and designed with the users in mind. 
-
-
-I also share my university course notes on [Notes@HKU](https://notes.jaxtam.dev), which aims to be the central platform for HKU students to share their course notes and resources.
-
-
-When I'm not at the computer, I'm usually at the gym or eating Sam Gor mixian.
+export const ABOUT_MD = `Full-stack Developer that can design, specialized in mobile app and web app development. I help bring digital products to life with smooth, interactive and "premium" experience
 `;
 
 export const FOOTER_MD = `Built with [Next.js](https://nextjs.org/), [Framer.Motion](https://www.framer.com/motion/) and [Tailwind CSS](https://tailwindcss.com/), deployed with [Vercel](https://vercel.com/). [Hygraph](https://hygraph.com) for CMS w/ [GraphQL](https://graphql.org/). Loosely designed in [Figma](https://www.figma.com/file/jweQFqBujsTKhL6Zw44MON/Design?type=design&node-id=4%3A2&mode=design&t=O2Vfu63nmrOhawVX-1) and coded in [Visual Studio Code](https://code.visualstudio.com/).  Using the [Ubuntu](https://fonts.google.com/specimen/Ubuntu) typeface for sans and [DM Mono](https://fonts.google.com/specimen/DM+Mono) for monospace. Source code available on [GitHub](https://github.com/EnhancedJax/enhanced-jax.dev). Inspired by [Brittany Chiang](https://brittanychiang.com/).`;
