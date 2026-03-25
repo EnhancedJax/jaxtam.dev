@@ -1,12 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../app/provider";
 import LogoLoader from "./LogoLoader";
 
 export default function FunnyBackground() {
-  const { pageAnimate, isFunnyToggle } = useAppContext();
+  const { pageAnimate } = useAppContext();
   const [delayedPageAnimate, setDelayedPageAnimate] = useState(false);
   const timerRef = useRef(null);
 
@@ -28,23 +27,10 @@ export default function FunnyBackground() {
     <div
       className={`absolute top-0 object-cover w-full h-full overflow-hidden -z-10 flex items-center justify-center`}
     >
-      {isFunnyToggle ? (
-        <Image
-          className="object-cover blur-sm"
-          src="https://live.staticflickr.com/6135/5978562722_ce85d95d93_h.jpg"
-          alt="Hong Kong"
-          fill={true}
-          style={{
-            opacity: pageAnimate ? 0 : 0.3,
-            transition: `opacity ${pageAnimate ? "0s" : "0.5s"} ease-in-out`,
-          }}
-        />
-      ) : (
-        delayedPageAnimate && (
-          <div>
-            <LogoLoader />
-          </div>
-        )
+      {delayedPageAnimate && (
+        <div>
+          <LogoLoader />
+        </div>
       )}
     </div>
   );

@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useContext, useState } from "react";
 import { ALERT_TIMEOUT, THEMES } from "../utils/constants";
+
 const AppContext = createContext();
 const useAppContext = () => useContext(AppContext);
 
@@ -12,49 +13,29 @@ const AppProvider = ({ children }) => {
   const pathName = usePathname();
 
   const [pageAnimate, setPageAnimate] = useState(false);
-  const [href, setHRef] = useState(null);
-  const [isFunnyToggle, setIsFunnyToggle] = useState(false);
   const [alertStack, setAlertStack] = useState([]);
-  const [navbarRouteState, setNavbarRouteState] = useState(pathName);
   const { theme, setTheme } = useTheme();
 
   const handleToggleTheme = () => {
-    console.log(theme);
     const currentThemeIndex = THEMES.indexOf(theme);
     const nextThemeIndex = (currentThemeIndex + 1) % THEMES.length;
-    const nextTheme = THEMES[nextThemeIndex];
-    console.log("Switching theme to", nextTheme);
-    setTheme(nextTheme);
+    setTheme(THEMES[nextThemeIndex]);
   };
 
   const togglePageAnimate = () => {
-    setPageAnimate(!pageAnimate); // PageWrapper will then call handlePageChange after animation
+    setPageAnimate(!pageAnimate);
   };
 
-  const isSameRoute = (thisHref, route = null) => {
-    const currentRoute = route || pathName;
-    const is =
-      currentRoute === thisHref ||
-      (currentRoute !== "/" &&
-        currentRoute?.match(/^\/[A-Za-z]+/)?.[0] === thisHref);
-    return is;
-  };
+  const isSameRoute = (thisHref, currentRoute = pathName) =>
+    currentRoute === thisHref ||
+    (currentRoute !== "/" &&
+      currentRoute?.match(/^\/[A-Za-z]+/)?.[0] === thisHref);
 
   const handlePageChange = (immediateHref) => {
-    const toHref = immediateHref || href;
-    // console.log("handlePageChange", toHref, isSameRoute(toHref));
-    if (toHref !== null && !isSameRoute(toHref)) {
+    const toHref = immediateHref;
+    if (toHref != null && !isSameRoute(toHref)) {
       router.push(toHref);
     }
-  };
-  const handleSetHRef = (href) => {
-    setIsFunnyToggle(isSameRoute(href));
-    setHRef(href);
-  };
-  const handleDirectPageChange = (href) => {
-    setNavbarRouteState(href);
-    handleSetHRef(href);
-    handlePageChange(href);
   };
 
   const clearAlert = (id) => {
@@ -75,18 +56,12 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         pageAnimate,
-        isFunnyToggle,
-        isSameRoute,
         togglePageAnimate,
         alertStack,
         newAlert,
         clearAlert,
-        navbarRouteState,
-        setNavbarRouteState,
-        handleSetHRef,
         handlePageChange,
         handleToggleTheme,
-        handleDirectPageChange,
       }}
     >
       {children}

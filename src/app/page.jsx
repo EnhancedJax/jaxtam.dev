@@ -10,7 +10,6 @@ import Experience from "./root/containers/Experience";
 import Flair from "./root/containers/Flair";
 import Main from "./root/containers/Main";
 import Project from "./root/containers/Project";
-import Writing from "./root/containers/Writing";
 
 export const metadata = {
   description:
@@ -18,7 +17,7 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const { latestWorks, projects, experiences } = await getHomePage();
+  const { projects, experiences } = await getHomePage();
   return (
     <PageWrapper>
       <RegularLayout>
@@ -45,10 +44,6 @@ export default async function Home() {
               <SectionPointer>Open Source Projects</SectionPointer>
               {projects.map((proj, index) => (
                 <Project key={index} proj={proj.node} />
-              ))}
-              <SectionPointer>Writings</SectionPointer>
-              {latestWorks.map((writing, index) => (
-                <Writing key={index} writing={writing.node} />
               ))}
             </StaggerElement>
           </section>

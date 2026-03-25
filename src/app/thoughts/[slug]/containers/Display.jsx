@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Date from "../../../../components/DateString";
 import MarkdownFormatted from "../../../../components/MarkdownFormatted";
-import SidebarLayout from "../../../../components/SidebarLayout";
+import RegularLayout from "../../../../components/RegularLayout";
 import { slideUp, staggerParent } from "../../../../utils/animations";
 
 const Content = ({ thisPost }) => {
   return (
-    <SidebarLayout>
+    <RegularLayout>
       <motion.article
         className="w-full text-base font-light"
         variants={staggerParent()}
@@ -17,8 +17,8 @@ const Content = ({ thisPost }) => {
         animate="visible"
         exit="hidden"
       >
-        <div className="mx-auto mt-8 px-4 max-w-[540px] w-full">
-          <div className="relative w-full h-[300px] mb-8">
+        <div className="mx-auto w-full max-w-[540px]">
+          <div className="relative mb-8 w-full h-[300px]">
             <Image
               src={thisPost.heroImage.url}
               alt={`Hero image of "${thisPost.title}"`}
@@ -63,7 +63,7 @@ const Content = ({ thisPost }) => {
           </div>
         </div>
       </motion.article>
-    </SidebarLayout>
+    </RegularLayout>
   );
 };
 
