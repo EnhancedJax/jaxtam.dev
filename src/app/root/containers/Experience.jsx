@@ -3,8 +3,10 @@
 import { LinkSimpleIcon } from "@phosphor-icons/react/ssr";
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import { useT } from "../../../i18n/I18nProvider";
 
 export default function Experience({ key, exp }) {
+  const t = useT();
   const expRef = useRef(null);
 
   const handleMouseEnter = () => {
@@ -32,7 +34,9 @@ export default function Experience({ key, exp }) {
       <div className="relative flex flex-col justify-between">
         <div>
           <p className=" font-light ">
-            {exp.position} at {exp.company}
+            {exp.position}
+            {t("experienceAt")}
+            {exp.company}
             {exp?.link && (
               <LinkSimpleIcon
                 className="inline-block ml-2 -mt-1 text-gray"

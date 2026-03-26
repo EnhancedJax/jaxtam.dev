@@ -1,74 +1,71 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import TypingHeading from "../../../components/TypingHeading";
-import { DARKTHEMES, THEMES } from "../../../utils/constants";
+import { useT } from "../../../i18n/I18nProvider";
 import ActionButtons from "./ActionButtons";
-
-const HERO_WIDTH = 4032;
-const HERO_HEIGHT = 3024;
+import SocialIcons from "./SocialIcons";
 
 export default function Main() {
-  const { resolvedTheme } = useTheme();
-  const themeIndex = resolvedTheme ? THEMES.indexOf(resolvedTheme) : -1;
-  const isLightTheme = themeIndex !== -1 && !DARKTHEMES.includes(themeIndex);
-  const backgroundSrc = isLightTheme
-    ? "/background-light.webp"
-    : "/background-dark.webp";
-
-  const [bgReady, setBgReady] = useState(false);
-  const [subjectReady, setSubjectReady] = useState(false);
-
-  useEffect(() => {
-    setBgReady(false);
-  }, [backgroundSrc]);
-
+  const t = useT();
   return (
-    <main
-      className="flex relative flex-col gap-4 justify-center items-center self-stretch pt-32 transition-all"
-      style={{
-        backgroundColor: "var(--bg)",
-        backgroundImage: [
-          "linear-gradient(to right, var(--border) 1px, transparent 1px)",
-          "linear-gradient(to bottom, var(--border) 1px, transparent 1px)",
-        ].join(", "),
-        backgroundSize: "4em 4em",
-      }}
-    >
+    <main className="relative flex flex-col items-center self-stretch justify-center gap-4 pt-32 transition-all">
       <div
-        className="object-cover relative w-full h-full lg:max-w-[1000px]"
-        style={{ aspectRatio: `${HERO_WIDTH} / ${HERO_HEIGHT}` }}
-      >
-        <img
-          src={backgroundSrc}
-          alt="bg"
-          className="object-cover w-full h-full hero-main-bg-mask"
-        />
-        <img
-          src="/subject.webp"
-          alt="fg"
-          className="object-cover absolute top-0 left-0 z-10 w-full h-full"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to bottom, white 0%, white 90%, transparent 100%)",
-            maskImage:
-              "linear-gradient(to bottom, white 0%, white 90%, transparent 100%)",
-          }}
-        />
+        className="absolute top-0 bottom-0 left-0 right-0 -z-10"
+        style={{
+          backgroundColor: "var(--bg)",
+          backgroundImage: [
+            "linear-gradient(to right, var(--border) 1px, transparent 1px)",
+            "linear-gradient(to bottom, var(--border) 1px, transparent 1px)",
+          ].join(", "),
+          backgroundSize: "4em 4em",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, white 0%, white 70%, transparent 100%)",
+          maskImage:
+            "linear-gradient(to bottom, white 0%, white 70%, transparent 100%)",
+        }}
+      ></div>
+      <div className="object-cover relative w-full h-full aspect-[4032/3024] lg:aspect-[6803/3024]">
+        <picture className="block w-full h-full">
+          <source
+            media="(min-width: 1024px)"
+            srcSet="/background-dark-expanded.webp"
+          />
+          <img
+            src="/background-dark.webp"
+            alt=""
+            className="object-cover w-full h-full hero-main-bg-mask"
+          />
+        </picture>
+        <picture className="absolute top-0 left-0 z-10 block w-full h-full">
+          <source media="(min-width: 1024px)" srcSet="/subject-expanded.webp" />
+          <img
+            src="/subject.webp"
+            alt=""
+            className="object-cover w-full h-full"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to bottom, white 0%, white 90%, transparent 100%)",
+              maskImage:
+                "linear-gradient(to bottom, white 0%, white 90%, transparent 100%)",
+            }}
+          />
+        </picture>
       </div>
-      <div className="flex absolute top-0 right-0 bottom-0 left-0 flex-col pointer-events-none">
-        <div className="flex w-full flex-col items-center self-center mt-20 lg:max-w-[1000px]">
+      <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col pointer-events-none">
+        <div className="flex flex-col items-center self-center mt-20 w-full lg:max-w-[1000px]">
           <span className="mb-2 text-gray">Jax Tam</span>
           <TypingHeading
-            text="FULL STACK ENGINEER_"
+            text={t("heroTitle")}
             className="text-center font-medium uppercase leading-[0.85] tracking-tight text-foreground text-[clamp(3rem,15vw,18rem)] lg:text-[clamp(3rem,150px,18rem)]"
           />
         </div>
       </div>
-      <ActionButtons />
+      <div className="bottom-0 left-0 right-0 z-20 flex flex-col items-center justify-start w-full gap-5 lg:absolute">
+        <SocialIcons />
+        <ActionButtons />
+      </div>
       {/* {theme === "tailwind" && (
-        <div className="flex overflow-hidden absolute -top-10 flex-none justify-center w-screen h-max -z-10">
+        <div className="absolute flex justify-center flex-none w-screen overflow-hidden -top-10 h-max -z-10">
           <img
             src="/tailwindbg.png"
             alt="bg"
@@ -77,7 +74,7 @@ export default function Main() {
         </div>
       )}
       <motion.div
-        className="flex flex-col gap-4 items-center self-stretch"
+        className="flex flex-col items-center self-stretch gap-4"
         variants={slideUp}
       >
         <span
@@ -94,16 +91,16 @@ export default function Main() {
           alt="Avatar"
         />
       </motion.div>
-      <div className="flex flex-col gap-5 justify-start items-center self-stretch">
+      <div className="flex flex-col items-center self-stretch justify-start gap-5">
         <motion.div
-          className="flex flex-col gap-1 justify-center items-center self-stretch"
+          className="flex flex-col items-center self-stretch justify-center gap-1"
           variants={slideUp}
         >
           <h1 className="text-xl font-light text-cpg">Jax Tam</h1>
           <h2 className="text-lg font-light text-gray">{TITLE_TEXT}</h2>
         </motion.div>
         <motion.div
-          className="flex gap-4 justify-start items-center"
+          className="flex items-center justify-start gap-4"
           variants={slideUp}
         >
           <div className="w-2 h-2 rounded-full animate-ping bg-green"></div>

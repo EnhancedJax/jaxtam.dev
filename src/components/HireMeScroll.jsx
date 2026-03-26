@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useT } from "../i18n/I18nProvider";
 
 /** Scroll distance after the slide-in completes that equals one full turn. */
 const PX_PER_360 = 500;
@@ -18,6 +19,7 @@ function heroDocBottom(el) {
  * After that, each side rotates from its center — 360° per PX_PER_360 scrolled.
  */
 export default function HireMeScroll({ heroRef }) {
+  const t = useT();
   const { scrollY, scrollYProgress: heroSlideProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -52,7 +54,7 @@ export default function HireMeScroll({ heroRef }) {
         style={{ x: slideLeftX, rotate: rotateLeft }}
       >
         <span className="block text-3xl font-black md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
-          HIRE ME
+          {t("hireMeScroll")}
         </span>
       </motion.div>
       <motion.div
@@ -60,7 +62,7 @@ export default function HireMeScroll({ heroRef }) {
         style={{ x: slideRightX, rotate: rotateRight }}
       >
         <span className="block text-3xl font-black md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
-          HIRE ME
+          {t("hireMeScroll")}
         </span>
       </motion.div>
     </div>

@@ -1,14 +1,10 @@
 "use client";
 
+import { ThreadsLogoIcon } from "@phosphor-icons/react/dist/ssr";
+import { GithubLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react/ssr";
 import { motion } from "framer-motion";
-import {
-  FigmaLogoIcon,
-  GithubLogoIcon,
-  LinkedinLogoIcon,
-} from "@phosphor-icons/react/ssr";
 import { useState } from "react";
 import ExpandingA from "../../../components/ExpandingA";
-import Threads from "../../../components/Icons/Threads";
 import Tooltip from "../../../components/Tooltip";
 import { slideUp } from "../../../utils/animations";
 
@@ -16,25 +12,19 @@ export default function SocialIcons() {
   return (
     <motion.div
       variants={slideUp}
-      className="flex items-center self-stretch justify-center h-12 gap-6"
+      className="flex items-center self-stretch justify-center gap-6"
     >
       <Button text="Github" open="https://github.com/EnhancedJax">
         <GithubLogoIcon size={24} />
       </Button>
       <Button text="Threads" open="https://www.threads.net/@enhancedjax">
-        <Threads width={24} height={24} />
+        <ThreadsLogoIcon size={24} />
       </Button>
       <Button
         text="LinkedIn"
         open="https://www.linkedin.com/in/jax-tam-9536832b9/"
       >
         <LinkedinLogoIcon size={24} />
-      </Button>
-      <Button
-        text="Figma design"
-        open="https://www.figma.com/file/jweQFqBujsTKhL6Zw44MON/Design?type=design&node-id=4%3A2&mode=design&t=O2Vfu63nmrOhawVX-1"
-      >
-        <FigmaLogoIcon size={24} />
       </Button>
     </motion.div>
   );
