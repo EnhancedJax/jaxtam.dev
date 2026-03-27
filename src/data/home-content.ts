@@ -16,7 +16,7 @@ export const homeContent = {
         monthYear: "2026-01-31",
         name: "Replay - Timeline and Activities (iOS)",
         techs: ["SwiftUI", "Swift", "Core Data"],
-        link: "https://replayapp.jaxtam.dev",
+        link: "https://replayapp.dev",
         description:
           "iOS app that automatically saves your visits and routes. Relive your last working holiday, morning drive or road trip, all in one place.",
         image: {
