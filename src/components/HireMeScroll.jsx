@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useT } from "../i18n/I18nProvider";
 
 /** Scroll distance after the slide-in completes that equals one full turn. */
-const PX_PER_360 = 500;
+const PX_PER_360 = 1000;
 
 function heroDocBottom(el) {
   if (!el) return 0;
@@ -53,7 +53,7 @@ export default function HireMeScroll({ heroRef }) {
         className="absolute left-0 top-[42%] -translate-y-1/2 pl-2 md:pl-4 origin-center"
         style={{ x: slideLeftX, rotate: rotateLeft }}
       >
-        <span className="block text-3xl font-black md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
+        <span className="block text-3xl opacity-20 font-black md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
           {t("hireMeScroll")}
         </span>
       </motion.div>
@@ -61,7 +61,7 @@ export default function HireMeScroll({ heroRef }) {
         className="absolute right-0 top-[42%] -translate-y-1/2 pr-2 md:pr-4 origin-center"
         style={{ x: slideRightX, rotate: rotateRight }}
       >
-        <span className="block text-3xl font-black md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
+        <span className="block text-3xl opacity-20 font-black md:text-5xl text-pg/[0.11] whitespace-nowrap select-none">
           {t("hireMeScroll")}
         </span>
       </motion.div>

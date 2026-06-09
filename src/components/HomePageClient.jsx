@@ -8,6 +8,7 @@ import Project from "../app/root/containers/Project";
 import { homeContent } from "../data/home-content";
 import { useT } from "../i18n/I18nProvider";
 import { slideSpring } from "../utils/animations";
+import Footer from "./Footer";
 import MarkdownFormatted from "./MarkdownFormatted";
 import RegularLayout from "./RegularLayout";
 import SectionPointer from "./SectionPointer";
@@ -64,6 +65,7 @@ export default function HomePageClient() {
           </div>
           {showHireMeScroll ? <HireMeScroll heroRef={heroRef} /> : null}
         </RegularLayout>
+        <Footer />
       </div>
     </div>
   );

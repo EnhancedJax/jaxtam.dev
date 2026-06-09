@@ -163,6 +163,82 @@ img {
   }
 }
 
+.footer-wind {
+  z-index: 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
+}
+
+.footer-wind-streak {
+  position: absolute;
+  left: 0;
+  height: 1px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to left,
+    transparent,
+    color-mix(in srgb, var(--pg) 8%, transparent),
+    color-mix(in srgb, var(--pg) 18%, transparent),
+    transparent
+  );
+  opacity: 0.55;
+  animation-name: footer-wind-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes footer-wind-drift {
+  0% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(-140%);
+  }
+}
+
+.footer-dust {
+  width: 72px;
+  height: 36px;
+  transform: translate(-100%, 0);
+}
+
+.footer-dust-particle {
+  position: absolute;
+  /* border-radius: 9999px; */
+  background: color-mix(in srgb, var(--pg) 35%, var(--gray));
+  opacity: 0;
+  animation-name: footer-dust-trail;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes footer-dust-trail {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  15% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dust-drift-x, -24px), var(--dust-drift-y, -8px))
+      scale(1.2);
+  }
+}
+
 :focus-visible {
   outline-style: dashed;
   outline-offset: 5px;
