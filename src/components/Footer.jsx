@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useT } from "../i18n/I18nProvider";
 
 const WIND_STREAKS = 15;
 const DUST_COUNT = 18;
@@ -26,6 +27,7 @@ const dustParticles = Array.from({ length: DUST_COUNT }, (_, i) => ({
 }));
 
 export default function Footer() {
+  const t = useT();
   const footerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: footerRef,
@@ -40,8 +42,7 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative w-full h-[150px] md:h-[250px] overflow-hidden"
-      aria-hidden
+      className="relative w-full h-[150px] md:h-[250px] overflow-visible"
     >
       <motion.div
         className="absolute inset-0 pointer-events-none footer-wind"
@@ -66,7 +67,7 @@ export default function Footer() {
         style={{ left, x, opacity }}
       >
         <motion.div
-          className="absolute bottom-0 left-8 z-0 pointer-events-none footer-dust"
+          className="absolute bottom-0 z-0 pointer-events-none left-8 footer-dust"
           style={{ opacity: effectsOpacity, width: 0 }}
         >
           {dustParticles.map((particle) => (
@@ -93,6 +94,12 @@ export default function Footer() {
           className="relative z-10 block h-[150px] md:h-[250px]"
           draggable={false}
         />
+        <a
+          href="https://outcar.jaxtam.dev"
+          className="absolute top-3 left-full z-20 -ml-[50px] whitespace-nowrap rounded-tl-full rounded-r-full border border-border bg-fg px-3 py-2 text-xs text-pg shadow-sm transition-transform hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
+        >
+          {t("mapCallout")}
+        </a>
       </motion.div>
     </footer>
   );

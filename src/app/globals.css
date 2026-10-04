@@ -224,6 +224,29 @@ img {
   animation-iteration-count: infinite;
 }
 
+.footer-map-bubble {
+  transform: translateX(-50%);
+  transition: transform 0.2s ease;
+}
+
+.footer-map-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 11px;
+  height: 11px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--fg);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.footer-map-bubble:hover,
+.footer-map-bubble:focus-visible {
+  transform: translate(-50%, -2px);
+}
+
 @keyframes footer-dust-trail {
   0% {
     opacity: 0;

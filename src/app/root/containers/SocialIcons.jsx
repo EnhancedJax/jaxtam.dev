@@ -1,14 +1,21 @@
 "use client";
 
 import { ThreadsLogoIcon } from "@phosphor-icons/react/dist/ssr";
-import { GithubLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react/ssr";
+import {
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  MapTrifoldIcon,
+} from "@phosphor-icons/react/ssr";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ExpandingA from "../../../components/ExpandingA";
 import Tooltip from "../../../components/Tooltip";
+import { useT } from "../../../i18n/I18nProvider";
 import { slideUp } from "../../../utils/animations";
 
 export default function SocialIcons() {
+  const t = useT();
+
   return (
     <motion.div
       variants={slideUp}
@@ -25,6 +32,9 @@ export default function SocialIcons() {
         open="https://www.linkedin.com/in/jax-tam-9536832b9/"
       >
         <LinkedinLogoIcon size={24} />
+      </Button>
+      <Button text={t("mapSocial")} open="https://outcar.jaxtam.dev">
+        <MapTrifoldIcon size={24} />
       </Button>
     </motion.div>
   );
